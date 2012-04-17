@@ -1,6 +1,9 @@
 @announce
 Feature: Run nmap against a target and pass the value of the hostname from the profile.xml.
 
+Background:
+  Given nmap is installed
+
 Scenario: Verify server is available on standard web ports
   Given the hostname in the profile.xml
   When I run `nmap \"#{@hostname}\" -p80,443`

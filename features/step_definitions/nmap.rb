@@ -1,12 +1,5 @@
-When /^echo is run$/ do 
-  @output = `echo "#{@hostname}"`
-  puts "#{@output}"
-
+Given /^nmap is installed$/ do
+  #check if nmap is installed
+  @output = `which nmap`
+  
 end
-When /^nmap is run against the hostname$/ do
-  run pending # express the regexp above with the code you wish you had
-end
-Then /^I expect to see output containing google$/ do
-  puts @output
-end
-
