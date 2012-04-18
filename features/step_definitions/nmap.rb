@@ -6,11 +6,8 @@ Given /^nmap is installed$/ do
 end
 
 When /^I run nmap against the hostname in the profile on ports (\d+),(\d+)$/ do |arg2, arg3|
-
   steps %{
     When I run `nmap \"#{@hostname}\" -p80,443`
   }
-  # cmd = "nmap \"#{@hostname}\" -p80,443"
-  # run_simple(unescape(cmd), false)
 end
 
