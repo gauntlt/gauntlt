@@ -1,8 +1,3 @@
-require 'aruba/api'
-require 'aruba/cucumber/hooks'
-require 'aruba/reporting'
-
-World(Aruba::Api)
 
 Given /^nmap is installed$/ do
   #check if nmap is installed
@@ -11,7 +6,11 @@ Given /^nmap is installed$/ do
 end
 
 When /^I run nmap against the hostname in the profile on ports (\d+),(\d+)$/ do |arg2, arg3|
-  cmd = "nmap \"#{@hostname}\" -p80,443"
-  run_simple(unescape(cmd), false)
+
+  steps %{
+    When I run `nmap \"#{@hostname}\" -p80,443`
+  }
+  # cmd = "nmap \"#{@hostname}\" -p80,443"
+  # run_simple(unescape(cmd), false)
 end
 
