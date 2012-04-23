@@ -1,4 +1,3 @@
-@announce
 Feature: Run nmap against a target and pass the value of the hostname from the profile.xml.
 
 Background:
