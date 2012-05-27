@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby
+
+require "optparse"
+require "pp"
+
+$:.unshift(File.join(File.dirname(__FILE__), "/../lib"))
+
+require 'gauntlt'
+
+opts = {
+  :delimiter  => ' '
+}
+
+# http://stackoverflow.com/a/2737822/457819
+global = OptionParser.new do |o|
+  o.banner = "USAGE: #{$0} [options]"
+
+  o.on("-h", "--help", "Show this message") do |h|
+    puts o
+    exit
+  end
+
+  o.on_tail("--version", "Show version") do
+    puts Gauntlt::VERSION
+    exit
+  end
+end
+
+subcommands = {
+  'verify' => OptionParser.new do |verify|
+    verify.banner = "USAGE : #{$0} [options]"
+
+    verify.on("-l", "--list", "List defined tests") do |list|
+      pp Gauntlt.tests.join('\n')
+      exit
+    end
+
+    verify.on("-t", "--test TESTNAME", "Run test defined for TESTNAME") do |test|
+      opts[:test] = test
+    end
+
+    verify.on("--h", "--host HOSTNAME", "hostname against which to run test") do |host|
+      opts[:host] = host
+    end
+  end
+}
+
+global.order!
+subcommands[ARGV.shift].order!
+
+if opts[:test] && opts[:host]
+  Gauntlt.run_test(opts[:test], :host => opts[:host])
+end
