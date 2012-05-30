@@ -1,7 +1,7 @@
 require "gauntlt/version"
 
 require 'cucumber'
-require 'gauntlt/test'
+require 'gauntlt/verifier'
 
 class Gauntlt
   CURRENT_DIR = if defined?(Pathname) # ruby 1.9
@@ -31,8 +31,8 @@ class Gauntlt
       tests.include?(name)
     end
 
-    def run_test(name, options={})
-      Test.new(name, options).run
+    def verify(name, options={})
+      Verifier.new(name, options).run
     end
   end
 end

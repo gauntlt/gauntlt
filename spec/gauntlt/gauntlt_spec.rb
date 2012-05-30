@@ -30,13 +30,13 @@ describe Gauntlt do
     end
   end
 
-  describe :run_test do
+  describe :verify do
     it "runs the specified test with the passed options" do
       mock_test = mock('test')
-      subject::Test.should_receive(:new).with(:foo, :host => :bar).and_return(mock_test)
+      subject::Verifier.should_receive(:new).with(:foo, :host => :bar).and_return(mock_test)
       mock_test.should_receive(:run)
 
-      subject.run_test(:foo, :host => :bar)
+      subject.verify(:foo, :host => :bar)
     end
   end
 

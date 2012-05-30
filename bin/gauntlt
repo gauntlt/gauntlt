@@ -31,7 +31,7 @@ subcommands = {
     verify.banner = "USAGE : #{$0} [options]"
 
     verify.on("-l", "--list", "List defined tests") do |list|
-      pp Gauntlt.tests.join('\n')
+      puts Gauntlt.tests.join('\n')
       exit
     end
 
@@ -42,12 +42,12 @@ subcommands = {
     verify.on("--h", "--host HOSTNAME", "hostname against which to run test") do |host|
       opts[:host] = host
     end
+
+    if opts[:test] && opts[:host]
+      Gauntlt.verify(opts[:test], :host => opts[:host])
+    end      
   end
 }
 
 global.order!
 subcommands[ARGV.shift].order!
-
-if opts[:test] && opts[:host]
-  Gauntlt.run_test(opts[:test], :host => opts[:host])
-end
