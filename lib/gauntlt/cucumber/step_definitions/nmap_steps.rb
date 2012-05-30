@@ -1,4 +1,3 @@
-
 Given /^nmap is installed$/ do
   steps %{
     When I run `which nmap`
