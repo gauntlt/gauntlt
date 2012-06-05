@@ -5,10 +5,10 @@ require "gauntlt/version"
 Gem::Specification.new do |s|
   s.name        = "gauntlt"
   s.version     = Gauntlt::VERSION
-  s.authors     = ["James Wickett"]
+  s.authors     = ["James Wickett", "Mani Tadayon"]
   s.email       = ["james@ruggeddevops.org"]
   s.homepage    = ""
-  s.summary     = %q{the security testing tool using cucumber}
+  s.summary     = %q{behaviour-driven security using cucumber}
   s.description = %q{Using standard Gherkin language to define security tests, gauntlt happily wraps cucumber functionality and provides a security testing framework that security engineers, developers and operations teams can collaborate on together.}
 
     s.files         = `git ls-files`.split("\n")
@@ -20,7 +20,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "cucumber"
   s.add_development_dependency "rspec"
   s.add_development_dependency "aruba"
+  s.add_development_dependency "rake"  
 
   s.add_runtime_dependency "cucumber"
-  s.add_development_dependency "aruba"
+  s.add_runtime_dependency "aruba"
 end
