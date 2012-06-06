@@ -3,10 +3,15 @@ require 'cucumber/cli/main'
 
 class Gauntlt
   class Verifier
+    attr_accessor :name, :opts
+    
     def initialize(name, opts={})
-      @name = name
-      @opts = opts
-      @feature_file = File.join(base_dir, "cucumber", "#{@name}.feature")
+      self.name = name
+      self.opts = opts
+    end
+    
+    def feature_file
+      File.join(cuke_dir, "#{self.name}.feature")
     end
     
     def base_dir 
@@ -17,8 +22,8 @@ class Gauntlt
       File.join(base_dir, "cucumber")
     end
 
-    def run   
-      Cucumber::Cli::Main.execute([@feature_file, '--require', cuke_dir])
+    def run
+      Cucumber::Cli::Main.execute([self.feature_file, '--require', cuke_dir])
     end
   end
 end
