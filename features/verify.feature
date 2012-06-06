@@ -15,12 +15,10 @@ Feature: Verify security behaviour is correct
   Scenario Outline: Run verification for existing test
     Given a verification test is defined for "<name>"
     When I run `gauntlt verify --test <name> --host www.google.com`
-    Then it should pass with:
-      """
-      1 scenario (1 passed)
-      """
-	Examples:
-	  | name    |
-	  | nmap    |
-	  | cookies |
-	  | curl    |
+    Then it should pass
+  	Examples:
+  	  | name         |
+  	  | nmap         |
+  	  | cookies      |
+  	  | curl         |
+  	  | http_methods |
