@@ -4,8 +4,11 @@ Background:
   Given nmap is installed
 
 Scenario: Verify server is available on standard web ports
-  Given the hostname in the profile.xml
-  When I run nmap against the hostname in the profile on ports 80,443
+  Given the target hostname is "google.com"
+  When I run nmap against the following ports:
+    | port_number |
+    | 80          |
+    | 443         |
   Then the output should contain:
     """
     80/tcp  open  http
