@@ -1,5 +1,8 @@
 Feature: Evaulate received cookies against expected.
 
+Background:
+  Given "curl" is installed
+
 Scenario: Verify server is returning the cookies expected
   Given the target hostname is "google.com"
   When I send a GET request to the hostname

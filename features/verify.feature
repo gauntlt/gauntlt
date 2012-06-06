@@ -23,4 +23,4 @@ Feature: Verify security behaviour is correct
 	  | name    |
 	  | nmap    |
 	  | cookies |
-	  
+	  | curl    |
