@@ -8,12 +8,10 @@ Given /^nmap is installed$/ do
   } 
 end
 
-When /^I run nmap against the following ports:$/ do |ports|
-  raise "No host defined" if @hostname.nil? || @hostname == ""
-  
+When /^I run nmap against the following ports:$/ do |ports|  
   opts = '-p' + ports.hashes.map{ |hsh| hsh['port_number']}.join(',')
   steps %{
-    When I run `nmap \"#{@hostname}\" #{opts}`
+    When I run `nmap \"#{hostname}\" #{opts}`
   }
 end
 
