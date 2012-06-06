@@ -23,7 +23,7 @@ class Gauntlt
     end
 
     def run
-      Cucumber::Cli::Main.execute([self.feature_file, '--require', cuke_dir])
+      Cucumber::Cli::Main.execute([self.feature_file, '--require', self.cuke_dir])
     end
   end
 end
