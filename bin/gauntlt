@@ -15,7 +15,7 @@ opts = {
 global = OptionParser.new do |o|
   o.banner = "USAGE: #{$0} [options]"
 
-  o.on("-h", "--help", "Show this message") do |h|
+  o.on("--help", "Show this message") do |h|
     puts o
     exit
   end
