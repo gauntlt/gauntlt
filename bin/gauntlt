@@ -31,7 +31,7 @@ subcommands = {
     verify.banner = "USAGE : #{$0} [options]"
 
     verify.on("-l", "--list", "List defined tests") do |list|
-      puts Gauntlt.tests.join('\n')
+      puts Gauntlt.tests.join("\n")
       exit
     end
 

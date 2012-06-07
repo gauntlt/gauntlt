@@ -9,6 +9,9 @@ Feature: Verify security behaviour is correct
     When I run `gauntlt verify --list`
     Then it should pass with:
       """
+      cookies
+      curl
+      http_methods
       nmap
       """
 

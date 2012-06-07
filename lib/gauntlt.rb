@@ -24,7 +24,7 @@ class Gauntlt
     def tests
       feature_files.map do |full_path|
         File.basename(full_path, '.feature')
-      end
+      end.sort
     end
 
     def has_test?(name)
