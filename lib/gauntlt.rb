@@ -1,5 +1,6 @@
 require "gauntlt/version"
 
+require 'rubygems'
 require 'cucumber'
 require 'gauntlt/verifier'
 
