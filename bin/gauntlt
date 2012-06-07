@@ -39,7 +39,7 @@ subcommands = {
       opts[:test] = test
     end
 
-    verify.on("--h", "--host HOSTNAME", "hostname against which to run test") do |host|
+    verify.on("-h", "--host HOSTNAME", "hostname against which to run test") do |host|
       opts[:host] = host
     end
   end
