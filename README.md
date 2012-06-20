@@ -1,8 +1,7 @@
-
 INSTALL
 =======
 
-Using Ruby 1.9.3-p0
+Using Ruby 1.9.3-head
 
 GET STARTED
 ===========
@@ -12,8 +11,14 @@ GET STARTED
 
 After pulling from git, run bundle which installs cucumber and aruba then run cucumber.  Later we will provide a gauntlet wrapper for it that will allow you to set priority and speed wherein you will be able to walk the gauntlet or run the gauntlet. 
 
-~/gauntlet$ bundle
-~/gauntlet$ cucumber
+# This will install all needed gems
+~/gauntlt$ bundle
+
+# This will let you run the tests (use nmap for test_name and google.com for hostname)
+~/gauntlt$ bundle exec gauntlt verify --test <test_name> --host <hostname>
+
+
+
 
 ROADMAP
 =======
