@@ -8,27 +8,28 @@ Using Ruby 1.9.3-head
 GET STARTED
 ===========
 
-# Code snippet goes here
-
-After pulling from git, run bundle which installs cucumber and aruba then run cucumber.  Later we will provide a gauntlet wrapper for it that will allow you to set priority and speed wherein you will be able to walk the gauntlet or run the gauntlet. 
-
-# This will install all needed gems
+This will install all needed gems
 ~/gauntlt$ bundle
 
-# This will let you run the tests (use nmap for test_name and google.com for hostname)
+This will let you run the tests (use nmap for test_name and google.com for hostname)
 ~/gauntlt$ bundle exec gauntlt verify --test <test_name> --host <hostname>
 
+Try this one:
+~/gauntlt$ bundle exec gauntlt verify --test nmap --host yahoo.com
 
 ROADMAP
 =======
 
-Feel free to start adding other tools as features.  Below are some tools we are targeting but don't let that stop you from adding your favorite hacking tool.
+We are adding different features into gauntlt rignt now.  Please submit issues via github and tag them as enhancements.  The core team meets weekly and will divide out the enhancement requests into our monthly releases.
 
-./features/nmap.feature #in progress by wickett
-./features/w3af.feature #not started
-./features/nc.feature #not started
-./features/sqlmap.feature #not started
+Below are some tools we are targeting but don't let that stop you from adding your favorite hacking tool.
 
-./profile/profile.xml #this is where you can add app specific information and later reference that in your feature
+nmap
+curl
+w3af
+sqlmap
+arachni
+
+
 
 
