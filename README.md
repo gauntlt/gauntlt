@@ -1,12 +1,14 @@
 [![Build Status](https://secure.travis-ci.org/thegauntlet/gauntlt.png?branch=master)](http://travis-ci.org/thegauntlet/gauntlt)
 
-INSTALL
-=======
+PROJECT STATUS
+==============
+The gauntlt project is under active development and is not ready for production use but we are looking for community feedback and involvement on the project.  Please file issues via github and follow the project on twitter: @gauntlt.
 
-Using Ruby 1.9.3-head
 
 GET STARTED
 ===========
+
+Using Ruby 1.9.3-head
 
 This will install all needed gems
 ~/gauntlt$ bundle
@@ -30,6 +32,8 @@ w3af
 sqlmap
 arachni
 
-
+LICENSE
+=======
+gauntlt is licensed under The MIT License.  See LICENSE.md for details
 
 
