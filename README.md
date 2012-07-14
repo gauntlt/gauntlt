@@ -57,4 +57,4 @@ arachni
 
 ## LICENSE
 
-gauntlt is licensed under The MIT License.  See LICENSE.md for details
+gauntlt is licensed under The MIT License. See the LICENSE file in the repo or visit [gauntlt.mit-license.org](http://gauntlt.mit-license.org/) for details.
