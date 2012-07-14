@@ -1,5 +1,6 @@
 # gauntlt [![Build Status](https://secure.travis-ci.org/thegauntlet/gauntlt.png?branch=master)](http://travis-ci.org/thegauntlet/gauntlt)
 
+gauntlt is a framework for behaviour-driven security.
 
 ## PROJECT STATUS
 
