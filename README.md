@@ -1,26 +1,41 @@
-[![Build Status](https://secure.travis-ci.org/thegauntlet/gauntlt.png?branch=master)](http://travis-ci.org/thegauntlet/gauntlt)
+# gauntlt [![Build Status](https://secure.travis-ci.org/thegauntlet/gauntlt.png?branch=master)](http://travis-ci.org/thegauntlet/gauntlt)
 
-PROJECT STATUS
-==============
+
+## PROJECT STATUS
+
 The gauntlt project is under active development and is not ready for production use but we are looking for community feedback and involvement on the project.  Please file issues via github and follow the project on twitter: @gauntlt.
 
 
-GET STARTED
-===========
+## GET STARTED
 
-Using Ruby 1.9.3-head
+Before you start, please note that gauntlt is tested regularly against ruby 1.9.3 and 1.9.2 . We don't test againt ruby 1.8.7. Keep in mind that you run gauntlt separately, so its version of ruby should not be a big deal.
 
-This will install all needed gems
-~/gauntlt$ bundle
+1. Clone the git repo
 
-This will let you run the tests (use nmap for test_name and google.com for hostname)
-~/gauntlt$ bundle exec gauntlt verify --test <test_name> --host <hostname>
+        $ git clone git@github.com:thegauntlet/gauntlt.git
+        $ cd gauntlt
 
-Try this one:
-~/gauntlt$ bundle exec gauntlt verify --test nmap --host yahoo.com
 
-ROADMAP
-=======
+2. Install bundler
+        
+        $ gem install bundler
+
+
+3. Install dependencies
+
+        $ bundle
+
+
+4. Run a specific gauntlt test
+        
+        # general format
+        $ bin/gauntlt --test <test_name> --host <hostname>
+         
+        # for example, run the nmap test on yahoo
+        $ bin/gauntlt verify --test nmap --host yahoo.com
+
+
+## ROADMAP
 
 We are adding different features into gauntlt rignt now.  Please submit issues via github and tag them as enhancements.  The core team meets weekly and will divide out the enhancement requests into our monthly releases.
 
@@ -32,8 +47,7 @@ w3af
 sqlmap
 arachni
 
-LICENSE
-=======
+
+## LICENSE
+
 gauntlt is licensed under The MIT License.  See LICENSE.md for details
-
-
