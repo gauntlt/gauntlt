@@ -33,6 +33,13 @@ Before you start, please note that gauntlt is tested regularly against ruby 1.9.
          
         # for example, run the nmap test on yahoo
         $ bin/gauntlt verify --test nmap --host yahoo.com
+ 
+        # list defined tests
+        $ bin/gauntlt verify --list
+
+        # get help
+        $ bin/gauntlt --help
+        $ bin/gauntlt verify --help
 
 
 ## ROADMAP
