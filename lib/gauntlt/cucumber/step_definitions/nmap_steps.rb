@@ -15,4 +15,9 @@ When /^I run nmap against the following ports:$/ do |ports|
   }
 end
 
+When /^I run nmap with OS detection$/ do
+  steps %{
+    When I run `nmap -sV -p80 -PN \"#{hostname}\"` 
+  }
 
+end
