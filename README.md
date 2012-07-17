@@ -49,12 +49,13 @@ We are adding different features into gauntlt rignt now.  Please submit issues v
 
 Below are some tools we are targeting but don't let that stop you from adding your favorite hacking tool.
 
-nmap
-curl
-w3af
-sqlmap
-arachni
+	curl
+	w3af
+	sqlmap
+	arachni
 
+## ADD A MODULE
+See the wiki on how to add a module into gauntlt. We would love your contributions.
 
 ## LICENSE
 
