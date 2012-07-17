@@ -25,7 +25,7 @@ Before you start, please note that gauntlt is tested regularly against ruby 1.9.
 3. Install dependencies
 
         $ bundle
-
+	# Note, you may see errors in bundle related to the curb gem.  It is looking for curl dependencies. In ubuntu you can do a sudo apt-get install libcurl4-openssl-dev 
 
 4. Run a specific gauntlt test
         
