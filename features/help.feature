@@ -11,9 +11,8 @@ Feature: As a user I want to have a contextual help menu that tells me what opti
     When I run `gauntlt help --test nmap`
     Then the output should contain:
     """
-    ex: gauntlt --test nmap --host <hostname> --port <port>
-    --host <hostname> should be a single IP address or domain name
-    --port <port> can be single port or range of ports
+    ex: gauntlt --test nmap 
+    to customize this attack, open the ./attacks directory and edit the nmap.attack file
     """
 
   Scenario: A user runs gauntlt without any arguments
@@ -21,7 +20,7 @@ Feature: As a user I want to have a contextual help menu that tells me what opti
     Then the output should contain:
     """
     You must specify the test you wish to run along with the correct number of arguments.
-    try: gauntlt --test nmap --hostname example.com
+    try: gauntlt --test nmap 
     """
 
   Scenario: A user runs gauntlt without the correct number of arguments
@@ -32,5 +31,13 @@ Feature: As a user I want to have a contextual help menu that tells me what opti
     For the test you are trying to run you need to specify additional arguments.  To know what arguments you need to run, try running gauntlt help --test nmap
     """
 
-     
+  Scenario: A user runs the attack command without specifying tests
+    When I run `gauntlt attack`
+    Then the output should contain:
+    """
+    Missing Arguments.
+    ex: gauntlt attack --test ALL
+    ex: gauntlt attack --test nmap,http_headers
+    You can only run attacks that are in the ./attacks directory and if you want to run all attacks, you must specify ALL
+    """ 
       
