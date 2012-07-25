@@ -25,4 +25,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "cucumber"
   s.add_runtime_dependency "aruba"
   s.add_runtime_dependency "curb"  
+  s.add_runtime_dependency "acclaim"
+  s.add_runtime_dependency "ribbon", "0.7.0"
 end

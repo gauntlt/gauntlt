@@ -3,21 +3,21 @@ require 'spec_helper'
 describe Gauntlt do
   subject { Gauntlt }
 
-  describe :has_test? do
+  describe :has_attack? do
     it "returns true if a cucumber feature exists for the passed name" do
-      subject.stub(:tests).and_return(['foo'])
-      subject.should have_test('foo')
+      subject.stub(:attacks).and_return(['foo'])
+      subject.should have_attack('foo')
     end
   end
 
-  describe :tests do
+  describe :attacks do
     it "returns the names of all feature files in the cucumber directory" do
       subject.stub(:feature_files).and_return([
         '/foo/bar/a.feature',
         '/foo/bar/b.feature'
       ])
 
-      subject.tests.should == ['a', 'b']
+      subject.attacks.should == ['a', 'b']
     end
   end
 
@@ -30,13 +30,13 @@ describe Gauntlt do
     end
   end
 
-  describe :verify do
+  describe :attack do
     it "runs the specified test with the passed options" do
       mock_test = mock('test')
-      subject::Verifier.should_receive(:new).with(:foo, :host => :bar).and_return(mock_test)
+      subject::Attack.should_receive(:new).with(:foo, :host => :bar).and_return(mock_test)
       mock_test.should_receive(:run)
 
-      subject.verify(:foo, :host => :bar)
+      subject.attack(:foo, :host => :bar)
     end
   end
 

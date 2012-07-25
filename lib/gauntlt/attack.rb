@@ -2,7 +2,7 @@ require 'cucumber'
 require 'cucumber/cli/main'
 
 module Gauntlt
-  class Verifier
+  class Attack
     attr_accessor :name, :opts
     
     def initialize(name, opts={})

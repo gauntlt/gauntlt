@@ -2,7 +2,7 @@ require "gauntlt/version"
 
 require 'rubygems'
 require 'cucumber'
-require 'gauntlt/verifier'
+require 'gauntlt/attack'
 
 module Gauntlt
   CURRENT_DIR = if defined?(Pathname) # ruby 1.9
@@ -22,18 +22,18 @@ module Gauntlt
       Dir.glob(FEATURE_GLOB_PATTERN)
     end
 
-    def tests
+    def attacks
       feature_files.map do |full_path|
         File.basename(full_path, '.feature')
       end.sort
     end
 
-    def has_test?(name)
-      tests.include?(name)
+    def has_attack?(name)
+      attacks.include?(name)
     end
 
-    def verify(name, options={})
-      Verifier.new(name, options).run
+    def attack(name, options={})
+      Attack.new(name, options).run
     end
   end
 end
