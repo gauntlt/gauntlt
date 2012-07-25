@@ -1,7 +1,7 @@
 require 'cucumber'
 require 'cucumber/cli/main'
 
-class Gauntlt
+module Gauntlt
   class Verifier
     attr_accessor :name, :opts
     

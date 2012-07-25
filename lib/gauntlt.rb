@@ -4,7 +4,7 @@ require 'rubygems'
 require 'cucumber'
 require 'gauntlt/verifier'
 
-class Gauntlt
+module Gauntlt
   CURRENT_DIR = if defined?(Pathname) # ruby 1.9
     Pathname.new(__FILE__).dirname.to_s
   else

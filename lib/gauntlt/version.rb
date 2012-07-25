@@ -1,3 +1,3 @@
-class Gauntlt
+module Gauntlt
   VERSION = "0.0.1"
 end
