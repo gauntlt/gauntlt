@@ -28,20 +28,19 @@ Note, you may see errors in bundle related to the curb gem.  It is looking for c
 
         $ bundle
 
-4. Run a specific gauntlt test
+4. Run a specific gauntlt attack
         
         # general format
-        $ bin/gauntlt --test <test_name> --host <hostname>
+        $ bin/gauntlt attack --name <attack_name> --host <hostname>
          
-        # for example, run the nmap test on yahoo
-        $ bin/gauntlt verify --test nmap --host yahoo.com
+        # for example, run the nmap test on yahoo (-n & -H are equivalent to --name & --host)
+        $ bin/gauntlt attack -n nmap -H yahoo.com
  
         # list defined tests
-        $ bin/gauntlt verify --list
+        $ bin/gauntlt attack --list
 
         # get help
-        $ bin/gauntlt --help
-        $ bin/gauntlt verify --help
+        $ bin/gauntlt help
 
 
 ## ROADMAP
