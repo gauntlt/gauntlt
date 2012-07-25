@@ -9,7 +9,7 @@ The gauntlt project is under active development and is not ready for production 
 
 ## GET STARTED
 
-Before you start, please note that gauntlt is tested regularly against ruby 1.9.3 and 1.9.2 . We don't test againt ruby 1.8.7. Keep in mind that you run gauntlt separately, so its version of ruby should not be a big deal.
+Before you start, please note that gauntlt is tested regularly against ruby 1.9.3. We don't test againt older versions of ruby. Keep in mind that you run gauntlt separately from the application it targets, so it does not matter whether the targeted application uses ruby.
 
 1. Clone the git repo
 
