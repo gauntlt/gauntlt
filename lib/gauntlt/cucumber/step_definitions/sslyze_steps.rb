@@ -1,6 +1,6 @@
 Given /^sslyze is installed$/ do
   begin
-    steps %{
+    steps %{  
       When I run `which sslyze`
       Then the output should contain:
       """

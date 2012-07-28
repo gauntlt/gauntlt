@@ -15,16 +15,16 @@ module Gauntlt
 
   CUKE_DIR = File.join(GAUNTLT_DIR, 'cucumber')
 
-  FEATURE_GLOB_PATTERN = CUKE_DIR + '/**/*.feature'
+  ATTACK_GLOB_PATTERN = CUKE_DIR + '/**/*.attack'
 
   class << self
-    def feature_files
-      Dir.glob(FEATURE_GLOB_PATTERN)
+    def attack_files
+      Dir.glob(ATTACK_GLOB_PATTERN)
     end
 
     def attacks
-      feature_files.map do |full_path|
-        File.basename(full_path, '.feature')
+      attack_files.map do |full_path|
+        File.basename(full_path, '.attack')
       end.sort
     end
 

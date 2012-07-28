@@ -4,28 +4,28 @@ describe Gauntlt do
   subject { Gauntlt }
 
   describe :has_attack? do
-    it "returns true if a cucumber feature exists for the passed name" do
+    it "returns true if a cucumber attack exists for the passed name" do
       subject.stub(:attacks).and_return(['foo'])
       subject.should have_attack('foo')
     end
   end
 
   describe :attacks do
-    it "returns the names of all feature files in the cucumber directory" do
-      subject.stub(:feature_files).and_return([
-        '/foo/bar/a.feature',
-        '/foo/bar/b.feature'
+    it "returns the names of all attack files in the cucumber directory" do
+      subject.stub(:attack_files).and_return([
+        '/foo/bar/a.attack',
+        '/foo/bar/b.attack'
       ])
 
       subject.attacks.should == ['a', 'b']
     end
   end
 
-  describe :feature_files do
-    it "returns the full path to each feature file" do
-      with_constants :"Gauntlt::FEATURE_GLOB_PATTERN" =>'foo' do
+  describe :attack_files do
+    it "returns the full path to each attack file" do
+      with_constants :"Gauntlt::ATTACK_GLOB_PATTERN" =>'foo' do
         Dir.stub(:glob).with('foo').and_return(['bar', 'baz'])
-        subject.feature_files.should == ['bar', 'baz']
+        subject.attack_files.should == ['bar', 'baz']
       end
     end
   end
