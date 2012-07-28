@@ -24,11 +24,11 @@ Feature: Verify the attack behaviour is correct
   	  | http_methods |
   	  | sslyze       |
 
-
-  @wip
-  Scenario: The attack command is run but there are no available tests to be run
-    Given there are no available attacks in the attacks directory
-    When I run `gauntlt attack --name <name> --host www.google.com`
-    Then it should instruct the user to copy attacks from the examples directory to the attacks directory
+  Scenario: Bad attack name specified
+    When I run `gauntlt attack --name thisattackwouldneverexist`
+    Then it should fail with:
+	"""
+	No 'thisattackwouldneverexist' attack found
+	"""
 
 

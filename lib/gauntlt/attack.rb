@@ -3,15 +3,22 @@ require 'cucumber/cli/main'
 
 module Gauntlt
   class Attack
-    attr_accessor :name, :opts
+    class NotFound < Exception; end
+
+    attr_accessor :name, :opts, :attack_file
 
     def initialize(name, opts={})
-      self.name = name
-      self.opts = opts
+      if File.exists?( attack_file = attack_file_for(name) )
+        self.name = name
+        self.opts = opts
+        self.attack_file = attack_file
+      else
+        raise NotFound.new("No '#{name}' attack found")
+      end
     end
 
-    def attack_file
-      File.join(cuke_dir, "#{self.name}.attack")
+    def attack_file_for(some_name)
+      File.join(cuke_dir, "#{some_name}.attack")
     end
 
     def base_dir
