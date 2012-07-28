@@ -9,21 +9,20 @@ class Gauntlt::Command < Acclaim::Command
   version Gauntlt::VERSION
 end
 
+# gauntlt attack ...
 class Gauntlt::Command::Attack < Gauntlt::Command
   option :list, '-l', '--list', 'List of available attacks'
 
   option :name, '-n', '--name', 'Name of attack to launch', arity: [1, 0]
   option :host, '-H', '--host', 'Host to attack', arity: [1, 0]
-  
+
   action do |options, args|
     if options.list?
       puts Gauntlt.attacks.join("\n")
-    else      
+    else
       puts Gauntlt.attack(options.name, :host => options.host)
     end
   end
 end
-
-
 
 Gauntlt::Command.run *ARGV
