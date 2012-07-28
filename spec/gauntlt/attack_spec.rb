@@ -32,10 +32,10 @@ describe Gauntlt::Attack do
   end
 
   describe :attack_file_for do
-    it "returns a file name based on name and cuke_dir" do
+    it "returns a file name based on name and attacks_dir" do
       Gauntlt::Attack.any_instance.unstub(:attack_file_for)
       File.stub(:exists?).and_return(true)
-      subject.should_receive(:cuke_dir).and_return('/bar')
+      subject.should_receive(:attacks_dir).and_return('/bar')
       subject.attack_file_for('baz').should == '/bar/baz.attack'
     end
   end
@@ -49,18 +49,18 @@ describe Gauntlt::Attack do
     end
   end
 
-  describe :cuke_dir do
-    it "joins cucumber to base_dir" do
+  describe :attacks_dir do
+    it "joins attacks to base_dir" do
       subject.should_receive(:base_dir).and_return(:bar)
-      File.should_receive(:join).with(:bar, 'cucumber')
+      File.should_receive(:join).with(:bar, 'attacks')
 
-      subject.cuke_dir
+      subject.attacks_dir
     end
   end
 
   describe :run do
-    it "executes the attack file and specifies the cuke_dir" do
-      subject.should_receive(:cuke_dir).and_return('/bar')
+    it "executes the attack file and specifies the attacks_dir" do
+      subject.should_receive(:attacks_dir).and_return('/bar')
       subject.should_receive(:attack_file).and_return('/bar/baz.attack')
       Cucumber::Cli::Main.should_receive(:execute).with(['/bar/baz.attack', '--require', '/bar'])
 

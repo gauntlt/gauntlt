@@ -13,9 +13,9 @@ module Gauntlt
 
   GAUNTLT_DIR = File.join(CURRENT_DIR, 'gauntlt')
 
-  CUKE_DIR = File.join(GAUNTLT_DIR, 'cucumber')
+  ATTACKS_DIR = File.join(GAUNTLT_DIR, 'attacks')
 
-  ATTACK_GLOB_PATTERN = CUKE_DIR + '/**/*.attack'
+  ATTACK_GLOB_PATTERN = ATTACKS_DIR + '/**/*.attack'
 
   class << self
     def attack_files

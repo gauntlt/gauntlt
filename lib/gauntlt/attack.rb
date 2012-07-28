@@ -18,19 +18,19 @@ module Gauntlt
     end
 
     def attack_file_for(some_name)
-      File.join(cuke_dir, "#{some_name}.attack")
+      File.join(attacks_dir, "#{some_name}.attack")
     end
 
     def base_dir
       File.expand_path( File.dirname(__FILE__) )
     end
 
-    def cuke_dir
-      File.join(base_dir, "cucumber")
+    def attacks_dir
+      File.join(base_dir, "attacks")
     end
 
     def run
-      Cucumber::Cli::Main.execute([self.attack_file, '--require', self.cuke_dir])
+      Cucumber::Cli::Main.execute([self.attack_file, '--require', self.attacks_dir])
     end
   end
 end

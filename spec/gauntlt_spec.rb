@@ -4,14 +4,14 @@ describe Gauntlt do
   subject { Gauntlt }
 
   describe :has_attack? do
-    it "returns true if a cucumber attack exists for the passed name" do
+    it "returns true if an attack exists for the passed name" do
       subject.stub(:attacks).and_return(['foo'])
       subject.should have_attack('foo')
     end
   end
 
   describe :attacks do
-    it "returns the names of all attack files in the cucumber directory" do
+    it "returns the names of all attack files in the attacks directory" do
       subject.stub(:attack_files).and_return([
         '/foo/bar/a.attack',
         '/foo/bar/b.attack'
