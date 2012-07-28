@@ -4,7 +4,7 @@ gauntlt is a framework for behaviour-driven security.
 
 ## PROJECT STATUS
 
-The gauntlt project is under active development and is not ready for production use but we are looking for community feedback and involvement on the project.  Please file issues via github and follow the project on twitter: @gauntlt.
+The gauntlt project is under active development and is not ready for production use but we are looking for community feedback and involvement on the project.  Please file issues via github and follow the project on twitter: [@gauntlt](https://twitter.com/gauntlt).
 
 
 ## GET STARTED
