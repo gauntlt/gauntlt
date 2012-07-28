@@ -49,10 +49,13 @@ We are adding different features into gauntlt rignt now.  Please submit issues v
 
 Below are some tools we are targeting but don't let that stop you from adding your favorite hacking tool.
 
-	curl
-	w3af
-	sqlmap
-	arachni
+  * [curl] [curl]
+  * [nmap] [nmap]
+  * [sslyze] [sslyze]
+  * [w3af] [w3af]
+  * [sqlmap] [sqlmap]
+  * [arachni] [arachni]
+
 
 ## ADD A MODULE
 See the wiki on how to add a module into gauntlt. We would love your contributions.
@@ -60,3 +63,10 @@ See the wiki on how to add a module into gauntlt. We would love your contributio
 ## LICENSE
 
 gauntlt is licensed under The MIT License. See the LICENSE file in the repo or visit [gauntlt.mit-license.org](http://gauntlt.mit-license.org/) for details.
+
+[curl]: http://curl.haxx.se
+[nmap]: http://nmap.org
+[sslyze]: https://github.com/iSECPartners/sslyze
+[w3af]: http://w3af.sourceforge.net
+[sqlmap]: http://sqlmap.org
+[arachni]: http://arachni-scanner.com
