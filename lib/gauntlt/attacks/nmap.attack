@@ -4,7 +4,7 @@ Background:
   Given nmap is installed
 
 Scenario: Verify server is available on standard web ports
-  Given the target hostname is "google.com"
+  Given the target hostname is "yahoo.com"
   When I run nmap against the following ports:
     | port_number |
     | 80          |
@@ -14,4 +14,12 @@ Scenario: Verify server is available on standard web ports
     80/tcp  open  http
     443/tcp open  https
     """
+
+Scenario: Check to see the OS version of the host matches as expected
+  Given the target hostname is "google.com"
+  When I run nmap with OS detection 
+  Then the output should contain:
+  """
+  OS: Linux
+  """
 
