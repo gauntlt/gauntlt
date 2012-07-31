@@ -1,6 +1,6 @@
 Given /^sslyze is installed$/ do
   begin
-    steps %{  
+    steps %{
       When I run `which sslyze`
       Then the output should contain:
       """
@@ -32,6 +32,13 @@ When /^I run sslyze against the hostname$/ do
         When I run `sslyze --regular \"#{hostname}\":443`
     }
 end
+
+When /^I launch an "sslyze" attack with:$/ do |command|
+  command.gsub!('<hostname>', hostname)
+  run command
+end
+
+
 
 Then /^the key size should be at least (\d+)$/ do |arg1|
   pending # express the regexp above with the code you wish you had

@@ -25,3 +25,4 @@ doc
 Gemfile.lock
 .rvmrc
 .rbenv*
+*.gem

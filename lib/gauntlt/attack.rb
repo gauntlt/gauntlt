@@ -8,12 +8,12 @@ module Gauntlt
     attr_accessor :name, :opts, :attack_file
 
     def initialize(name, opts={})
-      if File.exists?( attack_file = attack_file_for(name) )
+      if opts[:attack_file] && File.exists?( opts[:attack_file] )
         self.name = name
         self.opts = opts
-        self.attack_file = attack_file
+        self.attack_file = opts[:attack_file]
       else
-        raise NotFound.new("No '#{name}' attack found")
+        raise NotFound.new("No '#{opts[:attack_file]}' attack found")
       end
     end
 
@@ -26,11 +26,11 @@ module Gauntlt
     end
 
     def attacks_dir
-      File.join(base_dir, "attacks")
+      File.join(base_dir, "attack_adapters")
     end
 
     def run
-      Cucumber::Cli::Main.execute([self.attack_file, '--require', self.attacks_dir])
+      Cucumber::Cli::Main.execute([self.attack_file, '--strict', '--require', self.attacks_dir])
     end
   end
 end

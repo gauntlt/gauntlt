@@ -1,0 +1,91 @@
+
+Warning: Running on MAC OS X. Disabling multiprocessing - scans will be slower.
+
+
+
+ REGISTERING AVAILABLE PLUGINS
+ -----------------------------
+
+   PluginCertInfo - OK
+   PluginEmpty - OK
+   PluginOpenSSLCipherSuites - OK
+   PluginSessionRenegotiation - OK
+   PluginSessionResumption - OK
+
+
+
+ CHECKING HOST(S) AVAILABILITY
+ -----------------------------
+
+   www.google.com:443                  => 74.125.127.106:443
+
+
+
+ SCAN RESULTS FOR WWW.GOOGLE.COM:443 - 74.125.127.106:443
+ --------------------------------------------------------
+
+  * Session Renegotiation :
+      Client-initiated Renegotiations:    Rejected
+      Secure Renegotiation:               Supported
+
+  * Certificate :
+      Validation w/ Mozilla's CA Store:  Certificate is Trusted
+      Subject:                           /C=US/ST=California/L=Mountain View/O=Google Inc/CN=www.google.com
+      Issuer:                            /C=ZA/O=Thawte Consulting (Pty) Ltd./CN=Thawte SGC CA
+      Serial Number:                     4F9D96D966B0992B54C2957CB4157D4D
+      Not Before:                        Oct 26 00:00:00 2011 GMT
+      Not After:                         Sep 30 23:59:59 2013 GMT
+      Signature Algorithm:               sha1WithRSAEncryption
+      Key Size:                          1024 bits
+      SHA1 Fingerprint:                  C1956DC8A7DFB2A5A56934DA09778E3A11023358
+
+  * Session Resumption :
+      With Session IDs:           Supported (5 successful, 0 failed, 0 errors, 5 total attempts).
+      With TLS Session Tickets:   Supported
+
+  * TLSV1 Cipher Suites :
+
+      Rejected Cipher Suite(s): Hidden
+
+      Preferred Cipher Suite:
+        ECDHE-RSA-RC4-SHA        128 bits      HTTP 200 OK
+
+      Accepted Cipher Suite(s):
+        AES256-SHA               256 bits      HTTP 200 OK
+        DES-CBC3-SHA             168 bits      HTTP 200 OK
+        RC4-SHA                  128 bits      HTTP 200 OK
+        RC4-MD5                  128 bits      HTTP 200 OK
+        AES128-SHA               128 bits      HTTP 200 OK
+
+      Unknown Errors: None
+
+  * SSLV3 Cipher Suites :
+
+      Rejected Cipher Suite(s): Hidden
+
+      Preferred Cipher Suite:
+        ECDHE-RSA-RC4-SHA        128 bits      HTTP 200 OK
+
+      Accepted Cipher Suite(s):
+        AES256-SHA               256 bits      HTTP 200 OK
+        DES-CBC3-SHA             168 bits      HTTP 200 OK
+        RC4-SHA                  128 bits      HTTP 200 OK
+        RC4-MD5                  128 bits      HTTP 200 OK
+        AES128-SHA               128 bits      HTTP 200 OK
+
+      Unknown Errors: None
+
+  * SSLV2 Cipher Suites :
+
+      Rejected Cipher Suite(s): Hidden
+
+      Preferred Cipher Suite: None
+
+      Accepted Cipher Suite(s): None
+
+      Unknown Errors: None
+
+
+
+ SCAN COMPLETED IN 2.50 S
+ ------------------------

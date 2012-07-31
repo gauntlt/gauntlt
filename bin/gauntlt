@@ -24,7 +24,7 @@ class Gauntlt::Command::Attack < Gauntlt::Command
   option :list, '-l', '--list', 'List of available attacks'
 
   option :name, '-n', '--name', 'Name of attack to launch', arity: [1, 0]
-  option :host, '-H', '--host', 'Host to attack', arity: [1, 0]
+  option :attack_file, '-a', '--attack-file', 'Name of file with attack definition', arity: [1, 0]
 
   action do |options, args|
     if options.list? || options.empty?
@@ -36,8 +36,16 @@ class Gauntlt::Command::Attack < Gauntlt::Command
     elsif options.help?
       help options: false
       Gauntlt::Command.run 'help'
+      puts "  try: gauntlt attack -n nmap -a your.attack"
     else
-      puts Gauntlt.attack(options.name, :host => options.host)
+      if options.attack_file? && options.name?
+        puts Gauntlt.attack(options.name, :attack_file => options.attack_file)
+      else
+        puts "  Must specify name and attack-file"
+        puts ""
+        puts "  try: gauntlt attack -n nmap -a your.attack"
+        raise
+      end
     end
   end
 end
