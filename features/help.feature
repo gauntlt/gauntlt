@@ -1,7 +1,8 @@
 Feature: Display help info
 
-  As a user,
-  I want to view contextual help info that tells me what options I need to pass for a certain test
+  As a user of gauntlt,
+  I want contextual help info,
+  In order to learn the options required by an attack
 
   Scenario: A user runs the help command in the core part of gauntlt
     When I run `gauntlt --help`

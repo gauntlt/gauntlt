@@ -2,7 +2,7 @@ Feature: Verify the attack behaviour is correct
 
   In order to ensure attack behaviour is correct,
   As a software developer or security expert,
-  I want to run automated attack tests that will pass or fail.
+  I want to run automated attacks that will pass or fail.
 
   Scenario: List available attack steps
     Given an attack "nmap" exists
