@@ -2,4 +2,4 @@ language: ruby
 rvm:
   - 1.9.3
 before_script:
-  - apt-get install nmap
+  - sudo apt-get install nmap
