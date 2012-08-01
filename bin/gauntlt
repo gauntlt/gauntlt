@@ -5,7 +5,7 @@ require 'gauntlt'
 require 'acclaim'
 
 class Gauntlt::Command < Acclaim::Command
-  option :help,     '-h', '--help',    'Help outputs available commands'
+  option :help,     '-h', '--help',    'Help outputs available command options'
   option :version,  '-v', '--version', 'Version of app'
 
   when_called do |options, args|
@@ -20,7 +20,7 @@ end
 
 # gauntlt attack ...
 class Gauntlt::Command::Attack < Gauntlt::Command
-  option :help, '-h', '--help', 'Help outputs available commands'
+  option :help, '-h', '--help', 'Help outputs available command options'
   option :list, '-l', '--list', 'List of available attacks'
 
   option :name, '-n', '--name', 'Name of attack to launch', arity: [1, 0]
