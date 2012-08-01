@@ -22,6 +22,7 @@ Feature: Verify the attack behaviour is correct
   	  | cookies      |
   	  | curl         |
   	  | http_methods |
+  	  | sqlmap       |
   	  | sslyze       |
 
   Scenario: Bad attack name specified

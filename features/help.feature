@@ -28,6 +28,7 @@ Feature: Display help info
       curl
       http_methods
       nmap
+      sqlmap
       sslyze
 
       try: gauntlt attack -n nmap
