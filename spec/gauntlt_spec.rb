@@ -13,8 +13,8 @@ describe Gauntlt do
   describe :attacks do
     it "returns the names of all attack files in the attacks directory" do
       subject.stub(:attack_files).and_return([
-        '/foo/bar/a.attack',
-        '/foo/bar/b.attack'
+        '/foo/bar/a.rb',
+        '/foo/bar/b.rb'
       ])
 
       subject.attacks.should == ['a', 'b']

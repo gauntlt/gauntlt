@@ -17,10 +17,6 @@ module Gauntlt
       end
     end
 
-    def attack_file_for(some_name)
-      File.join(attacks_dir, "#{some_name}.attack")
-    end
-
     def base_dir
       File.expand_path( File.dirname(__FILE__) )
     end

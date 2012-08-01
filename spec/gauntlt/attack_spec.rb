@@ -2,41 +2,29 @@ require 'spec_helper'
 
 describe Gauntlt::Attack do
   before do
-    File.stub(:exists?).with(:existent).and_return(true)
-    File.stub(:exists?).with(:nonexistent).and_return(false)
-
-    Gauntlt::Attack.any_instance.stub(:attack_file_for).and_return(:existent)
+    File.stub(:exists?).with(:bar).and_return(true)
   end
 
   subject{
-    Gauntlt::Attack.new(:foo)
+    Gauntlt::Attack.new(:foo, :attack_file => :bar)
   }
 
   describe :initialize do
     context "attack file exists for passed name" do
       it "sets name and opts" do
         subject.name.should == :foo
-        subject.opts.should == {}
+        subject.opts.should == {:attack_file => :bar}
       end
     end
 
     context "attack file does not exist for passed name" do
       it "raises an error if the attack file does not exist" do
-        Gauntlt::Attack.any_instance.stub(:attack_file_for).and_return(:nonexistent)
+        File.stub(:exists?).with(:bar).and_return(false)
 
         expect {
-          Gauntlt::Attack.new(:bar)
+          Gauntlt::Attack.new(:foo, :attack_file => :bar)
         }.to raise_error Gauntlt::Attack::NotFound
       end
-    end
-  end
-
-  describe :attack_file_for do
-    it "returns a file name based on name and attacks_dir" do
-      Gauntlt::Attack.any_instance.unstub(:attack_file_for)
-      File.stub(:exists?).and_return(true)
-      subject.should_receive(:attacks_dir).and_return('/bar')
-      subject.attack_file_for('baz').should == '/bar/baz.attack'
     end
   end
 
@@ -52,17 +40,17 @@ describe Gauntlt::Attack do
   describe :attacks_dir do
     it "joins attacks to base_dir" do
       subject.should_receive(:base_dir).and_return(:bar)
-      File.should_receive(:join).with(:bar, 'attacks')
+      File.should_receive(:join).with(:bar, 'attack_adapters')
 
       subject.attacks_dir
     end
   end
 
   describe :run do
-    it "executes the attack file and specifies the attacks_dir" do
+    it "executes the attack file, specifies failure for undefined steps and specifies the attacks_dir" do
       subject.should_receive(:attacks_dir).and_return('/bar')
       subject.should_receive(:attack_file).and_return('/bar/baz.attack')
-      Cucumber::Cli::Main.should_receive(:execute).with(['/bar/baz.attack', '--require', '/bar'])
+      Cucumber::Cli::Main.should_receive(:execute).with(['/bar/baz.attack', '--strict', '--require', '/bar'])
 
       subject.run
     end
