@@ -1,4 +1,4 @@
-Feature: Run sslyze against a target and pass teh value of the hostname from the profile.xml.
+Feature: Run sslyze against a target and pass the value of the hostname from the profile.xml.
 
 Background:
   Given sslyze is installed

@@ -5,12 +5,12 @@ require 'gauntlt'
 require 'acclaim'
 
 class Gauntlt::Command < Acclaim::Command
-  option :help,     '-h', '--help',    'Help outputs available commands'
+  option :help,     '-h', '--help',    'Help outputs available command options'
   option :version,  '-v', '--version', 'Version of app'
 
   when_called do |options, args|
     if options.help? || options.empty?
-      help
+      help options: false
       Gauntlt::Command.run 'help'
     elsif options.version?
       puts Gauntlt::VERSION
@@ -20,7 +20,7 @@ end
 
 # gauntlt attack ...
 class Gauntlt::Command::Attack < Gauntlt::Command
-  option :help, '-h', '--help', 'Help outputs available commands'
+  option :help, '-h', '--help', 'Help outputs available command options'
   option :list, '-l', '--list', 'List of available attacks'
 
   option :name, '-n', '--name', 'Name of attack to launch', arity: [1, 0]
@@ -34,7 +34,7 @@ class Gauntlt::Command::Attack < Gauntlt::Command
       puts ""
       puts "  try: gauntlt attack -n nmap"
     elsif options.help?
-      help
+      help options: false
       Gauntlt::Command.run 'help'
     else
       puts Gauntlt.attack(options.name, :host => options.host)

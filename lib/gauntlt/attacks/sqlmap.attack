@@ -1,0 +1,4 @@
+Feature: Run sqlmap against a target and pass the value of the hostname from the profile.xml.
+
+Background:
+  Given sqlmap is installed
