@@ -29,7 +29,7 @@ Feature: nmap attack
           \"\"\"
         Then the output should contain:
           \"\"\"
-          Service Info: OS: Linux; CPE: cpe:/o:linux:kernel
+          Service Info: OS: Linux
           \"\"\"
     """
     When I run `gauntlt attack --name nmap --attack-file nmap.attack`
