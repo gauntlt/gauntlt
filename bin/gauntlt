@@ -10,7 +10,7 @@ class Gauntlt::Command < Acclaim::Command
 
   when_called do |options, args|
     if options.help? || options.empty?
-      help
+      help options: false
       Gauntlt::Command.run 'help'
     elsif options.version?
       puts Gauntlt::VERSION
@@ -34,7 +34,7 @@ class Gauntlt::Command::Attack < Gauntlt::Command
       puts ""
       puts "  try: gauntlt attack -n nmap"
     elsif options.help?
-      help
+      help options: false
       Gauntlt::Command.run 'help'
     else
       puts Gauntlt.attack(options.name, :host => options.host)
