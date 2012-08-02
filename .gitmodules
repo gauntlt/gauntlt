@@ -1,0 +1,3 @@
+[submodule "vendor/sslyze"]
+	path = vendor/sslyze
+	url = git://github.com/iSECPartners/sslyze.git
