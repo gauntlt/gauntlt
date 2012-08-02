@@ -19,7 +19,7 @@ module Gauntlt
 
       def path_to_python_script(script_name)
         shell_variable_name = shell_variable_name_for(script_name)
-        ENV[shell_variable_name] || `echo #{'$' + shell_variable_name}`
+        ENV[shell_variable_name]
       end
 
       def script_exists?(script_name)
@@ -55,7 +55,7 @@ EOS
             python installed : #{python_installed?}
             script_exists? : #{script_exists?(script_name)}
             shell_variable_name: #{shell_variable_name_for(script_name)}
-            path:   #{path_to_python_script(shell_variable_name_for(script_name))}
+            path:   #{path_to_python_script(script_name)}
             path_via_echo: #{`echo #{'$'+shell_variable_name_for(script_name)}`}
 EOS
           end
