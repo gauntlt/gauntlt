@@ -31,7 +31,7 @@ module Gauntlt
         python_installed? && script_exists?(script_name)
       end
 
-      def ensure_python_script_installed(script_name, debug=true)
+      def ensure_python_script_installed(script_name, debug=false)
         python_script_installed?(script_name) || begin
           shell_variable_name = '$' + shell_variable_name_for(script_name)
 
