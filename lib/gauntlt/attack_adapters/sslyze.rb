@@ -1,25 +1,29 @@
 Given /^sslyze is installed$/ do
   begin
+    path = `echo $SSLYZE_PATH`
+    raise if path.strip == ""
+
+    raise "python not found" unless installed?('python')
+
+    When "I run `echo #{path}`"
     steps %{
-      When I run `which sslyze`
       Then the output should contain:
       """
-      sslyze
+      /sslyze.py
       """
     }
   rescue
     msg = <<-EOS
-    sslyze.py not installed or sslyze alias not set!
+    sslyze.py not installed or $SSLYZE_PATH not set!
 
     1. Download sslyze from: https://github.com/iSECPartners/sslyze
-    2. Create a file named 'sslyze' with the following content:
+    2. In your .zshrc or .bash_profile (or whatever), set $SSLYZE_PATH
 
-       #! /usr/bin/env bash
-       python /path/to/sslyze.py
+       export SSLYZE_PATH=/path/to/sslyze.py
 
-    3. Make sure the file is in your path:
+    3. Make sure you have python installed:
 
-       $ which sslyze
+       $ which python
 
 
 EOS
@@ -34,7 +38,12 @@ When /^I run sslyze against the hostname$/ do
 end
 
 When /^I launch an "sslyze" attack with:$/ do |command|
+  path = `echo $SSLYZE_PATH`
+  raise if path.strip == ""
+  sslyze_command = "python #{path}"
+
   command.gsub!('<hostname>', hostname)
+  command.gsub!('<sslyze_command>', sslyze_command)
   run command
 end
 
