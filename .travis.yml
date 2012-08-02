@@ -5,5 +5,5 @@ before_install:
   - git submodule update --init --recursive
 before_script:
   - sudo apt-get install nmap
-  - export SSLYZE_PATH="$(dirname $0)/vendor/sslyze/sslyze.py"
-  - export SQLMAP_PATH="$(dirname $0)/vendor/sslyze/sqlmap.py"
+  - export SSLYZE_PATH="/home/vagrant/builds/thegauntlet/gauntlt/vendor/sslyze/sslyze.py"
+  - export SQLMAP_PATH="/home/vagrant/builds/thegauntlet/gauntlt/vendor/sslyze/sqlmap.py"
