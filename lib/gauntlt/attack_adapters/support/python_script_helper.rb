@@ -31,7 +31,7 @@ module Gauntlt
         python_installed? && script_exists?(script_name)
       end
 
-      def ensure_python_script_installed(script_name)
+      def ensure_python_script_installed(script_name, debug=true)
         python_script_installed?(script_name) || begin
           shell_variable_name = '$' + shell_variable_name_for(script_name)
 
@@ -49,6 +49,15 @@ module Gauntlt
 
 
 EOS
+
+          if debug
+            msg += <<-EOS
+            python installed : #{python_installed?}
+            script_exists? : #{script_exists?(script_name)}
+            shell_variable_name: #{shell_variable_name_for(script_name)}
+            path:   #{path_to_python_script(shell_variable_name_for(script_name))}
+EOS
+          end
 
           raise msg
 
