@@ -1,6 +1,6 @@
 # gauntlt [![Build Status](https://secure.travis-ci.org/thegauntlet/gauntlt.png?branch=master)](http://travis-ci.org/thegauntlet/gauntlt)
 
-gauntlt is a framework for behaviour-driven security.
+gauntlt is a ruggedization framework
 
 ## PROJECT STATUS
 
@@ -14,29 +14,50 @@ Before you start, please note that gauntlt is tested regularly against ruby 1.9.
 
 1. Clone the git repo
 
-        $ git clone git@github.com:thegauntlet/gauntlt.git
+        $ git clone --recursive git@github.com:thegauntlet/gauntlt.git
         $ cd gauntlt
 
 
 2. Install bundler
-        
+
         $ gem install bundler
 
 
 3. Install dependencies
 
-Note, you may see errors in bundle related to the curb gem.  It is looking for curl dependencies. In ubuntu you can do a sudo apt-get install libcurl4-openssl-dev 
+Note, you may see errors in bundle related to the curb gem.  It is looking for curl dependencies. In ubuntu you can do a sudo apt-get install libcurl4-openssl-dev
 
         $ bundle
 
-4. Run a specific gauntlt attack
-        
+4. Create an attack file
+
         # general format
-        $ bin/gauntlt attack --name <attack_name> --host <hostname>
-         
-        # for example, run the nmap test on yahoo (-n & -H are equivalent to --name & --host)
-        $ bin/gauntlt attack -n nmap -H yahoo.com
- 
+        $ bin/gauntlt attack --name <attack_name> --attack-file my_attack.attack
+
+        # for example, launch an nmap attack
+        # nmap.attack
+        Feature: nmap attacks
+          Background:
+            Given "nmap" is installed
+            And the target hostname is "google.com"
+
+          Scenario: Verify server is available on standard web ports
+            When I launch an "nmap" attack with:
+              """
+              nmap -p 80,443 <hostname>
+              """
+            Then the output should contain:
+              """
+              80/tcp  open  http
+              443/tcp open  https
+              """
+
+        $ bin/gauntlt attack -n nmap -a nmap.attack
+
+      For more attack examples, refer to features/attacks.
+
+5. Other commands
+
         # list defined tests
         $ bin/gauntlt attack --list
 
