@@ -13,7 +13,7 @@ Feature: sslyze attack
         Scenario: Ensure no anonymous certificates
           When I launch an "sslyze" attack with:
             \"\"\"
-              <sslyze_command> <hostname>:443
+              python <sslyze_path> <hostname>:443
             \"\"\"
           Then the output should not contain:
             \"\"\"
@@ -24,7 +24,7 @@ Feature: sslyze attack
         #   Given the target hostname is "google.com"
         #   When I launch an "sslyze" attack with:
         #     \"\"\"
-        #       <sslyze_command> <hostname>:443
+        #       python <sslyze_path> <hostname>:443
         #     \"\"\"
         #   Then the key size should be at least 2048
       """

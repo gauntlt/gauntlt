@@ -17,13 +17,13 @@ module Gauntlt
         script_name.upcase + '_PATH'
       end
 
-      def path_to_python_script(shell_variable_name)
+      def path_to_python_script(script_name)
+        shell_variable_name = shell_variable_name_for(script_name)
         ENV[shell_variable_name]
       end
 
       def script_exists?(script_name)
-        shell_variable_name = shell_variable_name_for(script_name)
-        path = path_to_python_script(shell_variable_name)
+        path = path_to_python_script(script_name)
         File.exists?(path) if path
       end
 
