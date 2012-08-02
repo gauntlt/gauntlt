@@ -7,7 +7,7 @@ Feature: sslyze attack
         Feature: Run sslyze against a target
 
         Background:
-          Given sslyze is installed
+          Given "sslyze" is installed
           And the target hostname is "google.com"
 
         Scenario: Ensure no anonymous certificates

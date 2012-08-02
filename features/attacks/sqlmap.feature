@@ -7,7 +7,7 @@ Feature: sqlmap attack
         Feature: Run sqlmap against a target
 
         Background:
-          Given sqlmap is installed
+          Given "sqlmap" is installed
       """
     When I run `gauntlt attack --name sqlmap --attack-file sqlmap.attack`
     Then it should pass
