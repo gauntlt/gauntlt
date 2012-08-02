@@ -1,5 +1,8 @@
 language: ruby
 rvm:
   - 1.9.3
+before_install:
+  - git submodule update --init --recursive
 before_script:
-  - sudo apt-get install nmap sslyze
+  - sudo apt-get install nmap
+  - export SSLYZE_PATH="./vendor/sslyze/sslyze.py"
