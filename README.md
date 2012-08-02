@@ -58,7 +58,7 @@ Note, you may see errors in bundle related to the curb gem.  It is looking for c
 
 5. Other commands
 
-        # list defined tests
+        # list defined attacks
         $ bin/gauntlt attack --list
 
         # get help
@@ -74,8 +74,8 @@ Below are some tools we are targeting but don't let that stop you from adding yo
   * [curl] [curl]
   * [nmap] [nmap]
   * [sslyze] [sslyze]
-  * [w3af] [w3af]
   * [sqlmap] [sqlmap]
+  * [w3af] [w3af]
   * [arachni] [arachni]
 
 Have questions?  Ask us anything on the [gauntlt google group](http://bit.ly/gauntlt_group).
