@@ -6,3 +6,4 @@ before_install:
 before_script:
   - sudo apt-get install nmap
   - export SSLYZE_PATH="./vendor/sslyze/sslyze.py"
+  - export SQLMAP_PATH="./vendor/sslyze/sqlmap.py"
