@@ -5,5 +5,6 @@ before_install:
   - git submodule update --init --recursive
 before_script:
   - sudo apt-get install nmap
-  - export SSLYZE_PATH="./vendor/sslyze/sslyze.py"
-  - export SQLMAP_PATH="./vendor/sslyze/sqlmap.py"
+  - export APP_ROOT=$(dirname $0)
+  - export SSLYZE_PATH="$APP_ROOT/vendor/sslyze/sslyze.py"
+  - export SQLMAP_PATH="$APP_ROOT/vendor/sslyze/sqlmap.py"
