@@ -12,29 +12,16 @@ Have questions?  Ask us anything on the [gauntlt google group](http://bit.ly/gau
 
 Before you start, please note that gauntlt is tested regularly against ruby 1.9.3. We don't test againt older versions of ruby. Keep in mind that you run gauntlt separately from the application it targets, so it does not matter whether the targeted application uses ruby.
 
-1. Clone the git repo
+1. Install the gem
 
-        $ git clone --recursive git@github.com:thegauntlet/gauntlt.git
-        $ cd gauntlt
+        $ gem install gauntlt
 
-
-2. Install bundler
-
-        $ gem install bundler
-
-
-3. Install dependencies
-
-Note, you may see errors in bundle related to the curb gem.  It is looking for curl dependencies. In ubuntu you can do a sudo apt-get install libcurl4-openssl-dev
-
-        $ bundle
-
-4. Create an attack file
+2. Create an attack file
 
         # general format
         $ bin/gauntlt attack --name <attack_name> --attack-file my_attack.attack
 
-        # for example, launch an nmap attack
+        # for example, an nmap attack
         # nmap.attack
         Feature: nmap attacks
           Background:
@@ -52,17 +39,48 @@ Note, you may see errors in bundle related to the curb gem.  It is looking for c
               443/tcp open  https
               """
 
-        $ bin/gauntlt attack -n nmap -a nmap.attack
+3. Run gauntlt to launch the attack defined above
+
+        $ gauntlt attack -n nmap -a nmap.attack
 
       For more attack examples, refer to features/attacks.
 
-5. Other commands
+4. Other commands
 
         # list defined attacks
-        $ bin/gauntlt attack --list
+        $ gauntlt attack --list
 
         # get help
-        $ bin/gauntlt help
+        $ gauntlt help
+
+
+## For developers
+
+1. Clone the git repo and get the submodules
+
+        $ git clone --recursive git@github.com:thegauntlet/gauntlt.git
+
+2. Install bundler
+
+        $ gem install bundler
+
+3. Install dependencies
+
+        $ bundle
+        # if you get errors, you may need to install curl libs first
+        # on ubuntu:
+        #   $ sudo apt-get install libcurl4-openssl-dev
+
+
+4. Run the cucumber features and rspec examples
+
+        $ bundle exec rake
+
+5. Launch attacks with bin/gauntlt
+
+        $ bin/gauntlt attack -n nmap -a my_attack_file.attack
+
+5. Refer to the features directory for usage examples and please write cucumber features for any new functionality you wish to submit.
 
 
 ## ROADMAP
