@@ -16,12 +16,8 @@ Before you start, please note that gauntlt is tested regularly against ruby 1.9.
 
         $ gem install gauntlt
 
-2. Create an attack file
+2. Create an attack file and put it anywhere you like
 
-        # general format
-        $ gauntlt attack --name <attack_name> --attack-file my_attack.attack
-
-        # for example, an nmap attack
         # nmap.attack
         Feature: nmap attacks
           Background:
@@ -42,6 +38,9 @@ Before you start, please note that gauntlt is tested regularly against ruby 1.9.
 3. Run gauntlt to launch the attack defined above
 
         $ gauntlt attack -n nmap -a nmap.attack
+        # general format:
+        #  $ gauntlt attack --name <attack_name> --attack-file <path>
+
 
       For more attack examples, refer to features/attacks.
 
