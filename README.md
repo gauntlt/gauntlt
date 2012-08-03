@@ -57,7 +57,7 @@ Before you start, please note that gauntlt is tested regularly against ruby 1.9.
 
 1. Clone the git repo and get the submodules
 
-        $ git clone --recursive git@github.com:thegauntlet/gauntlt.git
+        $ git clone --recursive git://github.com/thegauntlet/gauntlt.git
 
 2. Install bundler
 
