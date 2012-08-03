@@ -19,7 +19,7 @@ Before you start, please note that gauntlt is tested regularly against ruby 1.9.
 2. Create an attack file
 
         # general format
-        $ bin/gauntlt attack --name <attack_name> --attack-file my_attack.attack
+        $ gauntlt attack --name <attack_name> --attack-file my_attack.attack
 
         # for example, an nmap attack
         # nmap.attack
