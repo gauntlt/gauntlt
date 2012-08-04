@@ -1,3 +1,5 @@
+require 'aruba/cucumber'
+
 require 'English'
 # English.rb adds human-readable names for things like $?, $!, etc.:
 #   http://www.ruby-doc.org/stdlib-1.9.3/libdoc/English/rdoc/English_rb.html
@@ -15,4 +17,9 @@ module Gauntlt
     end
   end
 end
+
 World(Gauntlt::Support::CliHelper)
+
+Before('@slow') do
+  @aruba_timeout_seconds = 10
+end

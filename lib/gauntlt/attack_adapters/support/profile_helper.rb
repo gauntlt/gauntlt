@@ -1,12 +1,17 @@
-module ProfileHelper
-  def hostname
-    raise "No host defined" if @hostname.nil?
+module Gauntlt
+  module Support
+    module ProfileHelper
+      def hostname
+        raise "No host defined" if @hostname.nil?
 
-    @hostname
-  end
+        @hostname
+      end
 
-  def set_hostname(s)
-    @hostname = s
+      def set_hostname(s)
+        @hostname = s
+      end
+    end
   end
 end
-World(ProfileHelper)
+
+World(Gauntlt::Support::ProfileHelper)

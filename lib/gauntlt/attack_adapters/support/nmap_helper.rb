@@ -1,13 +1,18 @@
 require 'aruba'
 
-module NmapHelper
-  def run_nmap_attack(host, opts)
-    args = opts.map{|k,v| "#{k} #{v}"}
+module Gauntlt
+  module Support
+    module NmapHelper
+      def run_nmap_attack(host, opts)
+        args = opts.map{|k,v| "#{k} #{v}"}
 
-    command = "nmap #{args.join(' ')} #{host}"
+        command = "nmap #{args.join(' ')} #{host}"
 
-    # run is from aruba
-    run command
+        # run is from aruba
+        run command
+      end
+    end
   end
 end
-World(NmapHelper)
+
+World(Gauntlt::Support::NmapHelper)
