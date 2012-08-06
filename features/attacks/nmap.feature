@@ -56,7 +56,7 @@ Feature: nmap attack
           \"\"\"
         Then the output should contain:
           \"\"\"
-          80/tcp   open  http
+          80/tcp
           \"\"\"
 
      """     
