@@ -25,3 +25,4 @@ module Gauntlt
 end
 
 World(Gauntlt::Support::ProfileHelper)
+
