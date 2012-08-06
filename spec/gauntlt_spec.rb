@@ -23,10 +23,9 @@ describe Gauntlt do
 
   describe :attack_files do
     it "returns the full path to each attack file" do
-      with_constants :"Gauntlt::ATTACK_GLOB_PATTERN" =>'foo' do
-        Dir.stub(:glob).with('foo').and_return(['bar', 'baz'])
-        subject.attack_files.should == ['bar', 'baz']
-      end
+      stub_const "Gauntlt::ATTACK_GLOB_PATTERN",'foo'
+      Dir.stub(:glob).with('foo').and_return(['bar', 'baz'])
+      subject.attack_files.should == ['bar', 'baz']
     end
   end
 
