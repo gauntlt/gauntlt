@@ -14,6 +14,11 @@ end
 
 When /^I launch an "nmap" attack with:$/ do |command|
   command.gsub!('<hostname>', hostname)
-  command.gsub!('<tcp_ping_ports>', tcp_ping_ports)
+
+  if tcp_ping_ports.nil? 
+    else
+      command.gsub!('<tcp_ping_ports>', tcp_ping_ports)
+    end
+
   run command
 end
