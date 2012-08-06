@@ -1,14 +1,14 @@
 @slow
 
-Feature: nmap attacks for example.com 
+Feature: nmap attacks for example.com
   Background:
     Given "nmap" is installed
     And the target hostname is "yahoo.com"
     And the target tcp_ping_ports are "22,25,80,443"
 
 
-  Scenario: Verify server is open on expected set of ports using the nmap fast flag  
-    When I launch an "nmap" attack with: 
+  Scenario: Verify server is open on expected set of ports using the nmap fast flag
+    When I launch an "nmap" attack with:
       """
       nmap -F <hostname>
       """
@@ -19,7 +19,7 @@ Feature: nmap attacks for example.com
       3128/tcp open  squid-http
       8080/tcp open  http-proxy
       """
-  Scenario: Verify that there are no unexpected ports open  
+  Scenario: Verify that there are no unexpected ports open
     When I launch an "nmap" attack with:
       """
       nmap -F <hostname>
@@ -30,7 +30,7 @@ Feature: nmap attacks for example.com
       25/tcp
       """
 
-  Scenario: Using tcp syn ping scan and the nmap fast flag  
+  Scenario: Using tcp syn ping scan and the nmap fast flag
     When I launch an "nmap" attack with:
       """
       nmap -F -PS<tcp_ping_ports> <hostname>
@@ -42,3 +42,16 @@ Feature: nmap attacks for example.com
       3128/tcp open  squid-http
       8080/tcp open  http-proxy
       """
+
+  Scenario: Output to XML
+    When I launch an "nmap" attack with:
+      """
+      nmap -p 80,443 -oX foo.xml <hostname>
+      """
+    And the file "foo.xml" should contain XML:
+      | css                                                          |
+      | ports port[protocol="tcp"][portid="80"] state[state="open"]  |
+      | ports port[protocol="tcp"][portid="443"] state[state="open"] |
+    And the file "foo.xml" should not contain XML:
+      | css                                                          |
+      | ports port[protocol="tcp"][portid="123"] state[state="open"] |

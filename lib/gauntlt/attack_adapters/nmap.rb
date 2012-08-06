@@ -15,10 +15,24 @@ end
 When /^I launch an "nmap" attack with:$/ do |command|
   command.gsub!('<hostname>', hostname)
 
-  if tcp_ping_ports.nil? 
+  if tcp_ping_ports.nil?
     else
       command.gsub!('<tcp_ping_ports>', tcp_ping_ports)
     end
 
   run command
+end
+
+require 'nokogiri'
+
+When /^the file "(.*?)" should contain XML:$/ do |filename, css_selectors|
+  css_selectors.hashes.each do |row|
+    assert_xml_includes(filename, row['css'])
+  end
+end
+
+When /^the file "(.*?)" should not contain XML:$/ do |filename, css_selectors|
+  css_selectors.hashes.each do |row|
+    assert_xml_does_not_include(filename, row['css'])
+  end
 end

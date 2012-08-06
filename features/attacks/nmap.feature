@@ -59,6 +59,28 @@ Feature: nmap attack
           \"\"\"
 
      """
+    And a file named "xml_output_nmap.attack" with:
+      """
+      Feature: simple nmap attack (sanity check)
+
+        Background:
+          Given "nmap" is installed
+          And the target hostname is "google.com"
+
+        Scenario: Output to XML
+          When I launch an "nmap" attack with:
+            \"\"\"
+            nmap -p 80,443 -oX foo.xml <hostname>
+            \"\"\"
+          And the file "foo.xml" should contain XML:
+            | css                                                          |
+            | ports port[protocol="tcp"][portid="80"] state[state="open"]  |
+            | ports port[protocol="tcp"][portid="443"] state[state="open"] |
+          And the file "foo.xml" should not contain XML:
+            | css                                                          |
+            | ports port[protocol="tcp"][portid="123"] state[state="open"] |
+      """
+
 
   Scenario: Simple nmap attack
     When I run `gauntlt attack --name nmap --attack-file simple_nmap.attack`
@@ -79,6 +101,14 @@ Feature: nmap attack
 
   Scenario: Testing the tcp_ping_ports
     When I run `gauntlt attack -n nmap -a tcp_ping_ports_nmap.attack`
+    Then it should pass
+    And the output should contain:
+      """
+      5 steps (5 passed)
+      """
+
+  Scenario: Handle XML output file
+    When I run `gauntlt attack -n nmap -a xml_output_nmap.attack`
     Then it should pass
     And the output should contain:
       """
