@@ -1,10 +1,9 @@
 Feature: nmap attack
-  @slow
-  Scenario: Launch nmap attack
+  Background:
     Given an attack "nmap" exists
-    And a file named "nmap.attack" with:
+    And a file named "simple_nmap.attack" with:
     """
-    Feature: nmap attacks
+    Feature: simple nmap attack (sanity check)
 
       Background:
         Given "nmap" is installed
@@ -20,6 +19,14 @@ Feature: nmap attack
           80/tcp  open  http
           443/tcp open  https
           \"\"\"
+    """
+    And a file named "os_detection_nmap.attack" with:
+    """
+    Feature: OS detection
+
+      Background:
+        Given "nmap" is installed
+        And the target hostname is "google.com"
 
       @slow
       Scenario: Detect OS
@@ -32,24 +39,16 @@ Feature: nmap attack
           Service Info: OS: Linux
           \"\"\"
     """
-    When I run `gauntlt attack --name nmap --attack-file nmap.attack`
-    Then it should pass
-    And the output should contain:
-      """
-      8 steps (8 passed)
-      """
-  Scenario: Testing the tcp_ping_ports
-    Given an attack "nmap" exists
-    And a file named "nmap.attack" with:
+    And a file named "tcp_ping_ports_nmap.attack" with:
     """
-    Feature: nmap attacks for example.com 
+    Feature: nmap attacks for example.com
       Background:
         Given "nmap" is installed
         And the target hostname is "google.com"
         And the target tcp_ping_ports are "22,25,80,443"
 
       @slow
-      Scenario: Using tcp syn ping scan and the nmap fast flag  
+      Scenario: Using tcp syn ping scan and the nmap fast flag
         When I launch an "nmap" attack with:
           \"\"\"
           nmap -F -PS<tcp_ping_ports> <hostname>
@@ -59,8 +58,27 @@ Feature: nmap attack
           80/tcp
           \"\"\"
 
-     """     
-    When I run `gauntlt attack --name nmap --attack-file nmap.attack`
+     """
+
+  Scenario: Simple nmap attack
+    When I run `gauntlt attack --name nmap --attack-file simple_nmap.attack`
+    Then it should pass
+    And the output should contain:
+      """
+      4 steps (4 passed)
+      """
+
+  @slow
+  Scenario: OS detection nmap attack
+    When I run `gauntlt attack -n nmap -a os_detection_nmap.attack`
+    Then it should pass
+    And the output should contain:
+      """
+      4 steps (4 passed)
+      """
+
+  Scenario: Testing the tcp_ping_ports
+    When I run `gauntlt attack -n nmap -a tcp_ping_ports_nmap.attack`
     Then it should pass
     And the output should contain:
       """
