@@ -38,3 +38,31 @@ Feature: nmap attack
       """
       8 steps (8 passed)
       """
+  Scenario: Testing the tcp_ping_ports
+    Given an attack "nmap" exists
+    And a file named "nmap.attack" with:
+    """
+    @slow
+    Feature: nmap attacks for example.com 
+      Background:
+        Given "nmap" is installed
+        And the target hostname is "yahoo.com"
+        And the target tcp_ping_ports are "22,25,80,443"
+
+      Scenario: Using tcp syn ping scan and the nmap fast flag  
+        When I launch an "nmap" attack with:
+          \"\"\"
+          nmap -F -PS<tcp_ping_ports> <hostname>
+          \"\"\"
+        Then the output should contain:
+          \"\"\"
+          80/tcp   open  http
+          \"\"\"
+
+     """     
+    When I run `gauntlt attack --name nmap --attack-file nmap.attack`
+    Then it should pass
+    And the output should contain:
+      """
+      5 steps (5 passed)
+      """
