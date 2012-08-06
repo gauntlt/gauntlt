@@ -1,4 +1,4 @@
-# gauntlt [![Build Status](https://secure.travis-ci.org/thegauntlet/gauntlt.png?branch=master)](http://travis-ci.org/thegauntlet/gauntlt)
+# gauntlt [![Build Status](https://secure.travis-ci.org/thegauntlet/gauntlt.png?branch=master)](http://travis-ci.org/thegauntlet/gauntlt) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/thegauntlet/gauntlt)
 
 gauntlt is a ruggedization framework
 
