@@ -42,13 +42,13 @@ Feature: nmap attack
     Given an attack "nmap" exists
     And a file named "nmap.attack" with:
     """
-    @slow
     Feature: nmap attacks for example.com 
       Background:
         Given "nmap" is installed
-        And the target hostname is "yahoo.com"
+        And the target hostname is "google.com"
         And the target tcp_ping_ports are "22,25,80,443"
 
+      @slow
       Scenario: Using tcp syn ping scan and the nmap fast flag  
         When I launch an "nmap" attack with:
           \"\"\"
