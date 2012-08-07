@@ -20,11 +20,11 @@ Gem::Specification.new do |s|
   s.add_development_dependency "cucumber"
   s.add_development_dependency "rspec", "~> 2.11"
   s.add_development_dependency "aruba"
-  s.add_development_dependency "nokogiri"
   s.add_development_dependency "rake"
 
   s.add_runtime_dependency "cucumber"
   s.add_runtime_dependency "aruba"
   s.add_runtime_dependency "curb"
+  s.add_runtime_dependency "nokogiri"
   s.add_runtime_dependency "trollop"
 end
