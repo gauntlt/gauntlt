@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.summary     = %q{behaviour-driven security using cucumber}
   s.description = %q{Using standard Gherkin language to define security tests, gauntlt happily wraps cucumber functionality and provides a security testing framework that security engineers, developers and operations teams can collaborate on together.}
 
-    s.files         = `git ls-files`.split("\n")
+  s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
@@ -26,6 +26,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "cucumber"
   s.add_runtime_dependency "aruba"
   s.add_runtime_dependency "curb"
-  s.add_runtime_dependency "acclaim"
-  s.add_runtime_dependency "ribbon", "0.7.0"
+  s.add_runtime_dependency "trollop"
 end

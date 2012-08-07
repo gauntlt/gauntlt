@@ -3,7 +3,7 @@
 Feature: nmap attacks for example.com
   Background:
     Given "nmap" is installed
-    And the target hostname is "yahoo.com"
+    And the target hostname is "google.com"
     And the target tcp_ping_ports are "22,25,80,443"
 
 

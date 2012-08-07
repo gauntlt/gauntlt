@@ -37,14 +37,14 @@ Feature: Verify the attack behaviour is correct
     When I run `gauntlt attack --name thisattackwouldneverexist`
     Then it should fail with:
     """
-    Must specify name and attack-file
+    must specify name and attack-file
     """
 
   Scenario: No attack name specified
     When I run `gauntlt attack --attack-file thisattackwouldneverexist`
     Then it should fail with:
     """
-    Must specify name and attack-file
+    must specify name and attack-file
     """
 
   Scenario: Bad attack file specified
@@ -58,5 +58,5 @@ Feature: Verify the attack behaviour is correct
     When I run `gauntlt attack --name nmap`
     Then it should fail with:
     """
-    Must specify name and attack-file
+    must specify name and attack-file
     """

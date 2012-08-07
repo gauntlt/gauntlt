@@ -1,53 +1,56 @@
 #!/usr/bin/env ruby
-$:.unshift(File.join(File.dirname(__FILE__), "/../lib"))
+require 'rubygems'
+$:.push File.expand_path("../../lib", __FILE__) unless $:.include?( File.expand_path("../../lib", __FILE__) )
 require 'gauntlt'
 
-require 'acclaim'
+require 'trollop'
 
-class Gauntlt::Command < Acclaim::Command
-  option :help,     '-h', '--help',    'Help outputs available command options'
-  option :version,  '-v', '--version', 'Version of app'
+SUB_COMMANDS = %w(
+  attack
+)
 
-  when_called do |options, args|
-    if options.help? || options.empty?
-      help options: false
-      Gauntlt::Command.run 'help'
-    elsif options.version?
-      puts Gauntlt::VERSION
-    end
-  end
+global_opts = Trollop::options do
+  banner "usage: gauntlt attack [<args>]"
+  stop_on SUB_COMMANDS
 end
 
-# gauntlt attack ...
-class Gauntlt::Command::Attack < Gauntlt::Command
-  option :help, '-h', '--help', 'Help outputs available command options'
-  option :list, '-l', '--list', 'List of available attacks'
+cmd = ARGV.shift # get the subcommand
 
-  option :name, '-n', '--name', 'Name of attack to launch', arity: [1, 0]
-  option :attack_file, '-a', '--attack-file', 'Name of file with attack definition', arity: [1, 0]
+cmd_opts = case cmd
+  when "attack" # parse delete options
+    Trollop::options do
+      banner "usage: gauntlt attack -n [attack-name] -a [attack-file]"
 
-  action do |options, args|
-    if options.list? || options.empty?
-      puts "Available attacks:"
-      puts ""
-      puts Gauntlt.attacks.map{|a| "  #{a}"}.join("\n")
-      puts ""
-      puts "  try: gauntlt attack -n nmap"
-    elsif options.help?
-      help options: false
-      Gauntlt::Command.run 'help'
-      puts "  try: gauntlt attack -n nmap -a your.attack"
-    else
-      if options.attack_file? && options.name?
-        puts Gauntlt.attack(options.name, :attack_file => options.attack_file)
-      else
-        puts "  Must specify name and attack-file"
-        puts ""
-        puts "  try: gauntlt attack -n nmap -a your.attack"
-        raise
-      end
+      opt :name,
+          "attack name",
+          :short => '-n',
+          :type  => String
+
+      opt :"attack-file",
+          "attack file",
+          :short => "-a",
+          :type  => String
+
+      opt :list,
+          "list defined attacks",
+          :short => "-l"
+
     end
+  when nil
+    puts "Try --help for help"
+  else
+    Trollop::die "unknown subcommand #{cmd.inspect}"
+  end
+
+if cmd == "attack"
+  if cmd_opts[:'attack-file_given'] && cmd_opts[:name]
+      puts Gauntlt.attack(cmd_opts[:name], :attack_file => cmd_opts[:'attack-file'])
+  else
+    puts "Available attacks:"
+    puts ""
+    puts Gauntlt.attacks.map{|a| "  #{a}"}.join("\n")
+    puts ""
+    puts "  try: gauntlt attack -n nmap"
+    Trollop.die "must specify name and attack-file" unless cmd_opts[:list_given]
   end
 end
-
-Gauntlt::Command.run *ARGV
