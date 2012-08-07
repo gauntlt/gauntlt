@@ -95,7 +95,6 @@ Below are some tools we are targeting but don't let that stop you from adding yo
   * [w3af] [w3af]
   * [arachni] [arachni]
 
-Have questions?  Ask us anything on the [gauntlt google group](http://bit.ly/gauntlt_group).
 
 ## ADD A MODULE
 See the wiki on how to add a module into gauntlt. We would love your contributions.
