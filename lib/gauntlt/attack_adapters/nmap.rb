@@ -13,12 +13,11 @@ When /^the target tcp_ping_ports are "(.*?)"$/ do |ports|
 end
 
 When /^I launch an "nmap" attack with:$/ do |command|
+  # hostname defined in Gauntlt::Support::ProfileHelper
   command.gsub!('<hostname>', hostname)
 
-  if tcp_ping_ports.nil?
-    else
-      command.gsub!('<tcp_ping_ports>', tcp_ping_ports)
-    end
+  # tcp_ping_ports defined in Gauntlt::Support::ProfileHelper
+  command.gsub!('<tcp_ping_ports>', tcp_ping_ports) if tcp_ping_ports
 
   run command
 end

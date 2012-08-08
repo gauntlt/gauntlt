@@ -8,8 +8,6 @@ module Gauntlt
       end
 
       def tcp_ping_ports
-        #raise "No tcp_ping_ports defined" if @tcp_ping_ports.nil?
-
         @tcp_ping_ports
       end
 
