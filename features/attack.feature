@@ -33,12 +33,20 @@ Feature: Verify the attack behaviour is correct
     When I run `gauntlt attack --name nmap --attack-file nmap.attack`
     Then it should pass
 
-  Scenario: Bad attack name specified
-    When I run `gauntlt attack --name thisattackwouldneverexist`
+  Scenario: Run attack with undefined steps
+    Given an attack "nmap" exists
+    And a file named "nmap.attack" with:
+    """
+    Feature: my non-existent attack
+      Scenario: Fail on undefined step definition
+        Given "thisattackwouldneverexist" is installed
+    """
+    When I run `gauntlt attack --name nmap --attack-file nmap.attack`
     Then it should fail with:
     """
-    must specify name and attack-file
+    Undefined step
     """
+
 
   Scenario: No attack name specified
     When I run `gauntlt attack --attack-file thisattackwouldneverexist`
