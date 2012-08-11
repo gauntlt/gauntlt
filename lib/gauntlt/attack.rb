@@ -26,7 +26,9 @@ module Gauntlt
     end
 
     def run
-      Cucumber::Cli::Main.execute([self.attack_file, '--strict', '--require', self.attacks_dir])
+      failed = Cucumber::Cli::Main.execute([self.attack_file, '--strict', '--require', self.attacks_dir])
+
+      raise "Attack failed!" if failed
     end
   end
 end

@@ -44,7 +44,7 @@ Feature: Verify the attack behaviour is correct
     When I run `gauntlt attack --name nmap --attack-file nmap.attack`
     Then it should fail with:
     """
-    Undefined step
+    Attack failed!
     """
 
 

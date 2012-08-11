@@ -44,7 +44,7 @@ cmd_opts = case cmd
 
 if cmd == "attack"
   if cmd_opts[:'attack-file_given'] && cmd_opts[:name]
-      puts Gauntlt.attack(cmd_opts[:name], :attack_file => cmd_opts[:'attack-file'])
+    puts Gauntlt.attack(cmd_opts[:name], :attack_file => cmd_opts[:'attack-file'])
   else
     puts "Available attacks:"
     puts ""
