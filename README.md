@@ -96,8 +96,9 @@ Below are some tools we are targeting but don't let that stop you from adding yo
   * [arachni] [arachni]
 
 
-## ADD A MODULE
-See the wiki on how to add a module into gauntlt. We would love your contributions.
+## ADD AN ATTACK ADAPTER
+
+See the wiki on how to add an attack adapter to gauntlt. We would love your contributions.
 
 ## LICENSE
 
