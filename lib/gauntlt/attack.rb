@@ -27,14 +27,12 @@ module Gauntlt
     end
 
     def run
-      @out = StringIO.new ""
-
-      cli = Cucumber::Cli::Main.new([self.attack_file, '--strict', '--require', self.attacks_dir], @out)
+      cli = Cucumber::Cli::Main.new([self.attack_file, '--strict', '--require', self.attacks_dir])
 
       if cli.execute! # cucumber failed, returning true
         raise ExecutionFailed.new("Bad or undefined attack!")
       else            # cucumber executed successfully, returning false
-        @out.string
+        true
       end
     end
   end

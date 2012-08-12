@@ -51,15 +51,11 @@ describe Gauntlt::Attack do
       subject.should_receive(:attacks_dir).and_return('/bar')
       subject.should_receive(:attack_file).and_return('/bar/baz.attack')
 
-      mock_io = mock('io')
-      mock_io.stub(:string)
-      StringIO.stub(:new).and_return(mock_io)
-
       mock_cli = mock(Cucumber::Cli::Main)
       mock_cli.should_receive(:execute!)
-      Cucumber::Cli::Main.should_receive(:new).with(['/bar/baz.attack', '--strict', '--require', '/bar'], mock_io).and_return(mock_cli)
+      Cucumber::Cli::Main.should_receive(:new).with(['/bar/baz.attack', '--strict', '--require', '/bar']).and_return(mock_cli)
 
-      subject.run
+      subject.run.should be_true
     end
 
     it "returns nil if if Cucumber::Cli::Main.execute succeeds (i.e. returns nil)" do
