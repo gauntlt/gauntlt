@@ -18,8 +18,7 @@ Feature: Cookies attack
           | NID  | false  | {'HttpOnly': None} |
       """
     When I run `gauntlt attack --name cookies --attack-file cookies.attack`
-    Then it should pass
-    And the output should contain:
+    Then it should pass with:
       """
       4 steps (4 passed)
       """

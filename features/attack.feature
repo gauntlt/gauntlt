@@ -31,7 +31,10 @@ Feature: Verify the attack behaviour is correct
           \"\"\"
     """
     When I run `gauntlt attack --name nmap --attack-file nmap.attack`
-    Then it should pass
+    Then it should pass with:
+    """
+    4 steps (4 passed)
+    """
 
   Scenario: Run attack with undefined steps
     Given an attack "nmap" exists

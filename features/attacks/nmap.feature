@@ -84,8 +84,7 @@ Feature: nmap attack
 
   Scenario: Simple nmap attack
     When I run `gauntlt attack --name nmap --attack-file simple_nmap.attack`
-    Then it should pass
-    And the output should contain:
+    Then it should pass with:
       """
       4 steps (4 passed)
       """
@@ -93,24 +92,21 @@ Feature: nmap attack
   @slow
   Scenario: OS detection nmap attack
     When I run `gauntlt attack -n nmap -a os_detection_nmap.attack`
-    Then it should pass
-    And the output should contain:
+    Then it should pass with:
       """
       4 steps (4 passed)
       """
 
   Scenario: Testing the tcp_ping_ports
     When I run `gauntlt attack -n nmap -a tcp_ping_ports_nmap.attack`
-    Then it should pass
-    And the output should contain:
+    Then it should pass with:
       """
       5 steps (5 passed)
       """
 
   Scenario: Handle XML output file
     When I run `gauntlt attack -n nmap -a xml_output_nmap.attack`
-    Then it should pass
-    And the output should contain:
+    Then it should pass with:
       """
       5 steps (5 passed)
       """

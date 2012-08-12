@@ -29,8 +29,7 @@ Feature: sslyze attack
         #   Then the key size should be at least 2048
       """
     When I run `gauntlt attack --name sslyze --attack-file sslyze.attack`
-    Then it should pass
-    And the output should contain:
+    Then it should pass with:
       """
       4 steps (4 passed)
       """

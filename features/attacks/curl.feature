@@ -16,8 +16,7 @@ Feature: curl attack
         Then the response code should be "301"
       """
     When I run `gauntlt attack --name curl --attack-file curl.attack`
-    Then it should pass
-    And the output should contain:
+    Then it should pass with:
       """
       4 steps (4 passed)
       """
