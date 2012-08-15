@@ -9,12 +9,14 @@ module Gauntlt
     attr_accessor :name, :opts, :attack_files
 
     def initialize(name, opts={})
-      if opts[:attack_files] && files_exist?(opts[:attack_files])
-        self.name = name
+      missing_attacks = missing_attacks(opts[:attack_files])
+
+      if opts[:attack_files] && missing_attacks.empty?
         self.opts = opts
+        self.name = name
         self.attack_files = opts[:attack_files]
       else
-        raise NotFound.new("No '#{opts[:attack_files]}' attack found")
+        raise NotFound.new("No '#{missing_attacks.join(', ')}' attack found")
       end
     end
 
@@ -39,9 +41,8 @@ module Gauntlt
 
     private
 
-    def files_exist? attacks
-      existance = attacks.map {|a| File.exists? a}
-      !existance.include?(false)
+    def missing_attacks attacks
+      attacks.select { |a| !File.exists?(a) }
     end
   end
 end
