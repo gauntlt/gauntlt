@@ -9,10 +9,9 @@ module Gauntlt
     attr_accessor :name, :opts, :attack_files
 
     def initialize(name, opts={})
-      missing_attacks = missing_attacks(opts[:attack_files])
+      self.opts = opts
 
       if opts[:attack_files] && missing_attacks.empty?
-        self.opts = opts
         self.name = name
         self.attack_files = opts[:attack_files]
       else
@@ -28,6 +27,10 @@ module Gauntlt
       File.join(base_dir, "attack_adapters")
     end
 
+    def missing_attacks
+      self.opts[:attack_files].select { |a| !File.exists?(a) }
+    end
+
     def run
       cucumber_options = self.attack_files + ['--strict', '--require', self.attacks_dir]
       cli = Cucumber::Cli::Main.new(cucumber_options)
@@ -37,12 +40,6 @@ module Gauntlt
       else            # cucumber executed successfully, returning false
         true
       end
-    end
-
-    private
-
-    def missing_attacks attacks
-      attacks.select { |a| !File.exists?(a) }
     end
   end
 end
