@@ -17,12 +17,13 @@ describe Gauntlt::Attack do
       end
     end
 
-    context "attack file does not exist for passed name" do
-      it "raises an error if the attack file does not exist" do
+    context "given attack file does not exist for passed name" do
+      it "raises an error" do
+        File.stub(:exists?).with(:baz).and_return(true)
         File.stub(:exists?).with(:bar).and_return(false)
 
         expect {
-          Gauntlt::Attack.new(:foo, :attack_files => [:bar])
+          Gauntlt::Attack.new(:foo, :attack_files => [:bar, :baz])
         }.to raise_error Gauntlt::Attack::NotFound
       end
     end
@@ -47,13 +48,24 @@ describe Gauntlt::Attack do
   end
 
   describe :run do
-    it "executes the attack file, specifies failure for undefined steps and specifies the attacks_dir" do
+    it "executes the single attack file, specifies failure for undefined steps and specifies the attacks_dir" do
       subject.should_receive(:attacks_dir).and_return('/bar')
       subject.should_receive(:attack_files).and_return(['/bar/baz.attack'])
 
       mock_cli = mock(Cucumber::Cli::Main)
       mock_cli.should_receive(:execute!)
       Cucumber::Cli::Main.should_receive(:new).with(['/bar/baz.attack', '--strict', '--require', '/bar']).and_return(mock_cli)
+
+      subject.run.should be_true
+    end
+
+    it "executes multiple attack files" do
+      subject.should_receive(:attacks_dir).and_return('/bar')
+      subject.should_receive(:attack_files).and_return(['baz.attack', 'bez.attack'])
+
+      mock_cli = mock(Cucumber::Cli::Main)
+      mock_cli.should_receive(:execute!)
+      Cucumber::Cli::Main.should_receive(:new).with(['baz.attack', 'bez.attack', '--strict', '--require', '/bar']).and_return(mock_cli)
 
       subject.run.should be_true
     end
