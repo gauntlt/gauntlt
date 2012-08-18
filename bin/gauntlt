@@ -26,7 +26,7 @@ cmd_opts = case cmd
           :short => '-n',
           :type  => String
 
-      opt :"attack_files",
+      opt :"attack_file",
           "attack files",
           :short => "-a",
           :type  => :strings
@@ -43,8 +43,8 @@ cmd_opts = case cmd
   end
 
 if cmd == "attack"
-  if cmd_opts[:'attack_files_given'] && cmd_opts[:name]
-    puts Gauntlt.attack(cmd_opts[:name], :attack_files => cmd_opts[:attack_files])
+  if cmd_opts[:'attack_file_given'] && cmd_opts[:name]
+    puts Gauntlt.attack(cmd_opts[:name], :attack_files => cmd_opts[:attack_file])
   else
     puts "Available attacks:"
     puts ""
