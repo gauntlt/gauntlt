@@ -17,10 +17,12 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   # specify any dependencies here; for example:
-  s.add_development_dependency "cucumber"
   s.add_development_dependency "rspec", "~> 2.11"
   s.add_development_dependency "aruba"
   s.add_development_dependency "rake"
+  s.add_development_dependency "guard-rspec"
+  s.add_development_dependency "guard-spork"
+  s.add_development_dependency "guard-cucumber"
 
   s.add_runtime_dependency "cucumber"
   s.add_runtime_dependency "aruba"

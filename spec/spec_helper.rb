@@ -5,11 +5,17 @@ require 'rubygems'
 require 'bundler'
 Bundler.setup
 
-require 'gauntlt'
+require 'spork'
 
-require 'aruba/api'
+Spork.prefork do
+  require 'aruba/api'
+  require 'rspec'
+  RSpec.configure do |c|
+    c.include Aruba::Api
+    c.color = true
+  end  
+end
 
-RSpec.configure do |c|
-  c.include Aruba::Api
-  c.color = true
+Spork.each_run do
+  require 'gauntlt'
 end
