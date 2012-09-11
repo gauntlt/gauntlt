@@ -26,3 +26,4 @@ Gemfile.lock
 .rvmrc
 .rbenv*
 *.gem
+.rspec
