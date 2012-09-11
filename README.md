@@ -10,7 +10,7 @@ Have questions?  Ask us anything on the [gauntlt google group](http://bit.ly/gau
 
 ## GET STARTED
 
-Before you start, please note that gauntlt is tested regularly against ruby 1.9.3 and JRuby 1.7.0-preview2. We don't test againt older versions of ruby. Keep in mind that you run gauntlt separately from the application it targets, so it does not matter whether the targeted application uses ruby.
+Before you start, please note that gauntlt is tested regularly against `ruby 1.9.3` and `JRuby 1.7.0-preview2`. We don't test againt older versions of ruby. Keep in mind that you run gauntlt separately from the application it targets, so it does not matter whether the targeted application uses ruby.
 
 1. Install the gem
 
