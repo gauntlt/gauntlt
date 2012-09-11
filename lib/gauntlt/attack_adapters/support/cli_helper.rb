@@ -21,5 +21,5 @@ end
 World(Gauntlt::Support::CliHelper)
 
 Before('@slow') do
-  @aruba_timeout_seconds = 10
+  @aruba_timeout_seconds = 15
 end
