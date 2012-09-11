@@ -2,6 +2,7 @@ Feature: http_methods attack
   Background:
     Given an attack "http_methods" exists
 
+  @slow
   Scenario: http methods
     Given a file named "http_methods.attack" with:
       """

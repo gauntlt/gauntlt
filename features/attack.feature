@@ -12,6 +12,7 @@ Feature: Verify the attack behaviour is correct
       nmap
       """
 
+  @slow
   Scenario: Run attack for existing tests
     Given an attack "nmap" exists
     And a file named "nmap.attack" with:
