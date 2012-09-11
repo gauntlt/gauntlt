@@ -1,5 +1,6 @@
 Feature: sslyze attack
 
+  @slow
   Scenario:
     Given an attack "sslyze" exists
     And a file named "sslyze.attack" with:
