@@ -1,18 +1,11 @@
-require 'curb'
-
 module Gauntlt
   module Support
     module CookieHelper
       def cookies_for(url)
-        [].tap do |returner|
-          c = Curl::Easy.perform(url) do |curl|
-            curl.follow_location = true
-            curl.enable_cookies = true
+        output = `curl --include --location --head --silent "#{url}"`
 
-            curl.on_header do |header|
-              returner << "#{$1}=#{$2}" if header =~ /^Set-Cookie: ([^=]+)=([^;]+;)/
-            end
-          end
+        output.scan(/^Set-Cookie:.+$/).map do |header|
+          "#{$1}=#{$2}" if header =~ /^Set-Cookie: ([^=]+)=([^;]+;)/
         end
       end
 

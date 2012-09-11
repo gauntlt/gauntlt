@@ -97,6 +97,7 @@ Feature: nmap attack
       4 steps (4 passed)
       """
 
+  @slow
   Scenario: Testing the tcp_ping_ports
     When I run `gauntlt attack -n nmap -a tcp_ping_ports_nmap.attack`
     Then it should pass with:

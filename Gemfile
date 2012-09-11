@@ -2,4 +2,4 @@ source :rubygems
 
 gemspec
 
-gem 'debugger'
+gem 'debugger', :platform => :mri

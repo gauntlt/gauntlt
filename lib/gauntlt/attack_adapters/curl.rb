@@ -1,3 +1,3 @@
 Then /^the response code should be "(.*?)"$/ do |http_code|
-  @response.response_code.should == http_code.to_i
+  @response[:code].should == http_code
 end
