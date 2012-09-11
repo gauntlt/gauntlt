@@ -1,7 +1,7 @@
 language: ruby
 rvm:
   - 1.9.3
-  - jruby-19mode
+  - jruby-head
 before_install:
   - git submodule update --init --recursive
 before_script:
