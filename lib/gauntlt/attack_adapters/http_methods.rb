@@ -6,6 +6,9 @@ When /^I launch a "curl" attack$/ do
   # curl custom output
   # from:
   #   http://beerpla.net/2010/06/10/how-to-display-just-the-http-response-code-in-cli-curl/
+  #
+  # for more output variables, see:
+  #   http://man.he.net/man1/curl
   @raw_response = `curl --silent --output /dev/null --write-out "%{http_code}" "#{hostname}"`
   @response = {
     :code => @raw_response
