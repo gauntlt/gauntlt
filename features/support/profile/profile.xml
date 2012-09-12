@@ -1,5 +1,0 @@
-<app>
-	<name>google</name>
-	<hostname>www.google.com</hostname>
-	<login>https://www.example.com/login.php</login>
-</app>	
