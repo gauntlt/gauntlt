@@ -13,27 +13,23 @@ module Gauntlt
 
   GAUNTLT_DIR = File.join(CURRENT_DIR, 'gauntlt')
 
-  ATTACKS_DIR = File.join(GAUNTLT_DIR, 'attack_adapters')
+  ATTACK_ADAPTERS_DIR = File.join(GAUNTLT_DIR, 'attack_adapters')
 
-  ATTACK_GLOB_PATTERN = ATTACKS_DIR + '/*.rb'
+  ATTACK_ADAPTERS_GLOB_PATTERN = ATTACK_ADAPTERS_DIR + '/*.rb'
 
   class << self
-    def attack_files
-      Dir.glob(ATTACK_GLOB_PATTERN)
+    def attack_adapters
+      Dir.glob(ATTACK_ADAPTERS_GLOB_PATTERN)
     end
 
     def attacks
-      attack_files.map do |full_path|
+      attack_adapters.map do |full_path|
         File.basename(full_path, '.rb')
       end.sort
     end
 
-    def has_attack?(name)
-      attacks.include?(name)
-    end
-
-    def attack(name, options={})
-      Attack.new(name, options).run
+    def attack(path)
+      Attack.new(path).run
     end
   end
 end

@@ -26,7 +26,7 @@ Feature: http_methods attack
           | track  | Error 405 (Method Not Allowed) |
           | bogus  | Error 405 (Method Not Allowed) |
       """
-    When I run `gauntlt attack --name http_methods --attack-file http_methods.attack`
+    When I run `gauntlt`
     Then it should pass with:
       """
       5 scenarios (5 passed)

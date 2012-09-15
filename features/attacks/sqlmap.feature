@@ -9,7 +9,7 @@ Feature: sqlmap attack
         Background:
           Given "sqlmap" is installed
       """
-    When I run `gauntlt attack --name sqlmap --attack-file sqlmap.attack`
+    When I run `gauntlt`
     Then it should pass with:
       """
       1 step (1 passed)

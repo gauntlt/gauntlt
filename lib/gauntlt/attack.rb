@@ -3,37 +3,41 @@ require 'cucumber/cli/main'
 
 module Gauntlt
   class Attack
-    class NotFound < Exception; end
-    class ExecutionFailed < Exception; end
+    class NoFilesFound < StandardError; end
+    class ExecutionFailed < StandardError; end
 
-    attr_accessor :name, :opts, :attack_file
+    attr_accessor :path, :attack_files
 
-    def initialize(name, opts={})
-      if opts[:attack_file] && File.exists?( opts[:attack_file] )
-        self.name = name
-        self.opts = opts
-        self.attack_file = opts[:attack_file]
-      else
-        raise NotFound.new("No '#{opts[:attack_file]}' attack found")
-      end
-    end
+    def initialize(path)
+      self.path         = path
+      self.attack_files = attack_files_for(path)
 
-    def base_dir
-      File.expand_path( File.dirname(__FILE__) )
-    end
-
-    def attacks_dir
-      File.join(base_dir, "attack_adapters")
+      raise NoFilesFound.new("No files found in path: #{path}") if attack_files.empty?
     end
 
     def run
-      cli = Cucumber::Cli::Main.new([self.attack_file, '--strict', '--require', self.attacks_dir])
+      args = attack_files + ['--strict', '--require', adapters_dir]
+
+      cli = Cucumber::Cli::Main.new(args)
 
       if cli.execute! # cucumber failed, returning true
         raise ExecutionFailed.new("Bad or undefined attack!")
       else            # cucumber executed successfully, returning false
         true
       end
+    end
+
+    private
+    def attack_files_for(path)
+      path.split(' ').map{|p| Dir.glob(p)}.flatten
+    end
+
+    def base_dir
+      File.expand_path( File.dirname(__FILE__) )
+    end
+
+    def adapters_dir
+      File.join(base_dir, "attack_adapters")
     end
   end
 end

@@ -1,56 +1,34 @@
 #!/usr/bin/env ruby
 require 'rubygems'
+require 'trollop'
+
 $:.push File.expand_path("../../lib", __FILE__) unless $:.include?( File.expand_path("../../lib", __FILE__) )
 require 'gauntlt'
 
-require 'trollop'
+opts = Trollop::options do
+  version Gauntlt::VERSION
+  banner <<-EOS
+gauntlt is a ruggedization framework
 
-SUB_COMMANDS = %w(
-  attack
-)
+Usage:
+       gauntlt <path>+
 
-global_opts = Trollop::options do
-  banner "usage: gauntlt attack [<args>]"
-  stop_on SUB_COMMANDS
+Options:
+EOS
+
+  opt :list, "List defined attacks"
 end
 
-cmd = ARGV.shift # get the subcommand
+opts[:path] = if ARGV.empty?
+  "./**/*.attack"
+else
+  ARGV.join(" ")
+end
 
-cmd_opts = case cmd
-  when "attack" # parse delete options
-    Trollop::options do
-      banner "usage: gauntlt attack -n [attack-name] -a [attack-file]"
-
-      opt :name,
-          "attack name",
-          :short => '-n',
-          :type  => String
-
-      opt :"attack-file",
-          "attack file",
-          :short => "-a",
-          :type  => String
-
-      opt :list,
-          "list defined attacks",
-          :short => "-l"
-
-    end
-  when nil
-    puts "Try --help for help"
-  else
-    Trollop::die "unknown subcommand #{cmd.inspect}"
-  end
-
-if cmd == "attack"
-  if cmd_opts[:'attack-file_given'] && cmd_opts[:name]
-    puts Gauntlt.attack(cmd_opts[:name], :attack_file => cmd_opts[:'attack-file'])
-  else
-    puts "Available attacks:"
-    puts ""
-    puts Gauntlt.attacks.map{|a| "  #{a}"}.join("\n")
-    puts ""
-    puts "  try: gauntlt attack -n nmap"
-    Trollop.die "must specify name and attack-file" unless cmd_opts[:list_given]
-  end
+if opts[:list]
+  attack_list = Gauntlt.attacks.map{|s| "  #{s}"}.join("\n")
+  puts "Defined attacks: #{}"
+  puts attack_list
+else
+  Gauntlt.attack(opts[:path])
 end

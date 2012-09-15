@@ -17,7 +17,7 @@ Feature: Cookies attack
           | PREF | false  | {}                 |
           | NID  | false  | {'HttpOnly': None} |
       """
-    When I run `gauntlt attack --name cookies --attack-file cookies.attack`
+    When I run `gauntlt`
     Then it should pass with:
       """
       4 steps (4 passed)

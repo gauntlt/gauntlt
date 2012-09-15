@@ -37,9 +37,13 @@ Before you start, please note that gauntlt is tested regularly against `ruby 1.9
 
 3. Run gauntlt to launch the attack defined above
 
-        $ gauntlt attack -n nmap -a nmap.attack
-        # general format:
-        #  $ gauntlt attack --name <attack_name> --attack-file <path>
+        $ gauntlt
+        # equivalent to gauntlt ./**/*.attack
+        # by default, gauntlt will search in the current folder
+        # and its subfolders for files with the .attack extension
+        #
+        # you can also specify one or more paths yourself:
+        $ gauntlt my_attacks/*.attack some_other.file
 
 
       For more attack examples, refer to features/attacks.
@@ -47,10 +51,10 @@ Before you start, please note that gauntlt is tested regularly against `ruby 1.9
 4. Other commands
 
         # list defined attacks
-        $ gauntlt attack --list
+        $ gauntlt --list
 
         # get help
-        $ gauntlt help
+        $ gauntlt --help
 
 
 ## For developers
@@ -77,7 +81,7 @@ Before you start, please note that gauntlt is tested regularly against `ruby 1.9
 
 5. Launch attacks with bin/gauntlt
 
-        $ bin/gauntlt attack -n nmap -a my_attack_file.attack
+        $ bin/gauntlt attack
 
 5. Refer to the features directory for usage examples and please write cucumber features for any new functionality you wish to submit.
 
