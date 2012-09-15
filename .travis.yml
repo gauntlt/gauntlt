@@ -8,3 +8,7 @@ before_script:
   - sudo apt-get install nmap
   - export SSLYZE_PATH="/home/vagrant/builds/thegauntlet/gauntlt/vendor/sslyze/sslyze.py"
   - export SQLMAP_PATH="/home/vagrant/builds/thegauntlet/gauntlt/vendor/sqlmap/sqlmap.py"
+
+matrix:
+  allow_failures:
+    - rvm: 1.9.3
