@@ -10,7 +10,7 @@ Have questions?  Ask us anything on the [gauntlt google group](http://bit.ly/gau
 
 ## GET STARTED
 
-Before you start, please note that gauntlt is tested regularly against `ruby 1.9.3` and `JRuby 1.7.0-preview2`. We don't test againt older versions of ruby. Keep in mind that you run gauntlt separately from the application it targets, so it does not matter whether the targeted application uses ruby.
+You will need ruby version `1.9.3` to run gauntlt, but you can run gauntlt against applications built with any language or platform.
 
 1. Install the gem
 
@@ -58,6 +58,8 @@ Before you start, please note that gauntlt is tested regularly against `ruby 1.9
 
 
 ## For developers
+
+NOTE: We currently use `ruby 1.9.3` and `JRuby 1.7.0-preview2` for development and testing.
 
 1. Clone the git repo and get the submodules
 
