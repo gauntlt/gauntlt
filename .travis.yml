@@ -11,4 +11,4 @@ before_script:
 
 matrix:
   allow_failures:
-    - rvm: 1.9.3
+    - jruby-head
