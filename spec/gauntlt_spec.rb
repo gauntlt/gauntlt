@@ -25,7 +25,7 @@ describe Gauntlt do
   describe :attack do
     it "runs the specified test with the passed options" do
       mock_test = mock('test')
-      subject::Attack.should_receive(:new).with(:foo).and_return(mock_test)
+      subject::Attack.should_receive(:new).with(:foo, []).and_return(mock_test)
       mock_test.should_receive(:run)
 
       subject.attack(:foo)

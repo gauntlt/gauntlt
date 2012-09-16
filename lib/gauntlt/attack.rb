@@ -6,17 +6,19 @@ module Gauntlt
     class NoFilesFound < StandardError; end
     class ExecutionFailed < StandardError; end
 
-    attr_accessor :path, :attack_files
+    attr_accessor :path, :attack_files, :tags
 
-    def initialize(path)
+    def initialize(path, tags=[])
       self.path         = path
       self.attack_files = attack_files_for(path)
+      self.tags         = tags
 
       raise NoFilesFound.new("No files found in path: #{path}") if attack_files.empty?
     end
 
     def run
-      args = attack_files + ['--strict', '--require', adapters_dir]
+      args =  attack_files + ['--strict', '--require', adapters_dir]
+      args += ['--tags', tags] unless tags.empty?
 
       cli = Cucumber::Cli::Main.new(args)
 

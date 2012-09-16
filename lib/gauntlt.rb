@@ -28,8 +28,8 @@ module Gauntlt
       end.sort
     end
 
-    def attack(path)
-      Attack.new(path).run
+    def attack(path, tags=[])
+      Attack.new(path, tags).run
     end
   end
 end

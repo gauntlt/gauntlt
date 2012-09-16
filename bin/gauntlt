@@ -11,10 +11,14 @@ opts = Trollop::options do
 gauntlt is a ruggedization framework
 
 Usage:
-       gauntlt <path>+
+       gauntlt <path>+ [--tags TAG_EXPRESSION]
 
 Options:
 EOS
+
+  opt :tags, "Only execute specified tags",
+      :type => String,
+      :multi => true
 
   opt :list, "List defined attacks"
 end
@@ -30,5 +34,5 @@ if opts[:list]
   puts "Defined attacks: #{}"
   puts attack_list
 else
-  Gauntlt.attack(opts[:path])
+  Gauntlt.attack( opts[:path], opts[:tags].join(',') )
 end
