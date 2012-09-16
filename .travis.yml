@@ -9,6 +9,7 @@ before_script:
   - export SSLYZE_PATH="/home/vagrant/builds/thegauntlet/gauntlt/vendor/sslyze/sslyze.py"
   - export SQLMAP_PATH="/home/vagrant/builds/thegauntlet/gauntlt/vendor/sqlmap/sqlmap.py"
 
+
 matrix:
   allow_failures:
     - jruby-head
