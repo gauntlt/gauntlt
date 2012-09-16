@@ -12,4 +12,4 @@ before_script:
 
 matrix:
   allow_failures:
-    - jruby-head
+    - rvm: jruby-head
