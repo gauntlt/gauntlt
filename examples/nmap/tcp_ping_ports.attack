@@ -1,0 +1,16 @@
+Feature: nmap attacks for example.com
+  Background:
+    Given "nmap" is installed
+    And the target hostname is "google.com"
+    And the target tcp_ping_ports are "22,25,80,443"
+
+  @slow
+  Scenario: Using tcp syn ping scan and the nmap fast flag
+    When I launch an "nmap" attack with:
+      """
+      nmap -F -PS<tcp_ping_ports> <hostname>
+      """
+    Then the output should contain:
+      """
+      80/tcp
+      """

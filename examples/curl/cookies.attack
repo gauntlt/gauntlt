@@ -1,0 +1,12 @@
+Feature: Evaluate received cookies against expected.
+
+Background:
+  Given "curl" is installed
+  And the target hostname is "google.com"
+
+Scenario: Verify server is returning the cookies expected
+  When I launch a "cookies" attack
+  Then the following cookies should be received:
+    | name | secure | _rest              |
+    | PREF | false  | {}                 |
+    | NID  | false  | {'HttpOnly': None} |

@@ -1,22 +1,31 @@
-Feature: curl attack
+Feature: HTTP attacks
   Background:
     Given an attack "curl" exists
+    And I copy the attack files from the "examples/curl" folder
+    And the following attack files exist:
+      | filename       |
+      | simple.attack  |
+      | cookies.attack |
+      | verbs.attack   |
 
-  Scenario: curl attack
-    Given a file named "curl.attack" with:
-      """
-      Feature: Launch curl attack
-
-      Background:
-        Given "curl" is installed
-        And the target hostname is "google.com"
-
-      Scenario: Verify a 301 is received from a curl
-        When I launch a "curl" attack
-        Then the response code should be "301"
-      """
-    When I run `gauntlt`
+  Scenario: simple curl attack
+    When I run `gauntlt simple.attack`
     Then it should pass with:
       """
       4 steps (4 passed)
+      """
+
+  Scenario: cookies attack
+    When I run `gauntlt cookies.attack`
+    Then it should pass with:
+      """
+      4 steps (4 passed)
+      """
+
+  @slow
+  Scenario: http method verbs
+    When I run `gauntlt verbs.attack`
+    Then it should pass with:
+      """
+      5 scenarios (5 passed)
       """

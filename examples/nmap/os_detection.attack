@@ -1,0 +1,16 @@
+Feature: OS detection
+
+  Background:
+    Given "nmap" is installed
+    And the target hostname is "google.com"
+
+  @slow
+  Scenario: Detect OS
+    When I launch an "nmap" attack with:
+      """
+      nmap -sV -p80 -PN <hostname>
+      """
+    Then the output should contain:
+      """
+      Service Info: OS: Linux
+      """
