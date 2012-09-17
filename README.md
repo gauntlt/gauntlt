@@ -46,7 +46,7 @@ You will need ruby version `1.9.3` to run gauntlt, but you can run gauntlt again
         $ gauntlt my_attacks/*.attack some_other.file
 
 
-      For more attack examples, refer to features/attacks.
+      For more attack examples, refer to the [examples](https://github.com/thegauntlet/gauntlt/tree/master/examples).
 
 4. Other commands
 
