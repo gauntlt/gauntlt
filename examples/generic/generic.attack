@@ -13,5 +13,5 @@ Scenario: Verify a 301 is received from a curl
     """
   Then it should pass with:
     """
-    1 packets transmitted, 1 packets received, 0.0% packet loss
+    1 packets transmitted, 1 packets received
     """
