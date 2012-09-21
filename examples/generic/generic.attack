@@ -11,7 +11,7 @@ Scenario: Verify a 301 is received from a curl
     """
     ping -c 1 <hostname>
     """
-  Then it should pass with:
+  Then it should pass with regexp:
     """
-    1 packets transmitted, 1 packets received
+    1 packets transmitted, 1 (packets )received, 0(\.0)% packet loss
     """
