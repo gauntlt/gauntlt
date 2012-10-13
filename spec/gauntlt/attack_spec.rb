@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Gauntlt::Attack do
   before do
-    Gauntlt::Attack.any_instance.stub(:attack_files_for).with(:foo).and_return([:bar])
+    Gauntlt::Attack.stub(:attack_files_for).with(:foo).and_return([:bar])
   end
 
   subject{
@@ -19,7 +19,7 @@ describe Gauntlt::Attack do
 
     context "attack_files_for returns an empty array" do
       it "raises an error if the attack file does not exist" do
-        Gauntlt::Attack.any_instance.stub(:attack_files_for).with(:foo).and_return([])
+        Gauntlt::Attack.stub(:attack_files_for).with(:foo).and_return([])
 
         expect {
           Gauntlt::Attack.new(:foo)
@@ -30,7 +30,7 @@ describe Gauntlt::Attack do
 
   describe :run do
     it "executes the attack file, specifies failure for undefined steps and specifies the attacks_dir" do
-      subject.should_receive(:adapters_dir).and_return('/bar')
+      subject.class.should_receive(:adapters_dir).and_return('/bar')
       subject.should_receive(:attack_files).and_return(['/bar/baz.attack'])
 
       mock_cli = mock(Cucumber::Cli::Main)
@@ -42,7 +42,6 @@ describe Gauntlt::Attack do
 
     it "returns nil if if Cucumber::Cli::Main.execute succeeds (i.e. returns nil)" do
       subject.stub(:attacks_dir)
-      subject.stub(:attack_file)
 
       mock_cli = mock(Cucumber::Cli::Main)
       mock_cli.should_receive(:execute!).and_return(nil)
@@ -53,7 +52,6 @@ describe Gauntlt::Attack do
 
     it "raises an error if Cucumber::Cli::Main.execute fails (i.e. returns true)" do
       subject.stub(:attacks_dir)
-      subject.stub(:attack_file)
 
       mock_cli = mock(Cucumber::Cli::Main)
       mock_cli.should_receive(:execute!).and_return(true)
