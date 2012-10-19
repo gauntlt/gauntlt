@@ -2,15 +2,12 @@ Feature: sqlmap attack
 
   Scenario:
     Given an attack "sqlmap" exists
-    And a file named "sqlmap.attack" with:
-      """
-        Feature: Run sqlmap against a target
-
-        Background:
-          Given "sqlmap" is installed
-      """
+    And I copy the attack files from the "examples/sqlmap" folder
+    And the following attack files exist:
+      | filename      |
+      | sqlmap.attack |
     When I run `gauntlt`
     Then it should pass with:
       """
-      1 step (1 passed)
+      6 steps (6 passed)
       """

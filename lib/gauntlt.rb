@@ -3,6 +3,7 @@ require "gauntlt/version"
 require 'rubygems'
 require 'cucumber'
 require 'gauntlt/attack'
+require 'gauntlt/scapegoat/scapegoat'
 
 module Gauntlt
   CURRENT_DIR = if defined?(Pathname) # ruby 1.9

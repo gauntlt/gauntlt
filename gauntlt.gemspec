@@ -25,4 +25,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "aruba"
   s.add_runtime_dependency "nokogiri"
   s.add_runtime_dependency "trollop"
+  s.add_runtime_dependency "sinatra"
+  s.add_runtime_dependency "sqlite3"
 end

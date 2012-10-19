@@ -1,0 +1,25 @@
+<h1>The form on this page is vulnerable to SQL injection</h1>
+<h2>Received params</h2>
+<pre id='received-params'>
+  <%= params.inspect %>
+</pre>
+<h2>Data returned from database</h2>
+<pre id='result'>
+  <%= result %>
+</pre>
+<br />
+<br />
+<form>
+  <label>
+    <fieldset>
+      <legend>Enter your SQL injection attack here:</legend>
+      <label>
+        Number to look up
+        <input name='number_id' />
+      </label>
+    </fieldset>
+    <fieldset>
+      <input type='submit' />
+    </fieldset>
+  </label>
+</form>

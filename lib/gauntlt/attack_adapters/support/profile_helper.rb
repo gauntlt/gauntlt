@@ -7,12 +7,22 @@ module Gauntlt
         @hostname
       end
 
+      def target_url
+        raise "No host defined" if @target_url.nil?
+
+        @target_url
+      end
+
       def tcp_ping_ports
         @tcp_ping_ports
       end
 
       def set_hostname(s)
         @hostname = s
+      end
+
+      def set_target_url(s)
+        @target_url = s
       end
 
       def set_tcp_ping_ports(s)

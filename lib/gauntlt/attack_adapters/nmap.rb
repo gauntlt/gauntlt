@@ -4,10 +4,6 @@ When /^"nmap" is installed$/ do
   ensure_cli_installed("nmap")
 end
 
-When /^the target hostname is "(.*?)"$/ do |host|
-  set_hostname host
-end
-
 When /^the target tcp_ping_ports are "(.*?)"$/ do |ports|
   set_tcp_ping_ports ports
 end
