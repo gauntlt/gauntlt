@@ -18,7 +18,7 @@ Given /^scapegoat is running on port (\d+)$/ do |port|
 end
 
 Then /^scapegoat should quit$/ do
-  at_exit do
+  if @scapegoat_pid
     Process.kill('INT', @scapegoat_pid)
     begin
       Process.wait(@scapegoat_pid)
