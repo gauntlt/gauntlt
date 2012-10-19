@@ -1,5 +1,6 @@
 Feature: sqlmap attack
 
+  @slow
   Scenario:
     Given an attack "sqlmap" exists
     And I copy the attack files from the "examples/sqlmap" folder
