@@ -1,3 +1,4 @@
+@slow
 Feature: Generic
   Background:
     Given an attack "generic" exists

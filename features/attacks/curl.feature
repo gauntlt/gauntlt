@@ -1,3 +1,4 @@
+@slow
 Feature: HTTP attacks
   Background:
     Given an attack "curl" exists
