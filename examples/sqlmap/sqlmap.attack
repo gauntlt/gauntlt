@@ -6,9 +6,9 @@ Scenario: Identify SQL injection vulnerabilities
   And the target URL is "http://localhost:9292/sql-injection?number_id=1"
   When I launch a "sqlmap" attack with:
     """
-      python <sqlmap_path> -u <target_url> --dbms sqlite
+      python <sqlmap_path> -u <target_url> --dbms sqlite --batch -v 0
     """
-  Then the output should not contain:
+  Then the output should contain:
     """
-    [CRITICAL]
+    sqlmap identified the following injection points
     """
