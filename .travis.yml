@@ -1,7 +1,7 @@
 language: ruby
 rvm:
   - 1.9.3
-  - jruby-head
+  - jruby-1.7.0
 before_install:
   - git submodule update --init --recursive
 before_script:
@@ -12,4 +12,4 @@ before_script:
 
 matrix:
   allow_failures:
-    - rvm: jruby-head
+    - rvm: jruby-1.7.0
