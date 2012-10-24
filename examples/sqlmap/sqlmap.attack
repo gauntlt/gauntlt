@@ -3,7 +3,6 @@ Feature: Run sqlmap against a target
 
 Scenario: Identify SQL injection vulnerabilities
   Given "sqlmap" is installed
-  And scapegoat is running on port 9292
   And the target URL is "http://localhost:9292/sql-injection?number_id=1"
   When I launch a "sqlmap" attack with:
     """
@@ -13,4 +12,3 @@ Scenario: Identify SQL injection vulnerabilities
     """
     [CRITICAL]
     """
-  And scapegoat should quit
