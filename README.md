@@ -10,6 +10,8 @@ Have questions?  Ask us anything on the [gauntlt google group](http://bit.ly/gau
 
 ## GET STARTED
 
+Note: if you are new to gauntlt, have a look at [gauntlt-starter-kit](https://github.com/thegauntlet/gauntlt-starter-kit), which is the easiest way to get up and running with gauntlt.
+
 You will need ruby version `1.9.3` to run gauntlt, but you can run gauntlt against applications built with any language or platform.
 
 1. Install the gem
