@@ -73,7 +73,7 @@ We also include a generic attack adapter that allows you to run anything on the 
 
 ### Preamble
 
-To use gauntlt, you will need one or more attack files. An attack file is a plain text file written with [Gherkin](https://github.com/cucumber/gherkin) syntax and named with the `.attack` extension. For more info on the Gherkin syntax, have a look at [http://cukes.info](Cucumber). A gauntlt attack file is almost the same as a cucumber feature file. The main difference is that gauntlt aims to provide the user with predefined steps geared towards security and durability testing so that you do not have to write your own step definitions, whereas cucumber is aimed at developers and stakeholders building features from end to end. Gauntlt and cucumber can and do work together harmoniously.
+To use gauntlt, you will need one or more attack files. An attack file is a plain text file written with [Gherkin](https://github.com/cucumber/gherkin) syntax and named with the `.attack` extension. For more info on the Gherkin syntax, have a look at [Cucumber](http://cukes.info). A gauntlt attack file is almost the same as a cucumber feature file. The main difference is that gauntlt aims to provide the user with predefined steps geared towards security and durability testing so that you do not have to write your own step definitions, whereas cucumber is aimed at developers and stakeholders building features from end to end. Gauntlt and cucumber can and do work together harmoniously.
 
 ### What an attack file looks like
 
