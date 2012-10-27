@@ -1,9 +1,9 @@
 Feature: Run garmr scan on a URL
 
 Scenario: Use Garmr to scan a website for basic security requirements
-  Given "sqlmap" is installed
+  Given "garmr" is installed
   And the target URL is "http://localhost:9292/inline-js"
-  When I launch a "sqlmap" attack with:
+  When I launch a "garmr" attack with:
     """
     garmr -u <target_url>
     """
