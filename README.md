@@ -59,7 +59,7 @@ You will need ruby version `1.9.3` to run gauntlt, but you can run gauntlt again
         $ gauntlt --help
 
 
-## For developers
+## FOR DEVELOPERS
 
 NOTE: We currently use `ruby 1.9.3` and `JRuby 1.7.0-preview2` for development and testing.
 
