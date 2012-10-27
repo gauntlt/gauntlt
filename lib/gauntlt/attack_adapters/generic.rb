@@ -1,5 +1,5 @@
 When /^I launch a "generic" attack with:$/ do |command|
-  command.gsub!('<hostname>', hostname)
+  command.gsub!('<hostname>', hostname) if @hostname
   run command
 end
 

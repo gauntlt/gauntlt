@@ -20,21 +20,16 @@ You will need ruby version `1.9.3` to run gauntlt, but you can run gauntlt again
 
 2. Create an attack file and put it anywhere you like
 
-        # nmap.attack
-        Feature: nmap attacks
-          Background:
-            Given "nmap" is installed
-            And the target hostname is "google.com"
-
-          Scenario: Verify server is available on standard web ports
-            When I launch an "nmap" attack with:
+        # simplest.attack
+        Feature: simplest attack possible
+          Scenario:
+            When I launch a "generic" attack with:
               """
-              nmap -p 80,443 <hostname>
+              ls -a
               """
             Then the output should contain:
               """
-              80/tcp  open  http
-              443/tcp open  https
+              .
               """
 
 3. Run gauntlt to launch the attack defined above
@@ -57,6 +52,62 @@ You will need ruby version `1.9.3` to run gauntlt, but you can run gauntlt again
 
         # get help
         $ gauntlt --help
+
+
+## ATTACK ADAPTERS
+
+Gauntlt includes attack adapters for the following tools:
+
+* [curl] [curl]
+* [nmap] [nmap]
+* [sslyze] [sslyze]
+* [sqlmap] [sqlmap]
+* [Garmr] [garmr]
+
+You will need to install each tool yourself before you can use it with gauntlt. However, if you try to use a tool that is not installed or that gauntlt cannot find, you will get a helpful error message from gauntlt with information on how to install and/or configure the tool for use with gauntlt.
+
+We also include a generic attack adapter that allows you to run anything on the command line, parse its output and check its exit status.
+
+
+## ATTACK FILES
+
+### Preamble
+
+To use gauntlt, you will need one or more attack files. An attack file is a plain text file written with [Gherkin](https://github.com/cucumber/gherkin) syntax and named with the `.attack` extension. For more info on the Gherkin syntax, have a look at [http://cukes.info](Cucumber). A gauntlt attack file is almost the same as a cucumber feature file. The main difference is that gauntlt aims to provide the user with predefined steps geared towards security and durability testing so that you do not have to write your own step definitions, whereas cucumber is aimed at developers and stakeholders building features from end to end. Gauntlt and cucumber can and do work together harmoniously.
+
+### What an attack file looks like
+
+    # my.attack
+    Feature: Description for all scenarios in this file
+      Scenario: Description of this scenario
+        Given ...
+        When ...
+        Then ...
+
+      Scenario: ...
+        Given ...
+        When ...
+        Then ...
+
+You can have as many `Scenario` entries as you like, but it is good practice to keep the number low and to ensure that the scenarios in an attack file are all related. You can create as many attack files as you like and organize them in folders and sub-folders as well.
+
+There are a large number of step definitions available, but you can do a lot with juse these 3:
+
+    # verify a given attack adapter is installed
+    # HIGHLY RECOMMENDED to catch installation/configuration problems
+    Given "something" is installed
+
+    # Execute the attack
+    When I launch a "something" attack with:
+      """
+      ls -l /path  # EXACT commands to be executed on the command line
+      """
+
+    # Check exit status and STDOUT
+    Then it should pass with:
+      """
+      String to match in STDOUT
+      """
 
 
 ## FOR DEVELOPERS
@@ -89,19 +140,6 @@ NOTE: We currently use `ruby 1.9.3` and `JRuby 1.7.0-preview2` for development a
 
 5. Refer to the features directory for usage examples and please write cucumber features for any new functionality you wish to submit.
 
-## ATTACK ADAPTERS
-
-Gauntlt includes attack adapters for the following tools:
-
-* [curl] [curl]
-* [nmap] [nmap]
-* [sslyze] [sslyze]
-* [sqlmap] [sqlmap]
-* [Garmr] [garmr]
-
-You will need to install each tool yourself before you can use it with gauntlt. However, if you try to use a tool that is not installed or that gauntlt cannot find, you will get a helpful error message from gauntlt with information on how to install and/or configure the tool for use with gauntlt.
-
-We also include a generic attack adapter that allows you to run anything on the command line, parse its output and check its exit status.
 
 ## ROADMAP
 
