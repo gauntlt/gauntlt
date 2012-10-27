@@ -8,7 +8,7 @@ before_script:
   - sudo apt-get install nmap
   - export SSLYZE_PATH="/home/vagrant/builds/thegauntlet/gauntlt/vendor/sslyze/sslyze.py"
   - export SQLMAP_PATH="/home/vagrant/builds/thegauntlet/gauntlt/vendor/sqlmap/sqlmap.py"
-  - 'cd /tmp && git clone https://github.com/freddyb/Garmr.git && cd Garmr && sudo python setup.py install'
+  - sudo python vendor/Garmr/setup.py install
 
 matrix:
   allow_failures:
