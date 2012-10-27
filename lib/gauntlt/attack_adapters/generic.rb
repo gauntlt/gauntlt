@@ -1,6 +1,5 @@
 When /^I launch a "generic" attack with:$/ do |command|
-  command.gsub!('<hostname>', hostname) if @hostname
-  run command
+  run_with_profile command
 end
 
 Given /^the "(.*?)" command line binary is installed$/ do |bin|

@@ -3,13 +3,7 @@ Given /^"sslyze" is installed$/ do
 end
 
 When /^I launch an "sslyze" attack with:$/ do |command|
-  sslyze_path = path_to_python_script("sslyze")
+  add_to_profile( 'sslyze', path_to_python_script('sslyze') )
 
-  command.gsub!('<hostname>', hostname)
-  command.gsub!('<sslyze_path>', sslyze_path)
-  run command
-end
-
-Then /^the key size should be at least (\d+)$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+  run_with_profile command
 end

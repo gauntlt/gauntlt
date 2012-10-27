@@ -1,32 +1,23 @@
 module Gauntlt
   module Support
     module ProfileHelper
-      def hostname
-        raise "No host defined" if @hostname.nil?
-
-        @hostname
+      def gauntlt_profile
+        @gauntlt_profile ||= {}
       end
 
-      def target_url
-        raise "No target URL defined" if @target_url.nil?
-
-        @target_url
+      def add_to_profile(k,v)
+        puts "Overwriting profile value for #{k}" if gauntlt_profile.has_key?(k)
+        gauntlt_profile[k] = v
       end
 
-      def tcp_ping_ports
-        @tcp_ping_ports
-      end
+      def run_with_profile(command_template)
+        command = command_template.dup
 
-      def set_hostname(s)
-        @hostname = s
-      end
+        gauntlt_profile.each do |name, value|
+          command.gsub!( "<#{name}>", value )
+        end
 
-      def set_target_url(s)
-        @target_url = s
-      end
-
-      def set_tcp_ping_ports(s)
-        @tcp_ping_ports = s
+        run command
       end
     end
   end

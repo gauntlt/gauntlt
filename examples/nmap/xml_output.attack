@@ -2,7 +2,9 @@ Feature: XML output
 
   Background:
     Given "nmap" is installed
-    And the target hostname is "google.com"
+    And the following profile:
+      | name     | value      |
+      | hostname | google.com |
 
   Scenario: Output to XML
     When I launch an "nmap" attack with:

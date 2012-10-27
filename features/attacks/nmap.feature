@@ -28,7 +28,7 @@ Feature: nmap attack
     When I run `gauntlt tcp_ping_ports.attack`
     Then it should pass with:
       """
-      5 steps (5 passed)
+      4 steps (4 passed)
       """
 
   Scenario: Handle XML output file

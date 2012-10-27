@@ -3,7 +3,6 @@ When /^"garmr" is installed$/ do
 end
 
 When /^I launch a "garmr" attack with:$/ do |command|
-  command.gsub!('<target_url>', target_url)
-  run command
+  run_with_profile command
   @raw_garmr_output = all_output
 end

@@ -2,7 +2,9 @@ Feature: simple nmap attack (sanity check)
 
   Background:
     Given "nmap" is installed
-    And the target hostname is "google.com"
+    And the following profile:
+      | name     | value      |
+      | hostname | google.com |
 
   Scenario: Verify server is available on standard web ports
     When I launch an "nmap" attack with:

@@ -1,10 +1,12 @@
+@slow
 Feature: nmap attacks for example.com
   Background:
     Given "nmap" is installed
-    And the target hostname is "google.com"
-    And the target tcp_ping_ports are "22,25,80,443"
+    And the following profile:
+      | name           | value        |
+      | hostname       | google.com   |
+      | tcp_ping_ports | 22,25,80,443 |
 
-  @slow
   Scenario: Using tcp syn ping scan and the nmap fast flag
     When I launch an "nmap" attack with:
       """
@@ -12,5 +14,7 @@ Feature: nmap attacks for example.com
       """
     Then the output should contain:
       """
-      80/tcp
+      21/tcp   open  ftp
+      80/tcp   open  http
+      443/tcp  open  https
       """

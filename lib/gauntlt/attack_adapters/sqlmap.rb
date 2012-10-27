@@ -3,9 +3,7 @@ Given /^"sqlmap" is installed$/ do
 end
 
 When /^I launch an? "sqlmap" attack with:$/ do |command|
-  sqlmap_path = path_to_python_script("sqlmap")
+  add_to_profile('sqlmap_path', path_to_python_script("sqlmap"))
 
-  command.gsub!('<target_url>', target_url)
-  command.gsub!('<sqlmap_path>', sqlmap_path)
-  run command
+  run_with_profile command
 end

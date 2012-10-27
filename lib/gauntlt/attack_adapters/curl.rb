@@ -3,8 +3,7 @@ When /^"curl" is installed$/ do
 end
 
 When /^I launch a "curl" attack with:$/ do |command|
-  command.gsub!('<hostname>', hostname)
-  run command
+  run_with_profile command
   @raw_curl_response = all_output # aruba defines all_output
 end
 

@@ -4,7 +4,9 @@ This attack adapter allows for any command line binary to be executed and the ou
 
 Background:
   Given the "ping" command line binary is installed
-  And the target hostname is "google.com"
+  And the following profile:
+    | name     | value      |
+    | hostname | google.com |
 
 Scenario: Verify a 301 is received from a curl
   When I launch a "generic" attack with:

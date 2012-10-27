@@ -2,7 +2,9 @@ Feature: Run sslyze against a target
 
 Background:
   Given "sslyze" is installed
-  And the target hostname is "google.com"
+  And the following profile:
+    | name     | value      |
+    | hostname | google.com |
 
 Scenario: Ensure no anonymous certificates
   When I launch an "sslyze" attack with:
@@ -13,11 +15,3 @@ Scenario: Ensure no anonymous certificates
     """
     Anon
     """
-
-# Scenario: Make sure that the certificate key size is at least 2048
-#   Given the target hostname is "google.com"
-#   When I launch an "sslyze" attack with:
-#     """
-#       python <sslyze_path> <hostname>:443
-#     """
-#   Then the key size should be at least 2048

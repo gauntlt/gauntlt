@@ -2,7 +2,9 @@ Feature: Evaluate received cookies against expected.
 
 Background:
   Given "curl" is installed
-  And the target hostname is "google.com"
+  And the following profile:
+    | name     | value      |
+    | hostname | google.com |
 
 Scenario: Verify server is returning the cookies expected
   When I launch a "curl" attack with:
