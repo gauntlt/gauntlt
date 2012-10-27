@@ -2,8 +2,8 @@ Feature: sqlmap attack
 
   @slow
   Scenario:
-    Given scapegoat is running on port 9292
-    And an attack "sqlmap" exists
+    Given an attack "sqlmap" exists
+    And scapegoat is running on port 9292
     And I copy the attack files from the "examples/sqlmap" folder
     And the following attack files exist:
       | filename      |
