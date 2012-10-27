@@ -93,21 +93,24 @@ You can have as many `Scenario` entries as you like, but it is good practice to 
 
 There are a large number of step definitions available, but you can do a lot with just these 3:
 
-    # verify a given attack adapter is installed
-    # HIGHLY RECOMMENDED to catch installation/configuration problems
-    Given "something" is installed
+    Feature: Attack with kindness
 
-    # Execute the attack
-    When I launch a "something" attack with:
-      """
-      ls -l /path  # EXACT commands to be executed on the command line
-      """
+      Scenario: Ensure I am not mean
+        # verify a given attack adapter is installed
+        # HIGHLY RECOMMENDED to catch installation/configuration problems
+        Given "kindness" is installed
 
-    # Check exit status and STDOUT
-    Then it should pass with:
-      """
-      String to match in STDOUT
-      """
+        # Execute the attack
+        When I launch a "kindness" attack with:
+          """
+          whoami  # EXACT commands to be executed on the command line
+          """
+
+        # Check exit status and STDOUT
+        Then it should pass with:
+          """
+          very_kind
+          """
 
 
 ## FOR DEVELOPERS
