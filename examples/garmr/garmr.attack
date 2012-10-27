@@ -5,9 +5,15 @@ Scenario: Use Garmr to scan a website for basic security requirements
   And the target URL is "http://localhost:9292/inline-js"
   When I launch a "garmr" attack with:
     """
-    garmr -u <target_url>
+    garmr -u <target_url> -o my_garmr_output.xml
     """
   Then it should pass with:
     """
     [Garmr.corechecks.InlineJS] Fail Inline JavaScript found
     """
+  And the file "my_garmr_output.xml" should contain XML:
+    | css                               |
+    | testcase[name="InlineJS"] failure |
+  And the file "my_garmr_output.xml" should not contain XML:
+    | css                               |
+    | testcase[name="SCSPHeaderCheck"] failure |
