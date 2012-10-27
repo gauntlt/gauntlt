@@ -5,13 +5,12 @@ end
 When /^I launch a "curl" attack with:$/ do |command|
   command.gsub!('<hostname>', hostname)
   run command
-end
-
-Then /^the response code should be "(.*?)"$/ do |http_code|
-  @response[:code].should == http_code
+  @raw_curl_response = all_output # aruba defines all_output
 end
 
 Then /^the following cookies should be received:$/ do |table|
+  set_cookies( cookies_for_last_curl_request )
+
   names = table.hashes.map{|h| h['name'] }
   names.each do |name|
     cookies.any?{|s| s =~ /^#{name}/}.should be_true

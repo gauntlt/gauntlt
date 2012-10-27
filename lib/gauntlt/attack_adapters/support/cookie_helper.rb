@@ -1,10 +1,10 @@
 module Gauntlt
   module Support
     module CookieHelper
-      def cookies_for(url)
-        output = `curl --include --location --head --silent "#{url}"`
+      def cookies_for_last_curl_request
+        raise "no curl output found!" unless @raw_curl_response
 
-        output.scan(/^Set-Cookie:.+$/).map do |header|
+        @raw_curl_response.scan(/^Set-Cookie:.+$/).map do |header|
           "#{$1}=#{$2}" if header =~ /^Set-Cookie: ([^=]+)=([^;]+;)/
         end
       end
