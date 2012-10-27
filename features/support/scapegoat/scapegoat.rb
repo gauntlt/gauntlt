@@ -28,23 +28,13 @@ SQL
   end
 
   class Gauntlt::Scapegoat < Sinatra::Base
+    helpers do
+      def page_title
+      end
+    end
+
     get '/' do
-      content_type :text
-
-      <<-EOS
-
-    ______________________
-   < Welcome to scapegoat >
-    ----------------------
-        \\
-         \\  (__)
-            (\\/)
-     /-------\\/
-    / |     ||
-   /  ||----||
-      ~~    ~~
-
-EOS
+      erb :index
     end
 
     # sqlmap.py -u "http://localhost:9292/sql-injection?number_id=1"  --dbms sqlite
@@ -60,6 +50,10 @@ EOS
       erb :sqlmap, :locals => {:result => result}
     end
 
+    get '/inline-js' do
+      erb :inline_js
+    end
+    
     run! if app_file == $0
   end
 end

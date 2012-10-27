@@ -1,3 +1,10 @@
 <html>
-  <%= yield %>
+  <head>
+    <title>
+      <%= page_title || 'scapegoat' %>
+    </title>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
 </html>

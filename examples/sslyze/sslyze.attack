@@ -7,7 +7,7 @@ Background:
 Scenario: Ensure no anonymous certificates
   When I launch an "sslyze" attack with:
     """
-      python <sslyze_path> <hostname>:443
+    python <sslyze_path> <hostname>:443
     """
   Then the output should not contain:
     """
