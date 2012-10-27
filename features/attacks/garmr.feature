@@ -9,6 +9,6 @@ Feature: Garmr scan
     When I run `gauntlt`
     Then it should pass with:
       """
-      4 steps (4 passed)
+      6 steps (6 passed)
       """
     And scapegoat should quit
