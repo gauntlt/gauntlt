@@ -7,7 +7,7 @@ Scenario: Use Garmr to scan a website for basic security requirements
     """
     garmr -u <target_url>
     """
-  Then the output should contain:
+  Then it should pass with:
     """
     [Garmr.corechecks.InlineJS] Fail Inline JavaScript found
     """

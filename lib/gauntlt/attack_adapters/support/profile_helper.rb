@@ -8,7 +8,7 @@ module Gauntlt
       end
 
       def target_url
-        raise "No host defined" if @target_url.nil?
+        raise "No target URL defined" if @target_url.nil?
 
         @target_url
       end
