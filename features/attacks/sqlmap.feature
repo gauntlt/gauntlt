@@ -1,4 +1,3 @@
-@skip-on-jruby
 Feature: sqlmap attack
 
   @slow
