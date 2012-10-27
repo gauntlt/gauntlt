@@ -89,24 +89,23 @@ NOTE: We currently use `ruby 1.9.3` and `JRuby 1.7.0-preview2` for development a
 
 5. Refer to the features directory for usage examples and please write cucumber features for any new functionality you wish to submit.
 
+## ATTACK ADAPTERS
+
+Gauntlt includes attack adapters for the following tools:
+
+* [curl] [curl]
+* [nmap] [nmap]
+* [sslyze] [sslyze]
+* [sqlmap] [sqlmap]
+* [Garmr] [garmr]
+
+You will need to install each tool yourself before you can use it with gauntlt. However, if you try to use a tool that is not installed or that gauntlt cannot find, you will get a helpful error message from gauntlt with information on how to install and/or configure the tool for use with gauntlt.
+
+We also include a generic attack adapter that allows you to run anything on the command line, parse its output and check its exit status.
 
 ## ROADMAP
 
-We are adding different features into gauntlt rignt now.  Please submit issues via github and tag them as enhancements.  The core team meets weekly and will divide out the enhancement requests into our monthly releases.
-
-Below are some tools we are targeting but don't let that stop you from adding your favorite hacking tool.
-
-  * [curl] [curl]
-  * [nmap] [nmap]
-  * [sslyze] [sslyze]
-  * [sqlmap] [sqlmap]
-  * [w3af] [w3af]
-  * [arachni] [arachni]
-
-
-## ADD AN ATTACK ADAPTER
-
-See the wiki on how to add an attack adapter to gauntlt. We would love your contributions.
+Gauntlt is under active development and we appreciate your suggestions and bug reports. We aim to be very responsive and friendly while adhering to a consistent design based on minimalism and extensibility.
 
 ## LICENSE
 
@@ -115,6 +114,5 @@ gauntlt is licensed under The MIT License. See the LICENSE file in the repo or v
 [curl]: http://curl.haxx.se
 [nmap]: http://nmap.org
 [sslyze]: https://github.com/iSECPartners/sslyze
-[w3af]: http://w3af.sourceforge.net
 [sqlmap]: http://sqlmap.org
-[arachni]: http://arachni-scanner.com
+[garmr]: https://github.com/mozilla/Garmr
