@@ -91,7 +91,7 @@ To use gauntlt, you will need one or more attack files. An attack file is a plai
 
 You can have as many `Scenario` entries as you like, but it is good practice to keep the number low and to ensure that the scenarios in an attack file are all related. You can create as many attack files as you like and organize them in folders and sub-folders as well.
 
-There are a large number of step definitions available, but you can do a lot with juse these 3:
+There are a large number of step definitions available, but you can do a lot with just these 3:
 
     # verify a given attack adapter is installed
     # HIGHLY RECOMMENDED to catch installation/configuration problems
