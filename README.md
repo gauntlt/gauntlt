@@ -112,7 +112,7 @@ There are a large number of step definitions available, but you can do a lot wit
 
 ## FOR DEVELOPERS
 
-NOTE: We currently use `ruby 1.9.3` and `JRuby 1.7.0-preview2` for development and testing.
+NOTE: We currently use `ruby 1.9.3` and `JRuby 1.7.0` for development and testing.
 
 1. Clone the git repo and get the submodules
 
@@ -143,7 +143,7 @@ NOTE: We currently use `ruby 1.9.3` and `JRuby 1.7.0-preview2` for development a
 
 ## ROADMAP
 
-Gauntlt is under active development and we appreciate your suggestions and bug reports. We aim to be very responsive and friendly while adhering to a consistent design based on minimalism and extensibility.
+Gauntlt is under active development and we appreciate your suggestions and bug reports. We aim to be very responsive and friendly while adhering to a consistent design based on minimalism, simplicity and extensibility.
 
 ## LICENSE
 
