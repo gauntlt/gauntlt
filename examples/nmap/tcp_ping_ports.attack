@@ -3,9 +3,9 @@ Feature: nmap attacks for example.com
   Background:
     Given "nmap" is installed
     And the following profile:
-      | name           | value        |
-      | hostname       | google.com   |
-      | tcp_ping_ports | 22,25,80,443 |
+      | name           | value           |
+      | hostname       | scanme.nmap.org |
+      | tcp_ping_ports | 22,25,80,443    |
 
   Scenario: Using tcp syn ping scan and the nmap fast flag
     When I launch an "nmap" attack with:
@@ -14,7 +14,15 @@ Feature: nmap attacks for example.com
       """
     Then the output should contain:
       """
-      21/tcp   open  ftp
-      80/tcp   open  http
-      443/tcp  open  https
+      PORT     STATE    SERVICE
+      21/tcp   open     ftp
+      22/tcp   open     ssh
+      25/tcp   filtered smtp
+      80/tcp   open     http
+      135/tcp  filtered msrpc
+      139/tcp  filtered netbios-ssn
+      445/tcp  filtered microsoft-ds
+      554/tcp  open     rtsp
+      646/tcp  filtered ldp
+      7070/tcp open     realserver
       """
