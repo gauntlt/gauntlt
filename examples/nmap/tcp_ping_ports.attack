@@ -1,4 +1,4 @@
-@slow
+@slow @announce
 Feature: nmap attacks for example.com
   Background:
     Given "nmap" is installed
@@ -10,19 +10,9 @@ Feature: nmap attacks for example.com
   Scenario: Using tcp syn ping scan and the nmap fast flag
     When I launch an "nmap" attack with:
       """
-      nmap -F -PS<tcp_ping_ports> <hostname>
+      nmap -F -PS<tcp_ping_ports> <hostname> -oX foo.xml
       """
-    Then the output should contain:
-      """
-      PORT     STATE    SERVICE
-      21/tcp   open     ftp
-      22/tcp   open     ssh
-      25/tcp   filtered smtp
-      80/tcp   open     http
-      135/tcp  filtered msrpc
-      139/tcp  filtered netbios-ssn
-      445/tcp  filtered microsoft-ds
-      554/tcp  open     rtsp
-      646/tcp  filtered ldp
-      7070/tcp open     realserver
-      """
+    Then the file "foo.xml" should contain XML:
+      | css                                                         |
+      | ports port[protocol="tcp"][portid="80"] state[state="open"] |
+      | ports port[protocol="tcp"][portid="22"] state[state="open"] |
