@@ -21,15 +21,15 @@ end
 
 require 'rack/handler/webrick'
 Given /^scapegoat is running on port (\d+)$/ do |port|
-  Gauntlt::Scapegoat.set :port, port.to_i
-  Gauntlt::Scapegoat.set :logging, nil
+  Scapegoat.set :port, port.to_i
+  Scapegoat.set :logging, nil
 
   if RUBY_PLATFORM == 'java'
-    Thread.new { Gauntlt::Scapegoat.run! }
+    Thread.new { Scapegoat.run! }
   else
     @scapegoat_pid = Process.fork do
       trap(:INT) { ::Rack::Handler::WEBrick.shutdown }
-      Gauntlt::Scapegoat.run!
+      Scapegoat.run!
       exit # manually exit; otherwise this sub-process will re-run the specs that haven't run yet.
     end
   end
