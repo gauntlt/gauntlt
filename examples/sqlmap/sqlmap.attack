@@ -1,4 +1,4 @@
-@slow
+@slow @announce
 Feature: Run sqlmap against a target
 
 Scenario: Identify SQL injection vulnerabilities
