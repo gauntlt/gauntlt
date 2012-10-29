@@ -1,5 +1,7 @@
 @slow @announce
 Feature: Run sqlmap against a target
+  # See:
+  #   https://github.com/sqlmapproject/sqlmap/wiki/Usage
 
 Scenario: Identify SQL injection vulnerabilities
   Given "sqlmap" is installed
@@ -8,7 +10,7 @@ Scenario: Identify SQL injection vulnerabilities
     | target_url | http://localhost:9292/sql-injection?number_id=1 |
   When I launch a "sqlmap" attack with:
     """
-    python <sqlmap_path> -u <target_url> --dbms sqlite --batch -v 0
+    python <sqlmap_path> -u <target_url> --dbms sqlite --batch -v 0 --level=2 --risk=3
     """
   Then the output should contain:
     """
