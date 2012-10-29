@@ -12,6 +12,6 @@ Feature: sqlmap attack
     When I run `gauntlt`
     Then it should pass with:
       """
-      4 steps (4 passed)
+      5 steps (5 passed)
       """
     And scapegoat should quit

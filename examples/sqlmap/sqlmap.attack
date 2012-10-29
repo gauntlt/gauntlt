@@ -16,7 +16,9 @@ Scenario: Identify SQL injection vulnerabilities
     """
     back-end DBMS: SQLite
     banner:    '3.7.12'
-    Database: SQLite_masterdb
+    """
+  And the output should contain:
+    """
     [2 tables]
     +-----------------+
     | numbers         |
