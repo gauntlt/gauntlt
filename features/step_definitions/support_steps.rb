@@ -21,16 +21,22 @@ end
 
 require 'rack/handler/webrick'
 Given /^scapegoat is running on port (\d+)$/ do |port|
-  Scapegoat.set :port, port.to_i
-  Scapegoat.set :logging, nil
-
-  if RUBY_PLATFORM == 'java'
-    Thread.new { Scapegoat.run! }
+  if Scapegoat.running?
+    if Scapegoat.port != port.to_i
+      raise "Scapegoat already running on port #{Scapegoat.port} (not #{port})"
+    end
   else
-    @scapegoat_pid = Process.fork do
-      trap(:INT) { ::Rack::Handler::WEBrick.shutdown }
-      Scapegoat.run!
-      exit # manually exit; otherwise this sub-process will re-run the specs that haven't run yet.
+    Scapegoat.set :port, port.to_i
+    Scapegoat.set :logging, nil
+
+    if RUBY_PLATFORM == 'java'
+      Thread.new { Scapegoat.run! }
+    else
+      @scapegoat_pid = Process.fork do
+        trap(:INT) { ::Rack::Handler::WEBrick.shutdown }
+        Scapegoat.run!
+        exit # manually exit; otherwise this sub-process will re-run the specs that haven't run yet.
+      end
     end
   end
 end

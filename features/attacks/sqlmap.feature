@@ -1,3 +1,4 @@
+@scapegoat
 Feature: sqlmap attack
 
   @slow

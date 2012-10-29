@@ -1,3 +1,4 @@
+@scapegoat
 Feature: Garmr scan
   Background:
     Given an attack "garmr" exists
