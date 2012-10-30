@@ -1,4 +1,4 @@
-# gauntlt [![Build Status](https://secure.travis-ci.org/thegauntlet/gauntlt.png?branch=master)](http://travis-ci.org/thegauntlet/gauntlt) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/thegauntlet/gauntlt)
+# gauntlt [![Build Status](https://secure.travis-ci.org/gauntlt/gauntlt.png?branch=master)](http://travis-ci.org/gauntlt/gauntlt) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/gauntlt/gauntlt)
 
 gauntlt is a ruggedization framework
 
@@ -10,7 +10,7 @@ Have questions?  Ask us anything on the [gauntlt google group](http://bit.ly/gau
 
 ## GET STARTED
 
-Note: if you are new to gauntlt, have a look at [gauntlt-starter-kit](https://github.com/thegauntlet/gauntlt-starter-kit), which is the easiest way to get up and running with gauntlt.
+Note: if you are new to gauntlt, have a look at [gauntlt-starter-kit](https://github.com/gauntlt/gauntlt-starter-kit), which is the easiest way to get up and running with gauntlt.
 
 You will need ruby version `1.9.3` to run gauntlt, but you can run gauntlt against applications built with any language or platform.
 
@@ -43,7 +43,7 @@ You will need ruby version `1.9.3` to run gauntlt, but you can run gauntlt again
         $ gauntlt my_attacks/*.attack some_other.file
 
 
-      For more attack examples, refer to the [examples](https://github.com/thegauntlet/gauntlt/tree/master/examples).
+      For more attack examples, refer to the [examples](https://github.com/gauntlt/gauntlt/tree/master/examples).
 
 4. Other commands
 
@@ -119,7 +119,7 @@ NOTE: We currently use `ruby 1.9.3` and `JRuby 1.7.0` for development and testin
 
 1. Clone the git repo and get the submodules
 
-        $ git clone --recursive git://github.com/thegauntlet/gauntlt.git
+        $ git clone --recursive git://github.com/gauntlt/gauntlt.git
 
 2. Install bundler
 

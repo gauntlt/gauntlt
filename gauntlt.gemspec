@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Gauntlt::VERSION
   s.authors     = ["James Wickett", "Mani Tadayon"]
   s.email       = ["james@ruggeddevops.org"]
-  s.homepage    = "https://github.com/thegauntlet/gauntlt"
+  s.homepage    = "https://github.com/gauntlt/gauntlt"
   s.summary     = %q{behaviour-driven security using cucumber}
   s.description = %q{Using standard Gherkin language to define security tests, gauntlt happily wraps cucumber functionality and provides a security testing framework that security engineers, developers and operations teams can collaborate on together.}
 

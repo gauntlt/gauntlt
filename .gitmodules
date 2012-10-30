@@ -9,4 +9,4 @@
 	url = git://github.com/mozilla/Garmr.git
 [submodule "features/support/scapegoat"]
 	path = features/support/scapegoat
-	url = git://github.com/thegauntlet/scapegoat.git
+	url = git://github.com/gauntlt/scapegoat.git
