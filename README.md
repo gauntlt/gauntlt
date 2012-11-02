@@ -20,6 +20,7 @@ You will need ruby version `1.9.3` to run gauntlt, but you can run gauntlt again
 
 2. Create an attack file and put it anywhere you like
 
+```gherkin
         # simplest.attack
         Feature: simplest attack possible
           Scenario:
@@ -31,6 +32,7 @@ You will need ruby version `1.9.3` to run gauntlt, but you can run gauntlt again
               """
               .
               """
+```
 
 3. Run gauntlt to launch the attack defined above
 
