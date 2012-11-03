@@ -16,47 +16,49 @@ You will need ruby version `1.9.3` to run gauntlt, but you can run gauntlt again
 
 1. Install the gem
 
-        $ gem install gauntlt
+    ```shell
+    $ gem install gauntlt
+    ```
 
 2. Create an attack file and put it anywhere you like
 
-```gherkin
-# simplest.attack
-Feature: simplest attack possible
-  Scenario:
-    When I launch a "generic" attack with:
-      """
-      ls -a
-      """
-    Then the output should contain:
-      """
-      .
-      """
-```
+    ```gherkin
+    # simplest.attack
+    Feature: simplest attack possible
+      Scenario:
+        When I launch a "generic" attack with:
+          """
+          ls -a
+          """
+        Then the output should contain:
+          """
+          .
+          """
+    ```
 
 3. Run gauntlt to launch the attack defined above
 
-```shell
-$ gauntlt
-# equivalent to gauntlt ./**/*.attack
-# by default, gauntlt will search in the current folder
-# and its subfolders for files with the .attack extension
+    ```shell
+    $ gauntlt
+    # equivalent to gauntlt ./**/*.attack
+    # by default, gauntlt will search in the current folder
+    # and its subfolders for files with the .attack extension
 
-# you can also specify one or more paths yourself:
-$ gauntlt my_attacks/*.attack some_other.file
-```
+    # you can also specify one or more paths yourself:
+    $ gauntlt my_attacks/*.attack some_other.file
+    ```
 
-For more attacks, refer to the [examples](https://github.com/gauntlt/gauntlt/tree/master/examples).
+  For more attacks, refer to the [examples](https://github.com/gauntlt/gauntlt/tree/master/examples).
 
 4. Other commands
 
-```shell
-# list defined attacks
-$ gauntlt --list
+    ```shell
+    # list defined attacks
+    $ gauntlt --list
 
-# get help
-$ gauntlt --help
-```
+    # get help
+    $ gauntlt --help
+    ```
 
 ## ATTACK ADAPTERS
 
