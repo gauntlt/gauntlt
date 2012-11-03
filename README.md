@@ -21,40 +21,42 @@ You will need ruby version `1.9.3` to run gauntlt, but you can run gauntlt again
 2. Create an attack file and put it anywhere you like
 
 ```gherkin
-        # simplest.attack
-        Feature: simplest attack possible
-          Scenario:
-            When I launch a "generic" attack with:
-              """
-              ls -a
-              """
-            Then the output should contain:
-              """
-              .
-              """
+# simplest.attack
+Feature: simplest attack possible
+  Scenario:
+    When I launch a "generic" attack with:
+      """
+      ls -a
+      """
+    Then the output should contain:
+      """
+      .
+      """
 ```
 
 3. Run gauntlt to launch the attack defined above
 
-        $ gauntlt
-        # equivalent to gauntlt ./**/*.attack
-        # by default, gauntlt will search in the current folder
-        # and its subfolders for files with the .attack extension
-        #
-        # you can also specify one or more paths yourself:
-        $ gauntlt my_attacks/*.attack some_other.file
+```shell
+$ gauntlt
+# equivalent to gauntlt ./**/*.attack
+# by default, gauntlt will search in the current folder
+# and its subfolders for files with the .attack extension
 
+# you can also specify one or more paths yourself:
+$ gauntlt my_attacks/*.attack some_other.file
+```
 
-      For more attack examples, refer to the [examples](https://github.com/gauntlt/gauntlt/tree/master/examples).
+For more attacks, refer to the [examples](https://github.com/gauntlt/gauntlt/tree/master/examples).
 
 4. Other commands
 
-        # list defined attacks
-        $ gauntlt --list
+```shell
+# list defined attacks
+$ gauntlt --list
 
-        # get help
-        $ gauntlt --help
-
+# get help
+$ gauntlt --help
+```
 
 ## ATTACK ADAPTERS
 
@@ -79,41 +81,44 @@ To use gauntlt, you will need one or more attack files. An attack file is a plai
 
 ### What an attack file looks like
 
-    # my.attack
-    Feature: Description for all scenarios in this file
-      Scenario: Description of this scenario
-        Given ...
-        When ...
-        Then ...
+```gherkin
+# my.attack
+Feature: Description for all scenarios in this file
+  Scenario: Description of this scenario
+    Given ...
+    When ...
+    Then ...
 
-      Scenario: ...
-        Given ...
-        When ...
-        Then ...
+  Scenario: ...
+    Given ...
+    When ...
+    Then ...
+```
 
 You can have as many `Scenario` entries as you like, but it is good practice to keep the number low and to ensure that the scenarios in an attack file are all related. You can create as many attack files as you like and organize them in folders and sub-folders as well.
 
 There are a large number of step definitions available, but you can do a lot with just these 3:
 
-    Feature: Attack with kindness
+```gherkin
+Feature: Attack with kindness
 
-      Scenario: Ensure I am not mean
-        # verify a given attack adapter is installed
-        # HIGHLY RECOMMENDED to catch installation/configuration problems
-        Given "kindness" is installed
+  Scenario: Ensure I am not mean
+    # verify a given attack adapter is installed
+    # HIGHLY RECOMMENDED to catch installation/configuration problems
+    Given "kindness" is installed
 
-        # Execute the attack
-        When I launch a "kindness" attack with:
-          """
-          whoami  # EXACT commands to be executed on the command line
-          """
+    # Execute the attack
+    When I launch a "kindness" attack with:
+      """
+      whoami  # EXACT commands to be executed on the command line
+      """
 
-        # Check exit status and STDOUT
-        Then it should pass with:
-          """
-          very_kind
-          """
-
+    # Check exit status and STDOUT
+    Then it should pass with:
+      """
+      very_kind
+      """
+```
 
 ## FOR DEVELOPERS
 
@@ -121,27 +126,36 @@ NOTE: We currently use `ruby 1.9.3` and `JRuby 1.7.0` for development and testin
 
 1. Clone the git repo and get the submodules
 
-        $ git clone --recursive git://github.com/gauntlt/gauntlt.git
+```shell
+$ git clone --recursive git://github.com/gauntlt/gauntlt.git
+```
 
 2. Install bundler
 
-        $ gem install bundler
+```shell
+$ gem install bundler
+```
 
 3. Install dependencies
 
-        $ bundle
-        # if you get errors, you may need to install curl libs first
-        # on ubuntu:
-        #   $ sudo apt-get install libcurl4-openssl-dev
-
+```shell
+$ bundle
+# if you get errors, you may need to install curl libs first
+# on ubuntu:
+#   $ sudo apt-get install libcurl4-openssl-dev
+```
 
 4. Run the cucumber features and rspec examples
 
-        $ bundle exec rake
+```shell
+$ bundle exec rake
+```
 
 5. Launch attacks with bin/gauntlt
 
-        $ bin/gauntlt attack
+```shell
+$ bin/gauntlt attack
+```
 
 5. Refer to the features directory for usage examples and please write cucumber features for any new functionality you wish to submit.
 
