@@ -128,36 +128,36 @@ NOTE: We currently use `ruby 1.9.3` and `JRuby 1.7.0` for development and testin
 
 1. Clone the git repo and get the submodules
 
-```shell
-$ git clone --recursive git://github.com/gauntlt/gauntlt.git
-```
+    ```shell
+    $ git clone --recursive git://github.com/gauntlt/gauntlt.git
+    ```
 
 2. Install bundler
 
-```shell
-$ gem install bundler
-```
+    ```shell
+    $ gem install bundler
+    ```
 
 3. Install dependencies
 
-```shell
-$ bundle
-# if you get errors, you may need to install curl libs first
-# on ubuntu:
-#   $ sudo apt-get install libcurl4-openssl-dev
-```
+    ```shell
+    $ bundle
+    # if you get errors, you may need to install curl libs first
+    # on ubuntu:
+    #   $ sudo apt-get install libcurl4-openssl-dev
+    ```
 
 4. Run the cucumber features and rspec examples
 
-```shell
-$ bundle exec rake
-```
+    ```shell
+    $ bundle exec rake
+    ```
 
 5. Launch attacks with bin/gauntlt
 
-```shell
-$ bin/gauntlt attack
-```
+    ```shell
+    $ bin/gauntlt attack
+    ```
 
 5. Refer to the features directory for usage examples and please write cucumber features for any new functionality you wish to submit.
 
