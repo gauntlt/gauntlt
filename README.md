@@ -4,7 +4,7 @@ gauntlt is a ruggedization framework
 
 ## PROJECT STATUS
 
-The gauntlt project is under active development and is not ready for production use but we are looking for community feedback and involvement on the project.  Please file issues via github and follow the project on twitter: [@gauntlt](https://twitter.com/gauntlt).
+gauntlt is under active development. We welcome community feedback and contributions.  Please file issues via github and follow the project on twitter: [@gauntlt](https://twitter.com/gauntlt).
 
 Have questions?  Ask us anything on the [gauntlt google group](http://bit.ly/gauntlt_group) or find us on irc at [#gauntlt](http://webchat.freenode.net/?channels=gauntlt) (irc.freenode.net).
 
