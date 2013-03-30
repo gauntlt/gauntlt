@@ -21,6 +21,15 @@ EOS
       :multi => true
 
   opt :list, "List defined attacks"
+  opt :steps, "List all available step definitions"
+end
+
+if opts[:steps]
+  require 'gauntlt/stepdef'
+
+  defined_steps = Gauntlt::Stepdef.definitions
+  defined_steps.each {|x| puts "#{x['kind']} -- #{x['source']}"}
+  exit(0)
 end
 
 opts[:path] = if ARGV.empty?
@@ -36,3 +45,4 @@ if opts[:list]
 else
   Gauntlt.attack( opts[:path], opts[:tags].join(',') )
 end
+
