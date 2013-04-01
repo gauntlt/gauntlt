@@ -24,14 +24,6 @@ EOS
   opt :steps, "List all available step definitions"
 end
 
-if opts[:steps]
-  require 'gauntlt/stepdef'
-
-  defined_steps = Gauntlt::Stepdef.definitions
-  defined_steps.each {|x| puts "#{x['kind']} -- #{x['source']}"}
-  exit(0)
-end
-
 opts[:path] = if ARGV.empty?
   "./**/*.attack"
 else
@@ -42,6 +34,9 @@ if opts[:list]
   attack_list = Gauntlt.attacks.map{|s| "  #{s}"}.join("\n")
   puts "Defined attacks: #{}"
   puts attack_list
+elsif opts[:steps]
+  all_step_defs = Gauntlt.stepdefs( opts[:path], opts[:tags].join(',') )
+  puts all_step_defs[:gauntlt].sort
 else
   Gauntlt.attack( opts[:path], opts[:tags].join(',') )
 end

@@ -3,6 +3,7 @@ require "gauntlt/version"
 require 'rubygems'
 require 'cucumber'
 require 'gauntlt/attack'
+require 'gauntlt/stepdef'
 
 module Gauntlt
   CURRENT_DIR = if defined?(Pathname) # ruby 1.9
@@ -30,6 +31,11 @@ module Gauntlt
 
     def attack(path, tags=[])
       Attack.new(path, tags).run
+    end
+
+    def stepdefs(path, tags=[])
+      cuke_runtime = Gauntlt::Runtime.cuke_runtime(path, tags)
+      Stepdef.sources(cuke_runtime)
     end
   end
 end

@@ -1,39 +1,42 @@
 require 'test_helper'
-require 'gauntlt/stepdef'
 
-mock_cuke = Object.new
+mock_cuke_runtime = Object.new
+def mock_cuke_runtime.load_step_definitions
+  mock_support_code = Object.new
+  def mock_support_code.step_definitions
+    [:foo, :bar]
+  end
 
-mock_support_code = Object.new
-
-hash_steps = [{:source => "some", :file => "aruba"},
-              {:source => "other", :file => "other"}]
-mock_steps = hash_steps.map do |step|
-  OpenStruct.new(step.merge({:to_hash => step}))
+  @support_code = mock_support_code
 end
 
-subject = stub(Cucumber::Runtime, :spy => :new,
-               :return => mock_cuke) do
-  stub(mock_cuke, :spy => :load_step_definitions,
-       :return => mock_cuke) do
-    stub(mock_cuke, :spy => :instance_variable_get,
-         :return => mock_support_code) do
-      stub(mock_support_code, :spy => :step_definitions,
-           :return => mock_steps) do
-        Gauntlt::Stepdef.new
+# #find
+# roots in cucumber innards to extract step definitions
+lambda do
+  assert Gauntlt::Stepdef.find(mock_cuke_runtime), :== => [:foo, :bar]
+end.call
+
+# #sources
+# returns regexp source for each step definition
+lambda do
+  module StepDef
+    def file; end
+    def regexp_source; end
+  end
+
+  mock_step_def1 = Object.new.extend(StepDef)
+  mock_step_def2 = Object.new.extend(StepDef)
+  mock_step_definitions = [ mock_step_def1 , mock_step_def2 ]
+
+  stub(Gauntlt::Stepdef, :method => :find, :return => mock_step_definitions) do
+    stub(mock_step_def1, :spy => :file) do
+      stub(mock_step_def1, :spy => :regexp_source) do
+        stub(mock_step_def2, :spy => :file) do
+          stub(mock_step_def2, :spy => :regexp_source) do
+            Gauntlt::Stepdef.sources(:foo)
+          end
+        end
       end
     end
   end
-end
-
-# .initialize
-# set the steps from cucumber
-lambda do
-  assert subject.instance_variable_get("@steps"), :== => mock_steps
-end.call
-
-# .definitions
-# set the proper step kind
-lambda do
-  assert subject.definitions.first['kind'], :== => "aruba"
-  assert subject.definitions.last['kind'], :== => "gauntlt"
 end.call

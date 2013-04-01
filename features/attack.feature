@@ -12,6 +12,27 @@ Feature: Verify the attack behaviour is correct
       nmap
       """
 
+  Scenario: List defined step definitions
+    Given an attack "nmap" exists
+    And a file named "nmap.attack" with:
+      """
+      Feature: simplest attack possible
+        Scenario:
+          When I launch a "generic" attack with:
+            \"\"\"
+            ls -a
+            \"\"\"
+          Then the output should contain:
+            \"\"\"
+            .
+            \"\"\"
+      """
+    When I run `gauntlt --steps`
+    Then it should pass with:
+      """
+      /^"nmap" is installed$/
+      """
+
   Scenario: Run attack
     Given an attack "nmap" exists
     And a file named "nmap.attack" with:
