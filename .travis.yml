@@ -6,8 +6,8 @@ before_install:
   - git submodule update --init --recursive
 before_script:
   - sudo apt-get install nmap
-  - export SSLYZE_PATH="/home/vagrant/builds/gauntlt/gauntlt/vendor/sslyze/sslyze.py"
-  - export SQLMAP_PATH="/home/vagrant/builds/gauntlt/gauntlt/vendor/sqlmap/sqlmap.py"
+  - export SSLYZE_PATH="$HOME/builds/gauntlt/gauntlt/vendor/sslyze/sslyze.py"
+  - export SQLMAP_PATH="$HOME/builds/gauntlt/gauntlt/vendor/sqlmap/sqlmap.py"
   - 'cd vendor/Garmr && sudo python setup.py install && cd ../..'
 
 matrix:
