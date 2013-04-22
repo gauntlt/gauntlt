@@ -74,7 +74,7 @@ Feature: Verify the attack behaviour is correct
       """
       Feature: my non-existent attack
         Scenario: Fail on undefined step definition
-          Given "thisattackwouldneverexist" is installed
+          Given "thisattackwouldneverexist" is installed in my path
       """
     When I run `gauntlt`
     Then it should fail with:

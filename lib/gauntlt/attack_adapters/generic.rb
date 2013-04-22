@@ -5,3 +5,7 @@ end
 Given /^the "(.*?)" command line binary is installed$/ do |bin|
   ensure_cli_installed(bin)
 end
+
+Given /^"(\w+)" is installed in my path$/ do |value|
+  ensure_cli_installed("#{value}")
+end
