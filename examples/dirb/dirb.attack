@@ -1,0 +1,4 @@
+Feature: Run dirb scan on a URL
+
+Scenario: Use dirb to scan a website for basic security requirements
+  Given "dirb" is installed
