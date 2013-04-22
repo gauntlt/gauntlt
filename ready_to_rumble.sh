@@ -4,6 +4,7 @@
 
 NMAP=`which nmap`
 GARMR=`which garmr`
+DIRB=`which dirb`
 
 if [ -z $NMAP ] 
   then
@@ -29,4 +30,9 @@ if [ -z $GARMR ]
     exit
 fi
 
+if [ -z $DIRB ]
+  then 
+    echo "dirb is not installed in your path, try installing it 'wget http://downloads.sourceforge.net/project/dirb/dirb/2.03/dirb203.tar.gz && tar xvfz dirb203.tar.gz && cd dirb && ./configure && make && cd ..'"
+    exit
+fi
 echo "You are ready to rumble!"

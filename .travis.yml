@@ -9,6 +9,8 @@ before_script:
   - export SSLYZE_PATH="/home/travis/build/gauntlt/gauntlt/vendor/sslyze/sslyze.py"
   - export SQLMAP_PATH="/home/travis/build/gauntlt/gauntlt/vendor/sqlmap/sqlmap.py"
   - 'cd vendor/Garmr && sudo python setup.py install && cd ../..'
+  - 'cd vendor && tar xvfz dirb203.tar.gz && cd dirb && ./configure && make && cd ..'
+  - export DIRB="/home/travis/build/gauntlt/gauntlt/vendor/dirb/dirb"
 
 matrix:
   allow_failures:
