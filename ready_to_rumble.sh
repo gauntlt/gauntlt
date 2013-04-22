@@ -35,4 +35,11 @@ if [ -z $DIRB ]
     echo "dirb is not installed in your path, try installing it 'wget http://downloads.sourceforge.net/project/dirb/dirb/2.03/dirb203.tar.gz && tar xvfz dirb203.tar.gz && cd dirb && ./configure && make && cd ..'"
     exit
 fi
+
+if [ -z $DIRB_WORDLISTS ]
+  then 
+    echo "DIRB_WORDLISTS environment variable not set, please set it. Usually this is where you extracted dirb in a directory called 'wordlists'"
+    exit
+fi
+
 echo "You are ready to rumble!"
