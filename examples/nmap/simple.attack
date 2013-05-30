@@ -4,7 +4,7 @@ Feature: simple nmap attack (sanity check)
     Given "nmap" is installed
     And the following profile:
       | name     | value      |
-      | hostname | google.com |
+      | hostname | scanme.nmap.org |
 
   Scenario: Verify server is available on standard web ports
     When I launch an "nmap" attack with:
@@ -13,6 +13,6 @@ Feature: simple nmap attack (sanity check)
       """
     Then the output should contain:
       """
-      80/tcp  open  http
-      443/tcp open  https
+      80/tcp  open   http
+      443/tcp closed https
       """
