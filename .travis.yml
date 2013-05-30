@@ -17,6 +17,8 @@ matrix:
     - rvm: jruby-head
 
 notifications:
-  irc: "chat.freenode.net#gauntlt"
+  irc:
+    channels:
+      - "chat.freenode.net#gauntlt"
     use_notice: true
     skip_join: true
