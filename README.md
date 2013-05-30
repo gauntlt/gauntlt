@@ -161,7 +161,7 @@ NOTE: We currently use `ruby 1.9.3` and `JRuby 1.7.0` for development and testin
 
 5. Refer to the features directory for usage examples and please write cucumber features for any new functionality you wish to submit.
 
-6. Run the ready_to_rumble.sh script to make sure you have all the dependencies installed like sqlmap and sslyze.  This is meant to replicate the travis setup for devs.
+6. Run the ready_to_rumble.sh script to make sure you have all the dependencies installed like sqlmap and sslyze.  This is meant to replicate the travis setup for devs. This should be a rake task instead.
 
 ## ROADMAP
 
