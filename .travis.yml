@@ -15,3 +15,6 @@ before_script:
 matrix:
   allow_failures:
     - rvm: jruby-head
+
+notifications:
+  irc: "chat.freenode.net#gauntlt"
