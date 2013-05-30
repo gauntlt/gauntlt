@@ -21,4 +21,3 @@ notifications:
     channels:
       - "chat.freenode.net#gauntlt"
     use_notice: true
-    skip_join: true
