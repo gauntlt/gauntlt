@@ -8,7 +8,7 @@ require 'gauntlt'
 opts = Trollop::options do
   version Gauntlt::VERSION
   banner <<-EOS
-gauntlt is a ruggedization framework
+gauntlt is a ruggedization framework that helps you be mean to your code
 
 Usage:
        gauntlt <path>+ [--tags TAG_EXPRESSION]
@@ -21,8 +21,8 @@ EOS
       :multi => true
 
   opt :list, "List defined attacks"
-  opt :steps, "List all available step definitions"
-  opt :allsteps, "List all available aruba step definitions"
+  opt :steps, "List the gauntlt step definitions that can be used inside of attack files"
+  opt :allsteps, "List all available step definitions including aruba step definitions which help with file and parsing operations"
 end
 
 opts[:path] = if ARGV.empty?

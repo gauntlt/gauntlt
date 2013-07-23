@@ -8,7 +8,7 @@ Feature: Display help info
     When I run `gauntlt --help`
     Then the output should contain:
       """
-      gauntlt is a ruggedization framework
+      gauntlt is a ruggedization framework that helps you be mean to your code
 
       Usage:
              gauntlt <path>+

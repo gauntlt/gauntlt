@@ -1,0 +1,10 @@
+Feature: simplest audit possible
+  Scenario:
+    When I launch a "generic" attack with:
+      """
+      ls -a
+      """
+    Then the output should contain:
+      """
+      .
+      """

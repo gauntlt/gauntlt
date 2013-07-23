@@ -14,7 +14,7 @@ Feature: nmap attack
     When I run `gauntlt simple.attack`
     Then it should pass with:
       """
-      4 steps (4 passed)
+      5 steps (5 passed)
       """
 
   Scenario: OS detection nmap attack

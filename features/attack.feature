@@ -11,6 +11,27 @@ Feature: Verify the attack behaviour is correct
       """
       nmap
       """
+      
+  Scenario: List all available attack steps and aruba steps that are available
+    Given an attack "nmap" exists
+    And a file named "nmap.attack" with:
+      """
+      Feature: simplest attack possible
+        Scenario:
+          When I launch a "generic" attack with:
+            \"\"\"
+            ls -a
+            \"\"\"
+          Then the output should contain:
+            \"\"\"
+            .
+            \"\"\"
+      """
+    When I run `gauntlt --allsteps`
+    Then it should pass with:
+      """
+      the stdout should not contain
+      """
 
   Scenario: List defined step definitions
     Given an attack "nmap" exists

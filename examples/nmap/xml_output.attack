@@ -1,3 +1,4 @@
+@slow
 Feature: XML output
 
   Background:
@@ -14,7 +15,7 @@ Feature: XML output
     And the file "foo.xml" should contain XML:
       | css                                                          |
       | ports port[protocol="tcp"][portid="80"] state[state="open"]  |
-      | ports port[protocol="tcp"][portid="443"] state[state="closed"] |
     And the file "foo.xml" should not contain XML:
       | css                                                          |
       | ports port[protocol="tcp"][portid="123"] state[state="open"] |
+      | ports port[protocol="tcp"][portid="443"] state[state="open"] |

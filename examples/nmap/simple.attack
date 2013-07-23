@@ -1,3 +1,4 @@
+@slow
 Feature: simple nmap attack (sanity check)
 
   Background:
@@ -11,8 +12,5 @@ Feature: simple nmap attack (sanity check)
       """
       nmap -p 80,443 <hostname>
       """
-    Then the output should contain:
-      """
-      80/tcp  open   http
-      443/tcp closed https
-      """
+    Then the output should contain "80/tcp  open"
+    And the output should not contain "443/tcp open"
