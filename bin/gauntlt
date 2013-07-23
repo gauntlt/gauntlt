@@ -22,6 +22,7 @@ EOS
 
   opt :list, "List defined attacks"
   opt :steps, "List all available step definitions"
+  opt :allsteps, "List all available aruba step definitions"
 end
 
 opts[:path] = if ARGV.empty?
@@ -36,6 +37,12 @@ if opts[:list]
   puts attack_list
 elsif opts[:steps]
   all_step_defs = Gauntlt.stepdefs( opts[:path], opts[:tags].join(',') )
+  puts all_step_defs[:gauntlt].sort
+elsif opts[:allsteps]
+  all_step_defs = Gauntlt.stepdefs( opts[:path], opts[:tags].join(',') )
+  puts "File and output parsing steps (using Aruba)"
+  puts all_step_defs[:aruba].sort
+  puts "\nGauntlt Attack Steps"
   puts all_step_defs[:gauntlt].sort
 else
   Gauntlt.attack( opts[:path], opts[:tags].join(',') )
