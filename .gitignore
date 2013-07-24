@@ -24,6 +24,7 @@ tmp
 doc
 Gemfile.lock
 .rvmrc
+.ruby-version
 .rbenv*
 *.gem
 .rspec
