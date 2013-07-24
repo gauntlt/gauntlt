@@ -1,0 +1,18 @@
+@slow
+Feature: Run dirb scan on a URL
+
+Scenario: Use dirb to scan a website for basic security requirements and the DIRB_WORDLISTS environment variable must be set in your path.  You can use different wordlists by changing the environment variable.
+  Given "dirb" is installed
+  And the following profile:
+     | name                | value                          |
+     | hostname            | https://google.com             |
+     | dirb_wordlists_path | Overwritten by $DIRB_WORDLISTS |
+     | wordlist            | vulns/tests.txt                |
+  When I launch a "dirb" attack with:
+  """
+  dirb <hostname> <dirb_wordlists_path>/<wordlist> 
+  """
+  Then the output should contain:
+  """
+  FOUND: 0
+  """
