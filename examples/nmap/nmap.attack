@@ -15,7 +15,7 @@ Feature: nmap attacks for scanme.nmap.org and to use this for your tests, change
       """
     Then the output should contain:
       """
-      80/tcp   open  http
+      80/tcp   open
       """
   Scenario: Verify that there are no unexpected ports open
     When I launch an "nmap" attack with:
