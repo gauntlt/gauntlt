@@ -6,8 +6,15 @@ Feature: nmap attacks for scanme.nmap.org and to use this for your tests, change
     And the following profile:
       | name           | value        |
       | hostname       | scanme.nmap.org   |
+      | host           | scanme.nmap.org   |
       | tcp_ping_ports | 22,25,80,443 |
 
+  Scenario: Verify server is open on expected set of ports using the nmap-fast attack step
+    When I launch a "nmap-fast" attack
+    Then the output should contain:
+      """
+      80/tcp   open
+      """
   Scenario: Verify server is open on expected set of ports using the nmap fast flag
     When I launch an "nmap" attack with:
       """
