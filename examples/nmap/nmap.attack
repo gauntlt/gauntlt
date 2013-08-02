@@ -11,19 +11,18 @@ Feature: nmap attacks for scanme.nmap.org and to use this for your tests, change
 
   Scenario: Verify server is open on expected set of ports using the nmap-fast attack step
     When I launch a "nmap-fast" attack
-    Then the output should contain:
-      """
-      80/tcp   open
-      """
+    Then the output should match /80.tcp\s+open/
+
   Scenario: Verify server is open on expected set of ports using the nmap fast flag
     When I launch an "nmap" attack with:
       """
       nmap -F <hostname>
       """
-    Then the output should contain:
+    Then the output should match:
       """
-      80/tcp   open
+      80/tcp\s+open
       """
+
   Scenario: Verify that there are no unexpected ports open
     When I launch an "nmap" attack with:
       """
