@@ -1,0 +1,5 @@
+{ "dirb-apache-vulns" : { "command" : "dirb --list apache.txt <host>",
+      "description" : "This looks for apache defaults which would suggest the server isnt hardened correctly.",
+      "requires" : [ "<host>" ]
+    }
+}

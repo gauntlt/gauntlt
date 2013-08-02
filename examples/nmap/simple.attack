@@ -12,5 +12,9 @@ Feature: simple nmap attack (sanity check)
       """
       nmap -p 80,443 <hostname>
       """
-    Then the output should contain "80/tcp  open"
-    And the output should not contain "443/tcp open"
+    Then the output should match /80.tcp\s+open/
+    And the output should not match:
+      """
+      443/tcp\s+open
+      """
+
