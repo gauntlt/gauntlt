@@ -17,6 +17,9 @@ module Gauntlt
   ATTACK_ADAPTERS_DIR = File.join(GAUNTLT_DIR, 'attack_adapters')
 
   ATTACK_ADAPTERS_GLOB_PATTERN = ATTACK_ADAPTERS_DIR + '/*.rb'
+  
+  ATTACK_STEPS_DIR = File.join(GAUNTLT_DIR, 'attack_steps')
+  ATTACK_STEPS_GLOB_PATTERN = ATTACK_STEPS_DIR + '/*.json'
 
   class << self
     def attack_adapters
