@@ -146,22 +146,22 @@ NOTE: We currently use `ruby 1.9.3` and `JRuby 1.7.0` for development and testin
     # on ubuntu:
     #   $ sudo apt-get install libcurl4-openssl-dev
     ```
+4. Run the ready_to_rumble.sh script to make sure you have all the dependencies installed like sqlmap and sslyze.  This is meant to replicate the travis setup for devs. This should be a rake task instead. 
 
-4. Run the cucumber features and rspec examples
+5. Run the cucumber features and rspec examples
 
     ```shell
     $ bundle exec rake
     ```
 
-5. Launch attacks with bin/gauntlt
+6. Launch attacks with bin/gauntlt
 
     ```shell
     $ bin/gauntlt attack
     ```
 
-5. Refer to the features directory for usage examples and please write cucumber features for any new functionality you wish to submit.
+7. Refer to the features directory for usage examples and please write cucumber features for any new functionality you wish to submit.
 
-6. Run the ready_to_rumble.sh script to make sure you have all the dependencies installed like sqlmap and sslyze.  This is meant to replicate the travis setup for devs. This should be a rake task instead. 
 
 ## ROADMAP
 
