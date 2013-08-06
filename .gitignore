@@ -32,3 +32,6 @@ Gemfile.lock
 #sqlite DB (from scapegoat)
 *.db
 *.$DB
+
+# possible dependency installs
+dirb

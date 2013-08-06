@@ -5,41 +5,51 @@
 NMAP=`which nmap`
 GARMR=`which garmr`
 DIRB=`which dirb`
-
-if [ -z $NMAP ] 
-  then
-    echo "nmap is not installed in your path, try installing it and adding it to your path"
-    exit
-fi
+ERRORS=0
 
 if [ -z $SSLYZE_PATH ]
   then
-    echo "SSLYZE_PATH environment variable unset, try setting it to ./vendor/sslyze/sslyze.py if you havent updated the submodules we use in gauntlt, run this first: git submodule update --init --recursive"
-    exit
+    MESSAGE="SSLYZE_PATH environment variable unset, try setting it to ./vendor/sslyze/sslyze.py if you havent updated the submodules we use in gauntlt, run this first: git submodule update --init --recursive"
+    ERRORS=$ERRORS+1 
 fi
 
 if [ -z $SQLMAP_PATH ]
   then
-    echo "SQLMAP_PATH environment variable unset, try setting it to ./vendor/sslyze/sqlmap.py if you havent updated the submodules we use in gauntlt, run this first: git submodule update --init --recursive"
-    exit
+    MESSAGE="SQLMAP_PATH environment variable unset, try setting it to ./vendor/sslyze/sqlmap.py if you havent updated the submodules we use in gauntlt, run this first: git submodule update --init --recursive"
+    ERRORS=$ERRORS+1 
 fi
 
 if [ -z $GARMR ] 
   then
-    echo "garmr is not installed in your path, try installing it 'cd vendor/Garmr && sudo python setup.py install && cd ../..'"
-    exit
-fi
-
-if [ -z $DIRB ]
-  then 
-    echo "dirb is not installed in your path, try installing it 'wget http://downloads.sourceforge.net/project/dirb/dirb/2.03/dirb203.tar.gz && tar xvfz dirb203.tar.gz && cd dirb && ./configure && make && cd ..'"
-    exit
+    MESSAGE="garmr is not installed in your path, try installing it 'cd vendor/Garmr && sudo python setup.py install && cd ../..'"
+    ERRORS=$ERRORS+1 
 fi
 
 if [ -z $DIRB_WORDLISTS ]
   then 
-    echo "DIRB_WORDLISTS environment variable not set, please set it. Usually this is where you extracted dirb in a directory called 'wordlists'"
-    exit
+    MESSAGE="DIRB_WORDLISTS environment variable not set, please set it. Usually this is where you extracted dirb in a directory called 'wordlists'"
+    ERRORS=$ERRORS+1 
 fi
 
-echo "You are ready to rumble!"
+if [ -z $DIRB ]
+  then 
+    MESSAGE="dirb is not installed in your path, try installing it 'wget http://downloads.sourceforge.net/project/dirb/dirb/2.03/dirb203.tar.gz && tar xvfz dirb203.tar.gz && cd dirb && ./configure && make && cd ..'"
+    ERRORS=$ERRORS+1 
+fi
+
+if [ -z $NMAP ] 
+  then
+    MESSAGE="nmap is not installed in your path, try installing it (brew install nmap OR apt-get install nmap) and adding it to your path"
+    ERRORS=$ERRORS+1 
+fi
+
+
+
+if [ $ERRORS -gt 0 ]
+  then
+  echo $MESSAGE
+  ERRORS=$ERRORS-1
+  echo "$ERRORS more things to fix... keep running ./ready_to_rumble.sh until you ARE."
+else
+  echo "You ARE ready to rumble!"
+fi
