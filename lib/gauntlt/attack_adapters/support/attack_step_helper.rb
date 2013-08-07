@@ -2,29 +2,29 @@ require "json"
 
 module Gauntlt
   module Support
-    module AttackStepHelper
+    module AttackAliasHelper
 
-      def gauntlt_attack_steps
-        @gauntlt_attack_steps ||= {}
+      def gauntlt_attack_aliases
+        @gauntlt_attack_aliases ||= {}
       end
       
-      def load_attack(step)
-        @attack_steps = import_attack_steps
-         @attack_steps[step] || raise("Unknown attack step #{step}")
+      def load_attack_alias(alias_name)
+        @attack_steps = import_attack_aliases
+        @attack_steps[alias_name] || raise("Unknown attack alias #{alias_name}, try gauntlt --list_attack_aliases")
       end
 
-      def import_attack_steps
-         @imported_attack_steps = Hash.new
-         attack_steps_json = Dir.glob(ATTACK_STEPS_GLOB_PATTERN)
-         attack_steps_json.each do |file|
-           @imported_attack_steps.merge!(JSON.load(File.open(file)))
+      def import_attack_aliases
+         @imported_attack_aliases = Hash.new
+         attack_aliases_json = Dir.glob(ATTACK_ALIASES_GLOB_PATTERN)
+         attack_aliases_json.each do |file|
+         @imported_attack_aliases.merge!(JSON.load(File.open(file)))
          end
-         @imported_attack_steps
+         @imported_attack_aliases
       end
 
     end
   end
 end
 
-World(Gauntlt::Support::AttackStepHelper)
+World(Gauntlt::Support::AttackAliasHelper)
 
