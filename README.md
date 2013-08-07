@@ -1,4 +1,4 @@
-# gauntlt [![Build Status](https://secure.travis-ci.org/gauntlt/gauntlt.png?branch=master)](http://travis-ci.org/gauntlt/gauntlt) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/gauntlt/gauntlt)
+# gauntlt [![Build Status](https://secure.travis-ci.org/gauntlt/gauntlt.png?branch=master)](http://travis-ci.org/gauntlt/gauntlt) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/gauntlt/gauntlt) [![Gem Version](https://badge.fury.io/rb/gauntlt.png)](http://badge.fury.io/rb/gauntlt)
 
 gauntlt is a ruggedization framework
 
