@@ -11,7 +11,7 @@ opts = Trollop::options do
 gauntlt is a ruggedization framework that helps you be mean to your code
 
 Usage:
-       gauntlt <path>+ [--tags TAG_EXPRESSION]
+       gauntlt <path>+ [--tags TAG_EXPRESSION] [--format FORMAT]
 
 Options:
 EOS
@@ -21,8 +21,13 @@ EOS
       :multi => true
 
   opt :list, "List defined attacks"
+  
   opt :steps, "List the gauntlt step definitions that can be used inside of attack files"
+
   opt :allsteps, "List all available step definitions including aruba step definitions which help with file and parsing operations"
+
+  opt :format, "Available formats: html, json, junit, progress",
+      :type => String
 end
 
 opts[:path] = if ARGV.empty?
@@ -45,6 +50,6 @@ elsif opts[:allsteps]
   puts "\nGauntlt Attack Steps"
   puts all_step_defs[:gauntlt].sort
 else
-  Gauntlt.attack( opts[:path], opts[:tags].join(',') )
+  Gauntlt.attack( opts[:path], opts[:tags].join(','), opts[:format] )
 end
 
