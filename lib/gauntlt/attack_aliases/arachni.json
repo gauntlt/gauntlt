@@ -1,4 +1,4 @@
-{ "arachni-simple_xss" : { "command" : "arachni --modules=xss --depth=1 <url>",
+{ "arachni-simple_xss" : { "command" : "arachni --modules=xss --depth=1 --link-count=10 --auto-redundant=2 <url>",
       "description" : "This is a scan for cross site scripting (xss) that only runs the base xss module in arachni.  The scan only crawls one level deep which makes it faster.  For more depth, run the gauntlt attack alias 'arachni-simple_xss_with_depth' and specifiy depth.",
       "requires" : [ "<url>" ]
     },
@@ -6,12 +6,16 @@
       "description" : "This is a scan for cross site scripting (xss) that only runs the base xss module in arachni.  The scan only crawls as many levels deep as you specify.  The higher the integer, the longer the scan will take to run.",
       "requires" : [ "<url>", "<depth>"]
     },
-  "arachni-full_xss" : { "command" : "arachni --modules=xss* --depth=1 <url>",
-      "description" : "This is a scan for cross site scripting (xss) that only runs all the modules in arachni.  The scan only crawls one level deep which makes it faster.  For more depth, run the gauntlt attack alias 'arachni-full_xss_with_depth' and specifiy depth.",
+  "arachni-full_xss" : { "command" : "arachni --modules=xss* --depth=1 --link-count=10 --auto-redundant=2 <url>",
+      "description" : "This is a scan for cross site scripting (xss) that only runs all the xss modules in arachni.  The scan only crawls one level deep, which makes it faster.  For more depth, run the gauntlt attack alias 'arachni-full_xss_with_depth' and specifiy depth.",
       "requires" : [ "<url>" ]
     },
   "arachni-full_xss_with_depth" : { "command" : "arachni --modules=xss* --depth=<depth> <url>",
       "description" : "This is a scan for cross site scripting (xss) that only runs all the xss modules in arachni.  The scan only crawls as many levels deep as you specify.  The higher the integer, the longer the scan will take to run.",
       "requires" : [ "<url>", "<depth>"]
+    },
+  "arachni-xss_with_options" : { "command" : "arachni --modules=xss* --depth=<depth> --link-count=<link_count> --auto-redundant=<auto_redundant> <url>",
+      "description" : "This is a scan for cross site scripting (xss) that runs all the xss modules in arachni.  This requires to specify several options for the scan. The arachni wiki has information on what these options represent but generally as you increase their values, the scan takes longer to run. Apart from the url, all values should be integers.  The wiki for arachni is available here > https://github.com/Arachni/arachni/wiki/Command-line-user-interface",
+      "requires" : [ "<url>", "<depth>", "<link_count>", "<auto_redundant>" ]
     }
 }
