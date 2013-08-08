@@ -20,7 +20,7 @@ You will need ruby version `1.9.3` to run gauntlt, but you can run gauntlt again
     $ gem install gauntlt
     ```
 
-2. Create an attack file and put it anywhere you like
+2. Create an attack file and put it anywhere you like. (There is a more relevant example on gauntlt.org)
 
     ```gherkin
     # simplest.attack
