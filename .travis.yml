@@ -7,6 +7,7 @@ before_install:
 before_script:
   - sudo apt-get install nmap
   - sudo apt-get install wget
+  - sudo apt-get install libcurl4-openssl-dev
   - export SSLYZE_PATH="/home/travis/build/gauntlt/gauntlt/vendor/sslyze/sslyze.py"
   - export SQLMAP_PATH="/home/travis/build/gauntlt/gauntlt/vendor/sqlmap/sqlmap.py"
   - 'cd vendor/Garmr && sudo python setup.py install && cd ../..'
