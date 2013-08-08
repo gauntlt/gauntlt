@@ -10,6 +10,6 @@
 [submodule "features/support/scapegoat"]
 	path = features/support/scapegoat
 	url = git://github.com/gauntlt/scapegoat.git
-[submodule "features/support/railsgoat"]
-	path = features/support/railsgoat
+[submodule "vendor/railsgoat"]
+	path = vendor/railsgoat
 	url = git://github.com/OWASP/railsgoat.git
