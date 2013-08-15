@@ -11,6 +11,48 @@ Feature: Verify the attack behaviour is correct
       """
       nmap
       """
+      
+  Scenario: List all available attack steps and aruba steps that are available
+    Given an attack "nmap" exists
+    And a file named "nmap.attack" with:
+      """
+      Feature: simplest attack possible
+        Scenario:
+          When I launch a "generic" attack with:
+            \"\"\"
+            ls -a
+            \"\"\"
+          Then the output should contain:
+            \"\"\"
+            .
+            \"\"\"
+      """
+    When I run `gauntlt --allsteps`
+    Then it should pass with:
+      """
+      the stdout should not contain
+      """
+
+  Scenario: List defined step definitions
+    Given an attack "nmap" exists
+    And a file named "nmap.attack" with:
+      """
+      Feature: simplest attack possible
+        Scenario:
+          When I launch a "generic" attack with:
+            \"\"\"
+            ls -a
+            \"\"\"
+          Then the output should contain:
+            \"\"\"
+            .
+            \"\"\"
+      """
+    When I run `gauntlt --steps`
+    Then it should pass with:
+      """
+      /^"nmap" is installed$/
+      """
 
   Scenario: Run attack
     Given an attack "nmap" exists
@@ -53,7 +95,7 @@ Feature: Verify the attack behaviour is correct
       """
       Feature: my non-existent attack
         Scenario: Fail on undefined step definition
-          Given "thisattackwouldneverexist" is installed
+          Given this_attack_would_never_exist 
       """
     When I run `gauntlt`
     Then it should fail with:

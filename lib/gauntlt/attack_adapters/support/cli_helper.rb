@@ -14,6 +14,21 @@ module Gauntlt
       def ensure_cli_installed(bin)
         raise "#{bin} is not installed or is not in your path" unless cli_installed?(bin)
       end
+
+      def ensure_shell_variable_set(shell_variable)
+        raise "#{shell_variable} is not set" unless shell_variable_exists?(shell_variable)
+      end
+
+      def get_shell_variable(shell_variable)
+        ENV[shell_variable]
+      end
+
+      def shell_variable_exists?(shell_variable)
+        path = get_shell_variable(shell_variable)
+        File.exists?(path) if path
+      end
+
+  
     end
   end
 end

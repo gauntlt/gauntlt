@@ -24,6 +24,7 @@ tmp
 doc
 Gemfile.lock
 .rvmrc
+.ruby-version
 .rbenv*
 *.gem
 .rspec
@@ -31,3 +32,6 @@ Gemfile.lock
 #sqlite DB (from scapegoat)
 *.db
 *.$DB
+
+# possible dependency installs
+dirb

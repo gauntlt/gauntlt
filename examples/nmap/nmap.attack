@@ -1,25 +1,28 @@
 @slow
 
-Feature: nmap attacks for example.com
+Feature: nmap attacks for scanme.nmap.org and to use this for your tests, change the value in the profile
   Background:
     Given "nmap" is installed
     And the following profile:
       | name           | value        |
-      | hostname       | google.com   |
+      | hostname       | scanme.nmap.org   |
+      | host           | scanme.nmap.org   |
       | tcp_ping_ports | 22,25,80,443 |
+
+  Scenario: Verify server is open on expected set of ports using the nmap-fast attack step
+    When I launch a "nmap-fast" attack
+    Then the output should match /80.tcp\s+open/
 
   Scenario: Verify server is open on expected set of ports using the nmap fast flag
     When I launch an "nmap" attack with:
       """
       nmap -F <hostname>
       """
-    Then the output should contain:
+    Then the output should match:
       """
-      80/tcp   open  http
-      443/tcp  open  https
-      3128/tcp open  squid-http
-      8080/tcp open  http-proxy
+      80/tcp\s+open
       """
+
   Scenario: Verify that there are no unexpected ports open
     When I launch an "nmap" attack with:
       """
@@ -39,7 +42,7 @@ Feature: nmap attacks for example.com
     And the file "foo.xml" should contain XML:
       | css                                                          |
       | ports port[protocol="tcp"][portid="80"] state[state="open"]  |
-      | ports port[protocol="tcp"][portid="443"] state[state="open"] |
+      | ports port[protocol="tcp"][portid="443"] state[state="closed"] |
     And the file "foo.xml" should not contain XML:
       | css                                                          |
       | ports port[protocol="tcp"][portid="123"] state[state="open"] |

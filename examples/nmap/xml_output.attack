@@ -1,10 +1,11 @@
+@slow
 Feature: XML output
 
   Background:
     Given "nmap" is installed
     And the following profile:
       | name     | value      |
-      | hostname | google.com |
+      | hostname | scanme.nmap.org |
 
   Scenario: Output to XML
     When I launch an "nmap" attack with:
@@ -14,7 +15,7 @@ Feature: XML output
     And the file "foo.xml" should contain XML:
       | css                                                          |
       | ports port[protocol="tcp"][portid="80"] state[state="open"]  |
-      | ports port[protocol="tcp"][portid="443"] state[state="open"] |
     And the file "foo.xml" should not contain XML:
       | css                                                          |
       | ports port[protocol="tcp"][portid="123"] state[state="open"] |
+      | ports port[protocol="tcp"][portid="443"] state[state="open"] |

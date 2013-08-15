@@ -8,10 +8,10 @@ require 'gauntlt'
 opts = Trollop::options do
   version Gauntlt::VERSION
   banner <<-EOS
-gauntlt is a ruggedization framework
+gauntlt is a ruggedization framework that helps you be mean to your code
 
 Usage:
-       gauntlt <path>+ [--tags TAG_EXPRESSION]
+       gauntlt <path>+ [--tags TAG_EXPRESSION] [--format FORMAT]
 
 Options:
 EOS
@@ -21,6 +21,13 @@ EOS
       :multi => true
 
   opt :list, "List defined attacks"
+  
+  opt :steps, "List the gauntlt step definitions that can be used inside of attack files"
+
+  opt :allsteps, "List all available step definitions including aruba step definitions which help with file and parsing operations"
+
+  opt :format, "Available formats: html, json, junit, progress",
+      :type => String
 end
 
 opts[:path] = if ARGV.empty?
@@ -33,6 +40,16 @@ if opts[:list]
   attack_list = Gauntlt.attacks.map{|s| "  #{s}"}.join("\n")
   puts "Defined attacks: #{}"
   puts attack_list
+elsif opts[:steps]
+  all_step_defs = Gauntlt.stepdefs( opts[:path], opts[:tags].join(',') )
+  puts all_step_defs[:gauntlt].sort
+elsif opts[:allsteps]
+  all_step_defs = Gauntlt.stepdefs( opts[:path], opts[:tags].join(',') )
+  puts "File and output parsing steps (using Aruba)"
+  puts all_step_defs[:aruba].sort
+  puts "\nGauntlt Attack Steps"
+  puts all_step_defs[:gauntlt].sort
 else
-  Gauntlt.attack( opts[:path], opts[:tags].join(',') )
+  Gauntlt.attack( opts[:path], opts[:tags].join(','), opts[:format] )
 end
+

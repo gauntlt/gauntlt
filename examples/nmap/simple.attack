@@ -1,18 +1,20 @@
+@slow
 Feature: simple nmap attack (sanity check)
 
   Background:
     Given "nmap" is installed
     And the following profile:
       | name     | value      |
-      | hostname | google.com |
+      | hostname | scanme.nmap.org |
 
   Scenario: Verify server is available on standard web ports
     When I launch an "nmap" attack with:
       """
       nmap -p 80,443 <hostname>
       """
-    Then the output should contain:
+    Then the output should match /80.tcp\s+open/
+    And the output should not match:
       """
-      80/tcp  open  http
-      443/tcp open  https
+      443/tcp\s+open
       """
+

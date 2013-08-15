@@ -1,4 +1,4 @@
-# gauntlt [![Build Status](https://secure.travis-ci.org/gauntlt/gauntlt.png?branch=master)](http://travis-ci.org/gauntlt/gauntlt) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/gauntlt/gauntlt)
+# gauntlt [![Build Status](https://secure.travis-ci.org/gauntlt/gauntlt.png?branch=master)](http://travis-ci.org/gauntlt/gauntlt) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/gauntlt/gauntlt) [![Gem Version](https://badge.fury.io/rb/gauntlt.png)](http://badge.fury.io/rb/gauntlt)
 
 gauntlt is a ruggedization framework
 
@@ -20,7 +20,7 @@ You will need ruby version `1.9.3` to run gauntlt, but you can run gauntlt again
     $ gem install gauntlt
     ```
 
-2. Create an attack file and put it anywhere you like
+2. Create an attack file and put it anywhere you like. (There is a more relevant example on gauntlt.org)
 
     ```gherkin
     # simplest.attack
@@ -146,20 +146,21 @@ NOTE: We currently use `ruby 1.9.3` and `JRuby 1.7.0` for development and testin
     # on ubuntu:
     #   $ sudo apt-get install libcurl4-openssl-dev
     ```
+4. Run the ready_to_rumble.sh script to make sure you have all the dependencies installed like sqlmap and sslyze.  This is meant to replicate the travis setup for devs. This should be a rake task instead. 
 
-4. Run the cucumber features and rspec examples
+5. Run the cucumber features and rspec examples
 
     ```shell
     $ bundle exec rake
     ```
 
-5. Launch attacks with bin/gauntlt
+6. Launch attacks with bin/gauntlt
 
     ```shell
     $ bin/gauntlt attack
     ```
 
-5. Refer to the features directory for usage examples and please write cucumber features for any new functionality you wish to submit.
+7. Refer to the features directory for usage examples and please write cucumber features for any new functionality you wish to submit.
 
 
 ## ROADMAP

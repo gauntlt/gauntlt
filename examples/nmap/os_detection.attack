@@ -4,7 +4,7 @@ Feature: OS detection
     Given "nmap" is installed
     And the following profile:
       | name     | value      |
-      | hostname | google.com |
+      | hostname | scanme.nmap.org |
 
   @slow
   Scenario: Detect OS
@@ -14,5 +14,5 @@ Feature: OS detection
       """
     Then the output should contain:
       """
-      Service Info: OS: Linux
+      Apache
       """
