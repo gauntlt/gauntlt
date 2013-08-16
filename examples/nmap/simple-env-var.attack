@@ -1,0 +1,24 @@
+Feature: simple nmap attack (sanity check)
+
+  Background:
+    Given "nmap" is installed
+
+    And the following environment variables:
+      | name      | environment_variable_name |
+      | hostname  | TEST_HOSTNAME             |
+
+    And the following profile:
+      | name     | value |
+      | https_port | 443 |
+      | http_port  | 80  |
+
+  Scenario: Verify server is available on standard web ports
+    When I launch an "nmap" attack with:
+      """
+      nmap -p <http_port>,<https_port> <hostname>
+      """
+    Then the output should contain:
+      """
+      80/tcp  open  http
+      443/tcp open  https
+      """
