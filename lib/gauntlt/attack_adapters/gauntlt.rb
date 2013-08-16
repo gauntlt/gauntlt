@@ -1,5 +1,11 @@
 require 'nokogiri'
 
+Given /^the following environment variables:$/ do |table|
+  table.hashes.each do |hsh|
+    add_to_profile_from_environment( hsh['name'], hsh['environment_variable_name'] )
+  end
+end
+
 Given /^the following profile:$/ do |table|
   table.hashes.each do |hsh|
     add_to_profile( hsh['name'], hsh['value'] )
