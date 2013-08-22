@@ -1,4 +1,4 @@
-When /^I launch a "generic" attack with:$/ do |command|
+When /^I launch (?:a|an) "generic" attack with:$/ do |command|
   run_with_profile command
 end
 

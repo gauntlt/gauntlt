@@ -5,11 +5,11 @@ When /^"nmap" is installed$/ do
   ensure_cli_installed("nmap")
 end
 
-When /^I launch an "nmap" attack with:$/ do |command|
+When /^I launch (?:a|an) "nmap" attack with:$/ do |command|
   run_with_profile command
 end
 
-When /^I launch a "nmap-(.*?)" attack$/ do |type|
+When /^I launch (?:a|an) "nmap-(.*?)" attack$/ do |type|
   attack_alias = 'nmap-' + type
   nmap_attack = load_attack_alias(attack_alias)                
   
