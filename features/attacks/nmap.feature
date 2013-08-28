@@ -6,6 +6,7 @@ Feature: nmap attack
     And the following attack files exist:
     | filename              |
     | simple.attack         |
+    | simple-env-var.attack |
     | os_detection.attack   |
     | tcp_ping_ports.attack |
     | nmap.attack |
@@ -13,6 +14,13 @@ Feature: nmap attack
 
   Scenario: Simple nmap attack
     When I run `gauntlt simple.attack`
+    Then it should pass with:
+      """
+      5 steps (5 passed)
+      """
+
+  Scenario: Simple nmap using environment variables attack
+    When I run `gauntlt simple-env-var.attack`
     Then it should pass with:
       """
       5 steps (5 passed)

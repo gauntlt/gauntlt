@@ -1,0 +1,1 @@
+default: TEST_HOSTNAME=google.com
