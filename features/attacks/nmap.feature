@@ -23,7 +23,7 @@ Feature: nmap attack
     When I run `gauntlt simple-env-var.attack`
     Then it should pass with:
       """
-      5 steps (5 passed)
+      6 steps (6 passed)
       """
 
   Scenario: OS detection nmap attack
