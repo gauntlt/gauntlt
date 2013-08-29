@@ -1,1 +1,1 @@
-default: TEST_HOSTNAME=google.com
+default: TEST_HOSTNAME=scanme.nmap.org
