@@ -1,3 +1,4 @@
+@slow
 Feature: simple nmap attack (sanity check)
 
   Background:
@@ -17,8 +18,8 @@ Feature: simple nmap attack (sanity check)
       """
       nmap -p <http_port>,<https_port> <hostname>
       """
-    Then the output should contain:
+    Then the output should match /80.tcp\s+open/      
+    And the output should not match:
       """
-      80/tcp  open  http
-      443/tcp open  https
+      443/tcp\s+open 
       """
