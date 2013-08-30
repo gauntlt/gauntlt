@@ -2,7 +2,7 @@ When /^"curl" is installed$/ do
   ensure_cli_installed("curl")
 end
 
-When /^I launch a "curl" attack with:$/ do |command|
+When /^I launch (?:a|an) "curl" attack with:$/ do |command|
   run_with_profile command
   @raw_curl_response = all_output # aruba defines all_output
 end
