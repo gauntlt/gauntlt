@@ -6,7 +6,7 @@ When /^the DIRB_WORDLISTS environment variable is set$/ do
   ensure_shell_variable_set("DIRB_WORDLISTS")
 end
 
-When /^I launch a "dirb" attack with:$/ do |command|
+When /^I launch (?:a|an) "dirb" attack with:$/ do |command|
   add_to_profile('dirb_wordlists_path', get_shell_variable("DIRB_WORDLISTS"))
   run_with_profile command
   @raw_dirb_output = all_output
