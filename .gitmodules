@@ -13,3 +13,4 @@
 [submodule "vendor/railsgoat"]
 	path = vendor/railsgoat
 	url = git://github.com/OWASP/railsgoat.git
+  ignore = untracked
