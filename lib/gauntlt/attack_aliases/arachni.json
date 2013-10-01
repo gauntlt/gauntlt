@@ -17,5 +17,13 @@
   "arachni-xss_with_options" : { "command" : "arachni --modules=xss* --depth=<depth> --link-count=<link_count> --auto-redundant=<auto_redundant> <url>",
       "description" : "This is a scan for cross site scripting (xss) that runs all the xss modules in arachni.  This requires to specify several options for the scan. The arachni wiki has information on what these options represent but generally as you increase their values, the scan takes longer to run. \nThe wiki for arachni is available here > https://github.com/Arachni/arachni/wiki/Command-line-user-interface. \nThe depth option is described here: https://github.com/Arachni/arachni/wiki/Command-line-user-interface#wiki-depth \nThe link_count option is described here: https://github.com/Arachni/arachni/wiki/Command-line-user-interface#wiki-link-count \nThe auto_redundant option is described here: https://github.com/Arachni/arachni/wiki/Command-line-user-interface#wiki-auto-redundant",
       "requires" : [ "<url>", "<depth>", "<link_count>", "<auto_redundant>" ]
-    }
+    },
+  "arachni-full_restricted_sqli" : { "command" : "arachni -i <restrict_uri> --modules=sqli* --auto-redundant=2 --depth=1 <url>",
+      "description": "This is a full SQL injection scan restricted to a single URI.",
+      "requires" : [ "<restrict_uri>", "<url>" ]
+   },
+  "arachni-full_sqli_with_cookie" : { "command" : "arachni --cookie-string='<cookie>' --modules=sqli* --auto-redundant=2 <url>",
+    "description" : "",
+    "requires" : [ "<cookie>", "<url>"]
+  }
 }
