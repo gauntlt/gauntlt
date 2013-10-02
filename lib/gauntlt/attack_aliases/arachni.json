@@ -22,8 +22,8 @@
       "description": "This is a full SQL injection scan restricted to a single URI.",
       "requires" : [ "<restrict_uri>", "<url>" ]
    },
-  "arachni-full_sqli_with_cookie" : { "command" : "arachni --cookie-string='<cookie>' --modules=sqli* --auto-redundant=2 <url>",
+  "arachni-full_restricted_authed_sqli" : { "command" : "arachni --cookie-string='<cookie_string>' -i '<restrict_uri>' -e '<except_uri>' --modules=sqli* --auto-redundant=2 <url>",
     "description" : "",
-    "requires" : [ "<cookie>", "<url>"]
+    "requires" : [ "<url>", "<restrict_uri>", "<except_uri>"]
   }
 }
