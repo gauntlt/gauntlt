@@ -40,7 +40,7 @@ And /^gauntlt successfully authenticates to the application/ do
       next if line !~ /<input name="authenticity_token"/
 
       ix = line.index("<input name=\"authenticity_token\"")
-      tmp = line[ix..res.body.length-1]
+      tmp = line[ix..line.length-1]
       tmp = tmp[0..tmp.index('/>')+1]
 
       token = Nokogiri::XML::Document.parse(tmp)
