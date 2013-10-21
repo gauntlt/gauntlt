@@ -68,7 +68,19 @@ And /^gauntlt successfully authenticates to the application/ do
     http.request(req)
   end
 
-  raise 'Data did not match regex' if resp['Location'] !~ /#{gauntlt_profile['login_expected_redirect']}/
+  headers = {
+    'Cookie' => resp['Set-Cookie']
+  }
 
-  add_to_profile('cookie_string', cookie)
+  if resp.code.to_i == 302
+
+    raise "Authentication not successful" if resp['Location'] !~ /#{gauntlt_profile['login_expected_redirect']}/
+    
+    req = Net::HTTP::Get.new(resp['Location'], headers)
+    resp = Net::HTTP.new(uri.host, uri.port).start do |http|
+      http.request(req)
+    end
+  end
+
+  add_to_profile('cookie_string', resp['Set-Cookie'])
 end
