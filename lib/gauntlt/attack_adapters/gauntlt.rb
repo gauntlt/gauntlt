@@ -29,9 +29,12 @@ And /^gauntlt successfully authenticates to the application/ do
   init = gauntlt_profile["initial_url"]
   uri = URI.parse(init)
   req = Net::HTTP::Get.new(uri.path)
-  res = Net::HTTP.start(uri.host, uri.port) do |http|
-      http.request(req)
+  http = Net::HTTP.new(uri.host, uri.port)
+  if init =~ /^https/
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   end
+  res = http.request(req)
 
   cookie = res['Set-Cookie']
   token = ''
@@ -64,22 +67,27 @@ And /^gauntlt successfully authenticates to the application/ do
   req = Net::HTTP::Post.new(gauntlt_profile['login_uri'], headers)
   req.body = params
 
-  resp = Net::HTTP.new(uri.host, uri.port).start do |http| 
-    http.request(req)
+  http =  Net::HTTP.new(uri.host, uri.port)
+  if init =~ /^https/
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   end
+  resp = http.request(req)
 
   headers = {
     'Cookie' => resp['Set-Cookie']
   }
 
   if resp.code.to_i == 302
-
     raise "Authentication not successful" if resp['Location'] !~ /#{gauntlt_profile['login_expected_redirect']}/
-    
+
     req = Net::HTTP::Get.new(resp['Location'], headers)
-    resp = Net::HTTP.new(uri.host, uri.port).start do |http|
-      http.request(req)
+    http = Net::HTTP.new(uri.host, uri.port)
+    if init =~ /^https/
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     end
+    http.request(req)
   end
 
   add_to_profile('cookie_string', resp['Set-Cookie'])
