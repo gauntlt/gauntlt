@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'net/http'
+require 'cookiejar'
 
 Given /^the following environment variables:$/ do |table|
   table.hashes.each do |hsh|
@@ -27,6 +28,7 @@ end
 
 And /^gauntlt successfully authenticates to the application/ do
   init = gauntlt_profile["initial_url"]
+  #jar = Jar.new
   uri = URI.parse(init)
   req = Net::HTTP::Get.new(uri.path)
   http = Net::HTTP.new(uri.host, uri.port)
@@ -67,11 +69,6 @@ And /^gauntlt successfully authenticates to the application/ do
   req = Net::HTTP::Post.new(gauntlt_profile['login_uri'], headers)
   req.body = params
 
-  http =  Net::HTTP.new(uri.host, uri.port)
-  if init =~ /^https/
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-  end
   resp = http.request(req)
 
   headers = {
@@ -82,13 +79,10 @@ And /^gauntlt successfully authenticates to the application/ do
     raise "Authentication not successful" if resp['Location'] !~ /#{gauntlt_profile['login_expected_redirect']}/
 
     req = Net::HTTP::Get.new(resp['Location'], headers)
-    http = Net::HTTP.new(uri.host, uri.port)
-    if init =~ /^https/
-      http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    end
     http.request(req)
   end
+
+  #jar.add_cookie Cookie.from_set_cookie uri, resp['Set-Cookie']
 
   add_to_profile('cookie_string', resp['Set-Cookie'])
 end
