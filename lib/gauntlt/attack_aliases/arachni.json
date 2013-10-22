@@ -17,5 +17,17 @@
   "arachni-xss_with_options" : { "command" : "arachni --modules=xss* --depth=<depth> --link-count=<link_count> --auto-redundant=<auto_redundant> <url>",
       "description" : "This is a scan for cross site scripting (xss) that runs all the xss modules in arachni.  This requires to specify several options for the scan. The arachni wiki has information on what these options represent but generally as you increase their values, the scan takes longer to run. \nThe wiki for arachni is available here > https://github.com/Arachni/arachni/wiki/Command-line-user-interface. \nThe depth option is described here: https://github.com/Arachni/arachni/wiki/Command-line-user-interface#wiki-depth \nThe link_count option is described here: https://github.com/Arachni/arachni/wiki/Command-line-user-interface#wiki-link-count \nThe auto_redundant option is described here: https://github.com/Arachni/arachni/wiki/Command-line-user-interface#wiki-auto-redundant",
       "requires" : [ "<url>", "<depth>", "<link_count>", "<auto_redundant>" ]
-    }
+    },
+  "arachni-full_restricted_sqli" : { "command" : "arachni -i <restrict_uri> --modules=sqli* --auto-redundant=2 --depth=1 '<url>'",
+      "description": "This is a full SQL injection scan restricted to a single URI.",
+      "requires" : [ "<restrict_uri>", "<url>" ]
+   },
+  "arachni-full_restricted_authed_sqli" : { "command" : "arachni --only-positives --cookie-string='<cookie_string>' -i '<restrict_uri>' -e '<except_uri>' --modules=sqli* '<url>'",
+    "description" : "This is an authenticated scan from sql injection.",
+    "requires" : [ "<url>", "<restrict_uri>", "<except_uri>"]
+  },
+  "arachni-full_restricted_authed" : { "command" : "arachni --only-positives --cookie-string='<cookie_string>' -i '<restrict_uri>' -e '<except_uri>' --modules=sqli*,xss* '<url>'",
+    "description" : "Perform an authenticated arachni scan with sql injection and xss",
+    "requires" : [ "<url>", "<restrict_uri>", "<except_uri>"]
+  }
 }

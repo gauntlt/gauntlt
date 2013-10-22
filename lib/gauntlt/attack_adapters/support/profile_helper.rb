@@ -21,7 +21,6 @@ module Gauntlt
         gauntlt_profile.each do |name, value|
           command.gsub!( "<#{name}>", value )
         end
-
         run command
       end
     end
