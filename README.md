@@ -176,3 +176,7 @@ gauntlt is licensed under The MIT License. See the LICENSE file in the repo or v
 [sslyze]: https://github.com/iSECPartners/sslyze
 [sqlmap]: http://sqlmap.org
 [garmr]: https://github.com/mozilla/Garmr
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/gauntlt/gauntlt/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
