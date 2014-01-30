@@ -54,7 +54,7 @@ fi
 if [[ $ERRORS > 0 ]]
   then
   echo $MESSAGE
-  #ERRORS=$ERRORS-1
+  ERRORS=$ERRORS-1
   echo "$ERRORS more things to fix... keep running ./ready_to_rumble.sh until you ARE."
 else
   echo "You ARE ready to rumble!"
