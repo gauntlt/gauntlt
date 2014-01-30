@@ -1,0 +1,19 @@
+# The Gruyere Target
+Gruyere is a Codelab by Bruce Leban, Mugdha Bendre, and Parisa Tabriz. Gauntlt vendors it here to have a target to run gauntlt attacks against.  We assume no responsibility for the code and we are not distributing the code in a modified form.
+
+It is a vulnerable app and should not be copied or modified.
+
+# To run Gruyere
+```
+$ ./launch.sh
+```
+You should now be able to go to http://localhost:8008
+
+# To stop Gruyere
+```
+$ ./kill.sh
+```
+That's it.  You can make sure that it isnt running `ps -ef | grep python` in case you are worried.
+
+# For more details
+For more details, please see http://google-gruyere.appspot.com/
