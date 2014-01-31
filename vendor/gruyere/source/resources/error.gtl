@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Copyright 2010 Google Inc. -->
+<html>
+<head>
+<title>Gruyere: Error</title>
+[[include:base.css]][[/include:base.css]]
+</head>
+
+<body>
+[[include:menubar.gtl]][[/include:menubar.gtl]]
+
+[[if:_message]]
+<div class='message'>{{_message}}</div>
+[[/if:_message]]
+
+</body>
+
+</html>
