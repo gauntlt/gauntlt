@@ -1,0 +1,107 @@
+(dp1
+S'sardo'
+p2
+(dp3
+S'private_snippet'
+p4
+S'I hate my brother Romano.'
+p5
+sS'name'
+p6
+S'Miss Sardo'
+p7
+sS'color'
+p8
+S'red'
+p9
+sS'web_site'
+p10
+S'http://www.google.com/search?q="pecorino+sardo"'
+p11
+sS'is_admin'
+p12
+I00
+sS'is_author'
+p13
+I01
+sS'snippets'
+p14
+(lp15
+sS'pw'
+p16
+S'odras'
+p17
+ssS'administrator'
+p18
+(dp19
+g4
+S'My password is secret. Get it?'
+p20
+sg6
+S'Admin'
+p21
+sg10
+S'http://www.google.com/contact/security.html'
+p22
+sg12
+I01
+sg13
+I00
+sg16
+S'secret'
+p23
+ssS'cheddar'
+p24
+(dp25
+g4
+S'My SSN is <a href="http://www.google.com/search?q=078-05-1120">078-05-1120</a>.'
+p26
+sg6
+S'Cheddar Mac'
+p27
+sg8
+S'blue'
+p28
+sg10
+S'http://images.google.com/images?q=cheddar+cheese'
+p29
+sg12
+I00
+sg13
+I01
+sg14
+(lp30
+S'Gruyere is the cheesiest application on the web.'
+p31
+aS'I wonder if there are any security holes in this....'
+p32
+asg16
+S'orange'
+p33
+ssS'brie'
+p34
+(dp35
+g4
+S'I use the same password for all my accounts.'
+p36
+sg6
+S'Brie'
+p37
+sg8
+S'red; text-decoration:underline'
+p38
+sg10
+S'http://news.google.com/news/search?q=brie'
+p39
+sg12
+I00
+sg13
+I01
+sg14
+(lp40
+S'Brie is the queen of the cheeses<span style=color:red>!!!</span>'
+p41
+asg16
+S'briebrie'
+p42
+ss.
