@@ -1,12 +1,12 @@
 language: ruby
 rvm:
   - 1.9.3
-  - jruby-head
 before_install:
   - git submodule update --init --recursive
 before_script:
   - sudo apt-get install nmap
   - sudo apt-get install wget
+  - sudo apt-get install unzip
   - sudo apt-get install libcurl4-openssl-dev
   - export SSLYZE_PATH="/home/travis/build/gauntlt/gauntlt/vendor/sslyze/sslyze.py"
   - export SQLMAP_PATH="/home/travis/build/gauntlt/gauntlt/vendor/sqlmap/sqlmap.py"
