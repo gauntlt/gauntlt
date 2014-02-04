@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Copyright 2010 Google Inc. -->
+<html>
+<head>
+<title>Gruyere: Snippets</title>
+[[include:base.css]][[/include:base.css]]
+<script src="/{{_unique_id}}/lib.js" text="text/javascript">
+</script>
+</head>
+
+<body>
+{{# With a valid uid parameter this renders another user's snippets.
+  # We detect that case by checking if:_db.*uid. Without a uid specified,
+  # it renders the logged in user's snippets and includes links to delete
+  # individual snippets.
+}}
+[[include:menubar.gtl]][[/include:menubar.gtl]]
+<div>
+<h2 class='has-refresh' id="user_name">
+[[if:uid]]
+  [[if:_db.*uid]]{{_db.*uid.name:text}}[[/if:_db.*uid]][[if:!_db.*uid]]{{uid.0}}[[/if:!_db.*uid]]
+  [[if:_db.*uid.icon]]<img alt='' height='32' width='32' src='{{_db.*uid.icon:text}}'>[[/if:_db.*uid.icon]]
+[[/if:uid]]
+[[if:!uid]]
+  My Snippets
+  [[if:_profile.icon]]<img alt='' height='32' width='32' src='{{_profile.icon:text}}'>[[/if:_profile.icon]]
+[[/if:!uid]]
+</h2>
+<div class='refresh'><a class='button'
+  onclick='_refreshSnippets("{{_unique_id}}", "[[if:uid]]{{uid.0}}[[/if:uid]][[if:!uid]]{{_cookie.uid}}[[/if:!uid]]")'
+  href='#'>Refresh</a></div>
+<div class='content'>
+{{# Someone else's snippets}}
+[[if:uid]]
+  [[if:!_db.*uid.is_author]]
+    [[if:_db.*uid]]{{_db.*uid.name:text}}[[/if:_db.*uid]][[if:!_db.*uid]]{{uid.0}}[[/if:!_db.*uid]]
+    is not an author.
+  [[/if:!_db.*uid.is_author]]
+  [[if:_db.*uid.is_author]]
+    [[if:!_db.*uid.snippets.0]]
+      No snippets.
+    [[/if:!_db.*uid.snippets.0]]
+    [[if:_db.*uid.snippets.0]]
+      <table>
+        <tr><td colspan='2'><b>All snippets:</b></td></tr>
+        [[for:_db.*uid.snippets]]
+          <tr>
+            <td valign='top'>
+              <script>document.write({{_key}} + 1)</script>&nbsp;&nbsp;
+            </td>
+            <td valign='top'>
+              <div id='{{_key}}'>
+                {{_this:html}}
+              </div>
+            </td>
+          </tr>
+        [[/for:_db.*uid.snippets]]
+      </table>
+      <br>
+      <a href='{{_db.*uid.web_site:text}}'>[[if:_db.*uid]]{{_db.*uid.name:text}}[[/if:_db.*uid]][[if:!_db.*uid]]{{uid.0}}[[/if:!_db.*uid]]'s site</a>
+    [[/if:_db.*uid.snippets.0]]
+  [[/if:_db.*uid.is_author]]
+[[/if:uid]]
+{{# Your snippets }}
+[[if:!uid]]
+  [[if:!_profile.is_author]]
+    You are not an author.
+  [[/if:!_profile.is_author]]
+  [[if:_profile.is_author]]
+    [[if:!_profile.snippets.0]]
+      No snippets.
+    [[/if:!_profile.snippets.0]]
+    [[if:_profile.snippets.0]]
+      <br>
+      <table>
+        <tr><td colspan='2'><b>All snippets:</b></td></tr>
+        [[for:_profile.snippets]]
+          <tr>
+            <td valign='top'>
+              <script>document.write({{_key}} + 1)</script>&nbsp;&nbsp;
+            </td>
+            <td valign='top'>
+              <a href='/{{_unique_id}}/deletesnippet?index={{_key}}'>[X]</a>&nbsp;
+            </td>
+            <td valign='top'>
+              <div id='{{_key}}'>
+                {{_this:html}}
+              </div>
+            </td>
+          </tr>
+        [[/for:_profile.snippets]]
+      </table>
+    [[/if:_profile.snippets.0]]
+  [[/if:_profile.is_author]]
+  <br>
+  <a href='{{_profile.web_site:text}}'>My site</a>
+[[/if:!uid]]
+</div>
+</body>
+</html>

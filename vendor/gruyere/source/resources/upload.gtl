@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Copyright 2010 Google Inc. -->
+<html>
+<head>
+<title>Gruyere: Upload</title>
+[[include:base.css]][[/include:base.css]]
+</head>
+
+<body>
+[[include:menubar.gtl]][[/include:menubar.gtl]]
+<h2>Gruyere: Upload</h2>
+
+<div class='content'>
+<h3>Select a file to upload to your account.</h3>
+
+[[if:_message]]
+<div class='message'>{{_message}}</div>
+[[/if:_message]]
+
+<div>
+<form method='post' enctype='multipart/form-data' action='/{{_unique_id}}/upload2'>
+<table>
+<tr><td>
+    <input type='file' name='upload_file' size='50'>
+</td></tr>
+<tr><td align='center'>
+    <input type='submit' value='Upload'>
+</td></tr>
+</table>
+</form>
+</div>
+</body>
+</html>

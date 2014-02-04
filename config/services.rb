@@ -1,14 +1,14 @@
 require 'service_manager'
 
 Bundler.with_clean_env do
-  Dir.chdir "./vendor/railsgoat" do 
-    `bundle install --binstubs`
+  Dir.chdir "./vendor/gruyere" do 
   end
-  
-  ServiceManager.define_service "railsgoat" do |s|
-    s.start_cmd = "rake db:setup && rails s -p 3000"
-    s.loaded_cue = /WEBrick::HTTPServer#start/
-    s.cwd = Dir.pwd + "/vendor/railsgoat/"
-    s.pid_file = 'railsgoat.pid'
+
+  ServiceManager.define_service "gruyere" do |s|
+    s.start_cmd = "./launch_for_service_manager.sh"
+    s.loaded_cue = /Gruyere started.../
+    s.cwd = Dir.pwd + "/vendor/gruyere/"
+    s.host = "localhost"
+    s.port = 8008
   end
 end

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Copyright 2010 Google Inc. -->
+<html>
+<head>
+<title>Gruyere: Upload Complete</title>
+[[include:base.css]][[/include:base.css]]
+</head>
+
+<body>
+[[include:menubar.gtl]][[/include:menubar.gtl]]
+<div>
+<h2>Gruyere: Upload Complete</h2>
+</div>
+
+[[if:_message]]
+<div class='message'>{{_message}}</div>
+[[/if:_message]]
+
+<div class='content'>
+[[if:url]]
+ <b> File uploaded!<br>
+ File accessible at:</b> {{url}}
+[[/if:url]]
+</div>
+</body>
+
+</html>

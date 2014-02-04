@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Copyright 2010 Google Inc. -->
+<html>
+<head>
+<title>Gruyere: Profile</title>
+[[include:base.css]][[/include:base.css]]
+</head>
+
+<body>
+[[include:menubar.gtl]][[/include:menubar.gtl]]
+<div>
+<h2>Gruyere: Profile</h2>
+</div>
+
+<div class='content'>
+[[if:_cookie.is_admin]]
+  <h3>Add a new account or edit an existing account.</h3>
+[[/if:_cookie.is_admin]]
+[[if:!_cookie.is_admin]]
+  <h3>Edit your profile.</h3>
+[[/if:!_cookie.is_admin]]
+[[if:_message]]
+<div class='message'>{{_message}}</div>
+[[/if:_message]]
+
+<form method='get' action='/{{_unique_id}}/saveprofile'>
+<input type='hidden' name='action' value='update'>
+<table>
+  <tr><td>
+    User id:
+  </td><td>
+[[if:_cookie.is_admin]]
+  [[if:uid]]
+    <input type='hidden' name='uid' value='{{uid.0}}'>
+    {{uid.0}}
+  [[/if:uid]]
+  [[if:!uid]]
+    <input type='hidden' name='uid' value='{{_cookie.uid}}'>
+    {{_cookie.uid}}
+  [[/if:!uid]]
+[[/if:_cookie.is_admin]]
+[[if:!_cookie.is_admin]]
+  [[if:_cookie.uid]]
+    {{_cookie.uid}}
+  [[/if:_cookie.uid]]
+  [[if:!_cookie.uid]]
+      &lt;not logged in&gt;
+  [[/if:!_cookie.uid]]
+[[/if:!_cookie.is_admin]]
+  </td></tr>
+<tr><td>
+    User name:
+  </td><td>
+    <input type='text'
+      value='[[if:uid]]{{_db.*uid.name:text}}[[/if:uid]][[if:!uid]]{{_profile.name:text}}[[/if:!uid]]'
+      name='name' maxlength='16'>
+</td></tr>
+<tr><td>
+    OLD Password:
+  </td><td>
+    <input type='password' name='oldpw'>
+  </td><td>
+</td></tr>
+<tr><td>
+    NEW Password:
+  </td><td>
+    <input type='password' name='pw'>
+    <br><span style="color:red"><b>WARNING: Gruyere is not secure.<br>
+    Do not use a password that you use for any real service.</b></span>
+</td></tr>
+<tr><td>
+    Icon:
+  </td><td>
+    <input type='text'
+      value='[[if:uid]]{{_db.*uid.icon:text}}[[/if:uid]][[if:!uid]]{{_profile.icon:text}}[[/if:!uid]]'
+      value='{{_profile.icon:text}}'
+      name='icon'>
+    (32x32 image, URL to image location)
+</td></tr>
+<tr><td>
+    Homepage:
+  </td><td>
+    <input type='text' size='50'
+      value='[[if:uid]]{{_db.*uid.web_site:text}}[[/if:uid]][[if:!uid]]{{_profile.web_site:text}}[[/if:!uid]]'
+      name='web_site'>
+</td></tr>
+<tr><td>
+    Profile Color:
+  </td><td>
+    <input type='text'
+      value='[[if:uid]]{{_db.*uid.color:text}}[[/if:uid]][[if:!uid]]{{_profile.color:text}}[[/if:!uid]]'
+      name='color'>
+</td></tr>
+<tr><td>
+    Private Snippet:
+  </td><td>
+    <textarea name='private_snippet' rows='10' style='width:100%'>[[if:uid]]{{_db.*uid.private_snippet}}[[/if:uid]][[if:!uid]]{{_profile.private_snippet}}[[/if:!uid]]</textarea>
+</td></tr>
+[[if:_cookie.is_admin]]
+<tr><td>
+    Is admin:
+  </td><td>
+    <input type='radio'
+      [[if:uid]][[if:_db.*uid.is_admin]]checked[[/if:_db.*uid.is_admin]][[/if:uid]]
+      [[if:!uid]][[if:_profile.is_admin]]checked[[/if:_profile.is_admin]][[/if:!uid]]
+      name='is_admin' value='True'>Yes
+    <input type='radio'
+      [[if:uid]][[if:!_db.*uid.is_admin]]checked[[/if:!_db.*uid.is_admin]][[/if:uid]]
+      [[if:!uid]][[if:!_profile.is_admin]]checked[[/if:!_profile.is_admin]][[/if:!uid]]
+      name='is_admin' value='False'>No
+</td></tr>
+<tr><td>
+    Is author:
+  </td><td>
+    <input type='radio'
+      [[if:uid]][[if:_db.*uid.is_author]]checked[[/if:_db.*uid.is_author]][[/if:uid]]
+      [[if:!uid]][[if:_profile.is_author]]checked[[/if:_profile.is_author]][[/if:!uid]]
+      name='is_author' value='True'>Yes
+    <input type='radio'
+      [[if:uid]][[if:!_db.*uid.is_author]]checked[[/if:!_db.*uid.is_author]][[/if:uid]]
+      [[if:!uid]][[if:!_profile.is_author]]checked[[/if:!_profile.is_author]][[/if:!uid]]
+      name='is_author' value='False'>No
+</td></tr>
+[[/if:_cookie.is_admin]]
+
+<tr><td></td><td align='left'>
+    <input type='submit' value='Update'>
+</td></tr>
+</table>
+</form>
+</div>
+
+</body>
+
+</html>
+

@@ -2,7 +2,6 @@
 Feature: Garmr scan
   Background:
     Given an attack "garmr" exists
-    And scapegoat is running on port 9292
     And I copy the attack files from the "examples/garmr" folder
     And the following attack files exist:
       | filename      |

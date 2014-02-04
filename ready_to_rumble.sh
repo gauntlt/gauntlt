@@ -1,4 +1,4 @@
-#!/bin/bash
+
 # This little script tries to mimic the .travis.yml setup so that when we are 
 # doing local dev, we can run tests and make sure we are passing CI.
 
@@ -41,7 +41,7 @@ fi
 
 if [ -z $DIRB ]
   then 
-    MESSAGE="dirb is not installed in your path, try installing it 'wget http://downloads.sourceforge.net/project/dirb/dirb/2.03/dirb203.tar.gz && tar xvfz dirb203.tar.gz && cd dirb && ./configure && make && cd ..'"
+    MESSAGE="dirb is not installed in your path, try installing it and then copying it into your path. Here is how you can build it: 'wget http://downloads.sourceforge.net/project/dirb/dirb/2.03/dirb203.tar.gz && tar xvfz dirb203.tar.gz && cd dirb && ./configure && make && cd ..'"
     ERRORS=$ERRORS+1 
 fi
 
@@ -51,9 +51,7 @@ if [ -z $NMAP ]
     ERRORS=$ERRORS+1 
 fi
 
-
-
-if [ $ERRORS -gt 0 ]
+if [[ $ERRORS > 0 ]]
   then
   echo $MESSAGE
   ERRORS=$ERRORS-1

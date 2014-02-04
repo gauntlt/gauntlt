@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Copyright 2010 Google Inc. -->
+<html>
+<head>
+<title>Gruyere: Profile</title>
+[[include:base.css]][[/include:base.css]]
+</head>
+
+<body>
+[[include:menubar.gtl]][[/include:menubar.gtl]]
+<h2>Gruyere: Sign up</h2>
+
+<div class='content'>
+<h3>Sign up for a new account.</h3>
+
+[[if:_message]]
+<div class='message'>{{_message}}</div>
+[[/if:_message]]
+
+<form method='get' action='/{{_unique_id}}/saveprofile'>
+<input type='hidden' name='action' value='new'>
+
+<table><tr><td>
+    User name:
+  </td><td>
+    <input type='text' name='uid' value='' maxlength='16'>
+</td></tr>
+<tr><td>
+    Password:
+  </td><td>
+    <input type='password' name='pw'>
+    <br><span style="color:red"><b>WARNING: Gruyere is not secure.<br>
+    Do not use a password that you use for any real service.<br>
+    Do not upload any personal or private data.</b></span>
+</td></tr>
+[[if:_cookie.is_admin]]
+<tr><td>
+    Is admin:
+  </td><td>
+    <input type='radio' name='is_admin' value='True'>Yes
+    <input type='radio' name='is_admin' value='False' checked>No
+</td></tr>
+<tr><td>
+    Is author:
+  </td><td>
+    <input type='radio' name='is_author' value='True' checked>Yes
+    <input type='radio' name='is_author' value='False'>No
+</td></tr>
+[[/if:_cookie.is_admin]]
+[[if:!_cookie.is_admin]]
+<input type='hidden' name='is_author' value='True'>
+[[/if:!_cookie.is_admin]]
+<tr><td></td><td align='right'>
+    <input type='submit' value='Create account'>
+</td></tr>
+</table>
+</form>
+</div>
+</body>
+
+</html>
+

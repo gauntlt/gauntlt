@@ -1,0 +1,30 @@
+{{# Copyright 2010 Google Inc. }}
+_feed((
+{{# with a uid parameter, get one user's snippets
+    returns [name, snippet, ...]
+The first entry is the user's name and the remaining entries are
+the user's snippets, in order from most recent to least recent.
+}}
+[[if:uid]]
+[
+"[[if:_db.*uid]]{{_db.*uid.name}}[[/if:_db.*uid]][[if:!_db.*uid]]{{uid.0}}[[/if:!_db.*uid]]"
+[[if:_db.*uid.snippets.0]][[for:_db.*uid.snippets]]
+,"{{_this:html}}"
+[[/for:_db.*uid.snippets]][[/if:_db.*uid.snippets.0]]
+]
+[[/if:uid]]
+{{# without a uid parameter, get one snippet from each user 
+    returns {'private_snippet':snippet, user:snippet, ...}
+The first entry is the logged in user's private snippet.
+The rest of the entries are all the other users' most recent snippet.
+}}
+[[if:!uid]]
+{
+"private_snippet":
+  "{{_profile.private_snippet:html}}"
+[[for:_db]]
+[[if:is_author]][[if:snippets.0]],"{{_key}}":
+  "{{snippets.0:html}}"[[/if:snippets.0]][[/if:is_author]][[/for:_db]]
+}
+[[/if:!uid]]
+))

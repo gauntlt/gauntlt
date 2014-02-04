@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Copyright 2010 Google Inc. -->
+<html>
+<head>
+<title>Debug Dump</title>
+</head>
+<body>
+<table>
+  <tr>
+    <td valign='top'>_cookie:&nbsp;</td>
+    <td valign='top'>{{_cookie:pprint}}</td>
+  </tr>
+  <tr>
+    <td valign='top'>_profile:&nbsp;</td>
+    <td valign='top'>{{_profile:pprint}}</td>
+  </tr>
+  <tr>
+    <td valign='top'>_db:&nbsp;</td>
+    <td valign='top'>{{_db:pprint}}</td>
+  </tr>
+</table>
+</body>
+</html>
