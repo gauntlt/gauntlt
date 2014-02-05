@@ -1,8 +1,10 @@
 require 'cucumber'
 require 'cucumber/runtime'
 require 'cucumber/cli/main'
+require 'gauntlt/patches/errors.rb'
 
 module Gauntlt
+
   class Runtime
     class NoFilesFound < StandardError; end
     class ExecutionFailed < StandardError; end
@@ -34,11 +36,7 @@ module Gauntlt
     end
 
     def execute!
-      if cuke_cli.execute! # cucumber failed, returning true
-        raise ExecutionFailed.new("Bad or undefined attack!")
-      else            # cucumber executed successfully, returning false
-        true
-      end
+      cuke_cli.execute! 
     end
 
     class << self

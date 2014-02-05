@@ -1,4 +1,3 @@
-@scapegoat
 Feature: Garmr scan
   Background:
     Given an attack "garmr" exists
@@ -11,4 +10,3 @@ Feature: Garmr scan
       """
       6 steps (6 passed)
       """
-    And scapegoat should quit
