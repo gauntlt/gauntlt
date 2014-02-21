@@ -1,4 +1,3 @@
-
 # This little script tries to mimic the .travis.yml setup so that when we are 
 # doing local dev, we can run tests and make sure we are passing CI.
 
@@ -23,7 +22,7 @@ fi
 
 if [ -z $SQLMAP_PATH ]
   then
-    MESSAGE="SQLMAP_PATH environment variable unset, try setting it to ./vendor/sslyze/sqlmap.py if you havent updated the submodules we use in gauntlt, run this first: git submodule update --init --recursive"
+    MESSAGE="SQLMAP_PATH environment variable unset, try setting it to ./vendor/sqlmap/sqlmap.py if you havent updated the submodules we use in gauntlt, run this first: git submodule update --init --recursive"
     ERRORS=$ERRORS+1 
 fi
 
