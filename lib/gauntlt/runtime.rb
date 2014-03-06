@@ -20,7 +20,7 @@ module Gauntlt
     end
 
     def cuke_cli
-      args =  attack_files + ['--strict', '--require', self.class.adapters_dir]
+      args =  attack_files + ['--strict', '--no-snippets', '--require', self.class.adapters_dir]
       args += ['--tags', tags] unless tags.empty?
       args += ['--format', format] unless format.nil?
 

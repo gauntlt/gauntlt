@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rake"
   s.add_development_dependency "arachni"
 
-  s.add_runtime_dependency 'cucumber', '= 1.3.10', '= 1.3.10'
+  s.add_runtime_dependency 'cucumber', '= 1.3.11', '= 1.3.11'
   s.add_runtime_dependency 'aruba', '= 0.5.4', '0.5.4'
   s.add_runtime_dependency "nokogiri", "~>1.5.0"
   s.add_runtime_dependency "trollop"
