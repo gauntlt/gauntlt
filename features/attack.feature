@@ -100,7 +100,7 @@ Feature: Verify the attack behaviour is correct
     When I run `gauntlt`
     Then it should fail with:
       """
-      Undefined gauntlt attack step
+      Not a recognized gauntlt attack step
       """
 
   Scenario: No attack files in default path
