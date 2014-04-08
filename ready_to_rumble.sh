@@ -5,6 +5,7 @@ NMAP=`which nmap`
 GARMR=`which garmr`
 DIRB=`which dirb`
 ARACHNI=`which arachni`
+HEARTBLEED=`which Heartbleed`
 
 ERRORS=0
 
@@ -47,6 +48,11 @@ fi
 if [ -z $NMAP ] 
   then
     MESSAGE="nmap is not installed in your path, try installing it (brew install nmap OR apt-get install nmap) and adding it to your path"
+    ERRORS=$ERRORS+1 
+fi
+if [ -z $HEARTBLEED ] 
+  then
+    MESSAGE="Heartbleed is not installed in your path, try installing it (https://github.com/FiloSottile/Heartbleed) and adding it to your path"
     ERRORS=$ERRORS+1 
 fi
 
