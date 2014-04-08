@@ -4,6 +4,7 @@ rvm:
 before_install:
   - git submodule update --init --recursive
 before_script:
+  - go get github.com/FiloSottile/Heartbleed
   - sudo apt-get install nmap
   - sudo apt-get install wget
   - sudo apt-get install unzip

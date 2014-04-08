@@ -1,0 +1,14 @@
+@slow
+Feature: Test for the Heartbleed vulnerability
+
+Scenario: Test my website for the Heartbleed vulnerability (see heartbleed.com for more info)
+
+  Given "Heartbleed" is installed
+  And the following profile:
+    | name          | value                 |
+    | domain        | example.com           |  
+  When I launch a "Heartbleed" attack with:
+    """
+    Heartbleed <domain>:443
+    """
+  Then the output should contain "SAFE"
