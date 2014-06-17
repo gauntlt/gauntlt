@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_development_dependency 'rake', '~> 10.1'
-  s.add_development_dependency 'arachni', '~> 0.4'
+  s.add_development_dependency 'arachni', '= 0.4.6'
 
   s.add_runtime_dependency 'cucumber', '= 1.3.11'
   s.add_runtime_dependency 'aruba', '= 0.5.4'
