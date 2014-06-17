@@ -39,3 +39,6 @@ dirb
 # Testing
 resume
 my_attacks
+
+# Gruyere testing
+vendor/gruyere/source/stored-data.txt

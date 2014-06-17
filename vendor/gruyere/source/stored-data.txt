@@ -1,22 +1,22 @@
 (dp1
-S'cheddar'
+S'sardo'
 p2
 (dp3
 S'private_snippet'
 p4
-S'My SSN is <a href="http://www.google.com/search?q=078-05-1120">078-05-1120</a>.'
+S'I hate my brother Romano.'
 p5
 sS'name'
 p6
-S'Cheddar Mac'
+S'Miss Sardo'
 p7
 sS'color'
 p8
-S'blue'
+S'red'
 p9
 sS'web_site'
 p10
-S'http://images.google.com/images?q=cheddar+cheese'
+S'http://www.google.com/search?q="pecorino+sardo"'
 p11
 sS'is_admin'
 p12
@@ -27,56 +27,56 @@ I01
 sS'snippets'
 p14
 (lp15
-S'Gruyere is the cheesiest application on the web.'
+sS'pw'
 p16
-aS'I wonder if there are any security holes in this....'
+S'odras'
 p17
-asS'pw'
-p18
-S'orange'
-p19
 ssS'administrator'
-p20
-(dp21
+p18
+(dp19
 g4
 S'My password is secret. Get it?'
-p22
+p20
 sg6
 S'Admin'
-p23
+p21
 sg10
 S'http://www.google.com/contact/security.html'
-p24
+p22
 sg12
 I01
 sg13
 I00
-sg18
+sg16
 S'secret'
-p25
-ssS'sardo'
-p26
-(dp27
+p23
+ssS'cheddar'
+p24
+(dp25
 g4
-S'I hate my brother Romano.'
-p28
+S'My SSN is <a href="http://www.google.com/search?q=078-05-1120">078-05-1120</a>.'
+p26
 sg6
-S'Miss Sardo'
-p29
+S'Cheddar Mac'
+p27
 sg8
-S'red'
-p30
+S'blue'
+p28
 sg10
-S'http://www.google.com/search?q="pecorino+sardo"'
-p31
+S'http://images.google.com/images?q=cheddar+cheese'
+p29
 sg12
 I00
 sg13
 I01
 sg14
-(lp32
-sg18
-S'odras'
+(lp30
+S'Gruyere is the cheesiest application on the web.'
+p31
+aS'I wonder if there are any security holes in this....'
+p32
+asg16
+S'orange'
 p33
 ssS'brie'
 p34
@@ -101,7 +101,7 @@ sg14
 (lp40
 S'Brie is the queen of the cheeses<span style=color:red>!!!</span>'
 p41
-asg18
+asg16
 S'briebrie'
 p42
 ss.
