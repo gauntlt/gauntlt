@@ -38,3 +38,7 @@ World(Gauntlt::Support::CliHelper)
 Before('@slow') do
   @aruba_timeout_seconds = 30
 end
+
+Before('@reallyslow') do
+  @aruba_timeout_seconds = 600
+end
