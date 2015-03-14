@@ -1,7 +1,7 @@
 [![Build Status](https://secure.travis-ci.org/gauntlt/gauntlt.png?branch=master)](http://travis-ci.org/gauntlt/gauntlt) [![Code Climate](https://codeclimate.com/github/gauntlt/gauntlt.png)](https://codeclimate.com/github/gauntlt/gauntlt) [![Gem Version](https://badge.fury.io/rb/gauntlt.png)](http://badge.fury.io/rb/gauntlt)
 
 # gauntlt
-gauntlt is a ruggedization framework
+gauntlt is a ruggedization framework that is enables security testing that is usable by devs, ops and security
 
 ## PROJECT STATUS
 
