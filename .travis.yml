@@ -9,9 +9,11 @@ before_script:
   #- go get github.com/FiloSottile/Heartbleed
   #- go install github.com/FiloSottile/Heartbleed
   #- which Heartbleed
+  - sudo apt-get update
   - sudo apt-get install nmap
   - sudo apt-get install wget
-  - sudo apt-get install unzip
+  - sudo apt-get install golang
+  #- sudo apt-get install unzip
   - sudo apt-get install libcurl4-openssl-dev
   - export SSLYZE_PATH="/home/travis/build/gauntlt/gauntlt/vendor/sslyze/sslyze.py"
   - export SQLMAP_PATH="/home/travis/build/gauntlt/gauntlt/vendor/sqlmap/sqlmap.py"
