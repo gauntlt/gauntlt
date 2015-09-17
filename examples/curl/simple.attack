@@ -11,7 +11,5 @@ Scenario: Verify a 301 is received from a curl
     """
     curl --silent --output /dev/null --write-out "%{http_code}" <hostname>
     """
-  Then it should pass with exactly:
-    """
-    301
-    """
+  # check for 302 or 301 response code
+  Then the output should match /30\d+/
