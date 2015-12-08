@@ -3,8 +3,8 @@
 This is a Gauntlt test to check if the vulnerability in WebGoat located at General => Http Basics (vuln-31 - Session Management Flaws => Spoof an Authentication Cookie) exists.
 
 It will print out:
-	\*\*\*Vulnerability Present\*\*\* if the vulnerability is present
-	\*\*\*No Vulnerability\*\*\* if the vulnerability is fixed (aka not present)
+	..*\*\*\*Vulnerability Present\*\*\* if the vulnerability is present
+	..*\*\*\*No Vulnerability\*\*\* if the vulnerability is fixed (aka not present)
 
 1). You have requests installed. If you don't have requests installed on your machine, you can follow these steps to install it:
 
