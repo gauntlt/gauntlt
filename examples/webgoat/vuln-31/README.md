@@ -4,9 +4,9 @@ This is a Gauntlt test to check if the vulnerability in WebGoat located at Gener
 
 It will print out:
 
-* **\*\*\*Vulnerability Present\*\*\** if the vulnerability is present
+* __\*\*\*Vulnerability Present\*\*\*__ if the vulnerability is present
 
-* **\*\*\*No Vulnerability\*\*\** if the vulnerability is fixed (aka not present)
+* __\*\*\*No Vulnerability\*\*\*__ if the vulnerability is fixed (aka not present)
 
 1). You have requests installed. If you don't have requests installed on your machine, you can follow these steps to install it:
 
