@@ -27,4 +27,4 @@ Testing vuln-00 can be done outside of Gauntlt by navigating to the webgoat/vuln
 	$ python exploit-vuln-31.py
 
 
-*This Gauntlt test was written by Tin Vo (tinnvo1101@gmail.com) and Uyviet Nguyen (uyviet.nguyen@utexas.edu) on Mon, 01 Dec 2015*
+*This Gauntlt test was written by Tin Vo (tinnvo1101@gmail.com) and Uyviet Nguyen (uyviet.nguyen@utexas.edu) on 10 Dec 2015*
