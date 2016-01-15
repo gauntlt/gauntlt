@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'cucumber', '= 1.3.20'
   s.add_runtime_dependency 'aruba', '= 0.5.4'
-  s.add_runtime_dependency 'nokogiri', '= 1.6.1'
+  s.add_runtime_dependency 'nokogiri', '= 1.6.7'
   s.add_runtime_dependency 'trollop', '~> 2.0'
 
 end
