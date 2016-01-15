@@ -29,3 +29,4 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'trollop', '~> 2.0'
 
 end
+
