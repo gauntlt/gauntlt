@@ -9,13 +9,14 @@ module Gauntlt
     class NoFilesFound < StandardError; end
     class ExecutionFailed < StandardError; end
 
-    attr_accessor :path, :attack_files, :tags, :format
+    attr_accessor :path, :attack_files, :tags, :format, :out
 
-    def initialize(path, tags=[], format="")
+    def initialize(path, tags=[], format="", out="")
       self.path         = path
       self.attack_files = self.class.attack_files_for(path)
       self.tags         = tags
       self.format       = format
+      self.out          = out
       raise NoFilesFound.new("No files found in path: #{path}") if attack_files.empty?
     end
 
@@ -23,6 +24,7 @@ module Gauntlt
       args =  attack_files + ['--strict', '--no-snippets', '--require', self.class.adapters_dir]
       args += ['--tags', tags] unless tags.empty?
       args += ['--format', format] unless format.nil?
+      args += ['--out', out] unless out.nil?
 
       Cucumber::Cli::Main.new(args)
     end
@@ -36,7 +38,7 @@ module Gauntlt
     end
 
     def execute!
-      cuke_cli.execute! 
+      cuke_cli.execute!
     end
 
     class << self
