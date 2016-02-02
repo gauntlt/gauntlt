@@ -17,7 +17,7 @@ module Gauntlt
         end
         if @attack_steps.include?(alias_versioned)
             @attack_steps[alias_versioned]
-        else if
+        elsif
             @attack_steps[alias_name]
         else
             raise("Unknown attack alias #{alias_name}, try gauntlt --list_attack_aliases")
