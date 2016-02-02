@@ -11,10 +11,17 @@ module Gauntlt
       def load_attack_alias(alias_name, *version)
         @attack_steps = import_attack_aliases
         if version.length > 0
-            alias_name << "-"
-            alias_name << version[0]
+            alias_versioned << alias_name
+            alias_versioned << "-"
+            alias_versioned << version[0]
         end
-        @attack_steps[alias_name] || raise("Unknown attack alias #{alias_name}, try gauntlt --list_attack_aliases")
+        if @attack_steps.include?(alias_versioned)
+            @attack_steps[alias_versioned]
+        else if
+            @attack_steps[alias_name]
+        else
+            raise("Unknown attack alias #{alias_name}, try gauntlt --list_attack_aliases")
+        end
       end
 
       def import_attack_aliases
