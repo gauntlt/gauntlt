@@ -20,7 +20,8 @@ before_script:
   - 'cd vendor/Garmr && sudo python setup.py install && cd ../..'
   - 'cd vendor && wget http://downloads.sourceforge.net/project/dirb/dirb/2.03/dirb203.tar.gz && tar xvfz dirb203.tar.gz && cd dirb && ./configure && make && sudo cp dirb /usr/local/bin/ && cd ..'
   - export DIRB_WORDLISTS="/home/travis/build/gauntlt/gauntlt/vendor/dirb/wordlists"
-
+before_deploy:
+- gem install mime-types -v 2.6.2
 matrix:
   allow_failures:
     - rvm: 2.1.2
