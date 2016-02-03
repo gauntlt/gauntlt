@@ -7,8 +7,13 @@ module Gauntlt
       def gauntlt_attack_aliases
         @gauntlt_attack_aliases ||= {}
       end
-      
-      def load_attack_alias(alias_name, *version)
+     
+      def load_attack_alias(alias_name)
+	@attack_steps = import_attack_aliases
+	@attack_steps[alias_name] || raise("Unknown attack alias #{alias_name}, try gauntlt --list_attack_aliases")
+      end
+
+      def load_attack_alias(alias_name, version)
         @attack_steps = import_attack_aliases
         alias_versioned = alias_name
         if version.length > 0
