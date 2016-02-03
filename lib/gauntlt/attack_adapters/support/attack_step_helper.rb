@@ -15,9 +15,10 @@ module Gauntlt
             alias_versioned << "-"
             alias_versioned << version[0]
         end
+	print @attack_steps
         if @attack_steps.include?(alias_versioned)
             @attack_steps[alias_versioned]
-        elsif
+        elsif  
             @attack_steps[alias_name]
         else
             raise("Unknown attack alias #{alias_name}, try gauntlt --list_attack_aliases")
