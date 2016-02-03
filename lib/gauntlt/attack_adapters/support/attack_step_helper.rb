@@ -13,14 +13,14 @@ module Gauntlt
         @alias_versioned = ""
 	@alias_versioned << alias_name
         if version.length > 0
-            alias_versioned << "-"
-            alias_versioned << version[0]
+            @alias_versioned << "-"
+            @alias_versioned << version[0]
         end
 
-	print "Checking #{alias_versioned} and #{alias_name}"
+	print "Checking #{@alias_versioned} and #{alias_name}"
 
         if @attack_steps.has_key?(alias_versioned)
-            @attack_steps[alias_versioned]
+            @attack_steps[@alias_versioned]
         elsif @attack_steps.has_key?(alias_name)
             @attack_steps[alias_name]
         else
