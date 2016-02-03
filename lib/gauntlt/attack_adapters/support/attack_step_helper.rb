@@ -10,7 +10,8 @@ module Gauntlt
      
       def load_attack_alias(alias_name, *version)
         @attack_steps = import_attack_aliases
-        alias_versioned = alias_name
+        @alias_versioned = ""
+	@alias_versioned << alias_name
         if version.length > 0
             alias_versioned << "-"
             alias_versioned << version[0]
