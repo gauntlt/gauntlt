@@ -1,4 +1,9 @@
-{ "arachni-simple_xss-1.3.2" : { "command" : "arachni --check=xss <url>",
+{ 
+    "arachni-simple_xss-1.3.2" : { "command" : "arachni --check=xss <url>",
+      "description" : "This is a scan for cross site scripting (xss) that only runs the base xss module in arachni. This particular scan is for version 1.3.2 of arachni.",
+      "requires" : [ "<url>" ]
+    },
+    "arachni-simple_xss-1.0.6" : { "command" : "arachni --check=xss <url>",
       "description" : "This is a scan for cross site scripting (xss) that only runs the base xss module in arachni. This particular scan is for version 1.3.2 of arachni.",
       "requires" : [ "<url>" ]
     },

@@ -25,7 +25,7 @@ before_deploy:
 matrix:
   allow_failures:
     - rvm: 2.1.2
-
+    - rvm: 1.9.3
 notifications:
   irc:
     channels:
