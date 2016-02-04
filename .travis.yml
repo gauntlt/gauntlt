@@ -2,7 +2,6 @@ language: ruby
 rvm:
   - 1.9.3
   - 2.0.0
-  - 2.1.2
 before_install:
   - git submodule update --init --recursive
 before_script:
@@ -24,7 +23,6 @@ before_deploy:
 - rvm 1.9.3 do gem install mime-types -v 2.6.2
 matrix:
   allow_failures:
-    - rvm: 2.1.2
     - rvm: 1.9.3
 notifications:
   irc:
