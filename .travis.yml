@@ -14,11 +14,11 @@ before_script:
   - sudo apt-get install golang
   #- sudo apt-get install unzip
   - sudo apt-get install libcurl4-openssl-dev
-  - export SSLYZE_PATH="/home/travis/build/gauntlt/gauntlt/vendor/sslyze/sslyze.py"
-  - export SQLMAP_PATH="/home/travis/build/gauntlt/gauntlt/vendor/sqlmap/sqlmap.py"
+  - export SSLYZE_PATH="/home/travis/build/cgotcu/gauntlt/vendor/sslyze/sslyze.py"
+  - export SQLMAP_PATH="/home/travis/build/cgotcu/gauntlt/vendor/sqlmap/sqlmap.py"
   - 'cd vendor/Garmr && sudo python setup.py install && cd ../..'
   - 'cd vendor && wget http://downloads.sourceforge.net/project/dirb/dirb/2.03/dirb203.tar.gz && tar xvfz dirb203.tar.gz && cd dirb && ./configure && make && sudo cp dirb /usr/local/bin/ && cd ..'
-  - export DIRB_WORDLISTS="/home/travis/build/gauntlt/gauntlt/vendor/dirb/wordlists"
+  - export DIRB_WORDLISTS="/home/travis/build/cgotcu/gauntlt/vendor/dirb/wordlists"
 before_deploy:
 - rvm 1.9.3 do gem install mime-types -v 2.6.2
 matrix:
