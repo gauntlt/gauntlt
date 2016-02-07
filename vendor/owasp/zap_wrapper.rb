@@ -3,8 +3,8 @@ require 'owasp_zap'
 include OwaspZap
 
 target = ARGV[0]
-host = ARGV[1] not nil ? ARGV[1] : 'localhost'
-port = ARGV[2] not nil ? ARGV[2] : '8080'
+host = ARGV[1].nil? ? 'localhost' : ARGV[1]
+port = ARGV[2].nil? ? '8080' : ARGV[2]
 
 z = Zap.new :target=>target, 
     :zap=>"./ZAP_2.4.3/zap.sh",
