@@ -19,7 +19,7 @@ before_script:
   - 'cd vendor/Garmr && sudo python setup.py install && cd ../..'
   - 'cd vendor && wget http://downloads.sourceforge.net/project/dirb/dirb/2.03/dirb203.tar.gz && tar xvfz dirb203.tar.gz && cd dirb && ./configure && make && sudo cp dirb /usr/local/bin/ && cd ..'
   - export DIRB_WORDLISTS="/home/travis/build/cgotcu/gauntlt/vendor/dirb/wordlists"
-  - 'cd vendor/owasp && wget https://github.com/zaproxy/zaproxy/releases/download/2.4.3/ZAP_2.4.3_Linux.tar.gz && tar -xzvf ZAP_2.4.3_Linux.tar.gz  
+  - 'cd vendor/owasp && wget https://github.com/zaproxy/zaproxy/releases/download/2.4.3/ZAP_2.4.3_Linux.tar.gz && tar -xzvf ZAP_2.4.3_Linux.tar.gz' 
 before_deploy:
 - rvm 1.9.3 do gem install mime-types -v 2.6.2
 matrix:
