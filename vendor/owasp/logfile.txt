@@ -1,0 +1,4 @@
+Running the following command: ./ZAP_2.4.3/zap.sh -daemon -host localhost -port true 
+Found Java version 1.8.0_65
+Available memory: 3952 MB
+Setting jvm heap size: -Xmx512m
