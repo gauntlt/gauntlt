@@ -28,6 +28,7 @@ Gemfile.lock
 .rbenv*
 *.gem
 .rspec
+.idea
 
 #sqlite DB (from scapegoat)
 *.db

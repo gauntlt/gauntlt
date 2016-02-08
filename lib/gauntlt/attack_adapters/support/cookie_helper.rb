@@ -3,7 +3,7 @@ module Gauntlt
     module CookieHelper
       def cookies_for_last_curl_request
         raise "no curl output found!" unless @raw_curl_response
-
+	puts @raw_curl_response
         @raw_curl_response.scan(/^Set-Cookie:.+$/).map do |header|
           "#{$1}=#{$2}" if header =~ /^Set-Cookie: ([^=]+)=([^;]+;)/
         end

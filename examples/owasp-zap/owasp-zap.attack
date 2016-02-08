@@ -1,0 +1,14 @@
+Feature: Launch curl attack
+
+Background:
+  Given the following profile:
+    | name     | value      |
+    | target   | http://192.168.0.79:8080/bodgeit |
+    | host     | localhost |
+    | port     | 8090 |
+
+Scenario: Verify no output is returned when running the scan
+  When I launch an "owasp-zap" attack
+  # check no output is returned
+  Then the output should match /blah/ 
+  #Then the stdout should not contain anything 
