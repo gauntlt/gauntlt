@@ -1,11 +1,7 @@
-require 'owasp_zap'
-
-include OwaspZap
-
 module Gauntlt
     module Support
         module ZapHelper
-            def launch_attack()
+            def launch_attack
                 target = ARGV[0]
                 host = ARGV[1].nil? ? 'localhost' : ARGV[1]
                 port = ARGV[2].nil? ? '8080' : ARGV[2]
