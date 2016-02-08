@@ -1,0 +1,19 @@
+Feature: Evaluate received cookies against expected.
+
+Background:
+  Given "ruby" is installed
+  And the following profile:
+    | name     | value      |
+    | target   | http://localhost:8080/bodgeit |
+    | host     | localhost  |
+    | port     | 8090 |
+
+Scenario: Verify server is returning the cookies expected
+  When I launch an "owasp_zap" attack with:
+    """
+    ruby vendor/owasp/zap_wrapper.rb <target> <host> <port>
+    """
+  Then the following cookies should be received:
+    | name | secure | _rest              |
+    | PREF | false  | {}                 |
+    | NID  | false  | {'HttpOnly': None} |
