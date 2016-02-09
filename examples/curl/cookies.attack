@@ -13,5 +13,4 @@ Scenario: Verify server is returning the cookies expected
     """
   Then the following cookies should be received:
     | name | secure | _rest              |
-    | PREF | false  | {}                 |
     | NID  | false  | {'HttpOnly': None} |

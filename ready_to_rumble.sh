@@ -1,4 +1,4 @@
-# This little script tries to mimic the .travis.yml setup so that when we are 
+# This little script tries to mimic the .travis.yml setup so that when we are
 # doing local dev, we can run tests and make sure we are passing CI.
 
 NMAP=`which nmap`
@@ -6,54 +6,56 @@ GARMR=`which garmr`
 DIRB=`which dirb`
 ARACHNI=`which arachni`
 HEARTBLEED=`which Heartbleed`
+SSLYZE_PATH=`which sslyze`
+SQLMAP_PATH=`which sqlmap`
 
 ERRORS=0
 
 if [ -z $ARACHNI ]
   then
     MESSAGE="It looks like you dont have arachni-web-scanner installed.  You should be able to do 'gem install arachni' to install it.  You might need to install libcurl first, on ubuntu you can run 'sudo apt-get install libcurl4-openssl-dev && gem install arachni' For more info on arachni, go to arachni-scanner.com"
-    ERRORS=$ERRORS+1 
+    ERRORS=$ERRORS+1
 fi
 
 if [ -z $SSLYZE_PATH ]
   then
     MESSAGE="SSLYZE_PATH environment variable unset, try setting it to ./vendor/sslyze/sslyze.py if you havent updated the submodules we use in gauntlt, run this first: git submodule update --init --recursive"
-    ERRORS=$ERRORS+1 
+    ERRORS=$ERRORS+1
 fi
 
 if [ -z $SQLMAP_PATH ]
   then
     MESSAGE="SQLMAP_PATH environment variable unset, try setting it to ./vendor/sqlmap/sqlmap.py if you havent updated the submodules we use in gauntlt, run this first: git submodule update --init --recursive"
-    ERRORS=$ERRORS+1 
+    ERRORS=$ERRORS+1
 fi
 
-if [ -z $GARMR ] 
+if [ -z $GARMR ]
   then
     MESSAGE="garmr is not installed in your path, try installing it 'cd vendor/Garmr && sudo python setup.py install && cd ../..'"
-    ERRORS=$ERRORS+1 
+    ERRORS=$ERRORS+1
 fi
 
 if [ -z $DIRB_WORDLISTS ]
-  then 
+  then
     MESSAGE="DIRB_WORDLISTS environment variable not set, please set it. Usually this is where you extracted dirb in a directory called 'wordlists'"
-    ERRORS=$ERRORS+1 
+    ERRORS=$ERRORS+1
 fi
 
 if [ -z $DIRB ]
-  then 
+  then
     MESSAGE="dirb is not installed in your path, try installing it and then copying it into your path. Here is how you can build it: 'wget http://downloads.sourceforge.net/project/dirb/dirb/2.03/dirb203.tar.gz && tar xvfz dirb203.tar.gz && cd dirb && ./configure && make && cd ..'"
-    ERRORS=$ERRORS+1 
+    ERRORS=$ERRORS+1
 fi
 
-if [ -z $NMAP ] 
+if [ -z $NMAP ]
   then
     MESSAGE="nmap is not installed in your path, try installing it (brew install nmap OR apt-get install nmap) and adding it to your path"
-    ERRORS=$ERRORS+1 
+    ERRORS=$ERRORS+1
 fi
-if [ -z $HEARTBLEED ] 
+if [ -z $HEARTBLEED ]
   then
     MESSAGE="Heartbleed is not installed in your path, try installing it (https://github.com/FiloSottile/Heartbleed) and adding it to your path"
-    ERRORS=$ERRORS+1 
+    ERRORS=$ERRORS+1
 fi
 
 if [[ $ERRORS > 0 ]]
