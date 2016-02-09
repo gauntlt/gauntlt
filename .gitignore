@@ -29,6 +29,7 @@ Gemfile.lock
 *.gem
 .rspec
 .idea
+.project*
 
 #sqlite DB (from scapegoat)
 *.db
