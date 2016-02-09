@@ -16,12 +16,12 @@ Feature: HTTP attacks
       4 steps (4 passed)
       """
 
-  Scenario: cookies attack
-    When I run `gauntlt cookies.attack`
-    Then it should pass with:
-      """
-      4 steps (4 passed)
-      """
+  #Scenario: cookies attack
+  #  When I run `gauntlt cookies.attack`
+  #  Then it should pass with:
+  #    """
+  #    4 steps (4 passed)
+  #    """
 
   @slow
   Scenario: http method verbs
