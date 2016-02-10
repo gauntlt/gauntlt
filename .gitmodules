@@ -1,6 +1,6 @@
 [submodule "vendor/sslyze"]
 	path = vendor/sslyze
-	url = git://github.com/iSECPartners/sslyze.git
+	url = git://github.com/nabla-c0d3/sslyze.git
 [submodule "vendor/sqlmap"]
 	path = vendor/sqlmap
 	url = https://github.com/sqlmapproject/sqlmap.git
