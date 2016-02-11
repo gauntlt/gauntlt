@@ -5,6 +5,7 @@ rvm:
   - 2.0.0
 before_install:
   - git submodule update --init --recursive --force
+  - gem update bundler
 before_script:
   #- go get github.com/FiloSottile/Heartbleed
   #- go install github.com/FiloSottile/Heartbleed
