@@ -4,7 +4,7 @@ rvm:
   - 2.1.2
   - 2.0.0
 before_install:
-  - git submodule update --init --recursive
+  - git submodule update --init --recursive --force
 before_script:
   #- go get github.com/FiloSottile/Heartbleed
   #- go install github.com/FiloSottile/Heartbleed
@@ -15,7 +15,7 @@ before_script:
   - sudo apt-get install golang
   #- sudo apt-get install unzip
   - sudo apt-get install libcurl4-openssl-dev
-  - export SSLYZE_PATH="/home/travis/build/gauntlt/gauntlt/vendor/sslyze/sslyze.py"
+  - export SSLYZE_PATH="/home/travis/build/gauntlt/gauntlt/vendor/sslyze/sslyze_cli.py"
   - export SQLMAP_PATH="/home/travis/build/gauntlt/gauntlt/vendor/sqlmap/sqlmap.py"
   - 'cd vendor/Garmr && sudo python setup.py install && cd ../..'
   - 'cd vendor && wget http://downloads.sourceforge.net/project/dirb/dirb/2.03/dirb203.tar.gz && tar xvfz dirb203.tar.gz && cd dirb && ./configure && make && sudo cp dirb /usr/local/bin/ && cd ..'

@@ -27,7 +27,7 @@ git submodule update --init --recursive --force
 
 
 # install sslyze
-if ! type "sslyze" > /dev/null; then
+if ! type "sslyze" > /dev/null 2>&1; then
     cd $GAUNTLT_DIR/vendor/sslyze
     pip install -r requirements.txt
     ln -s `pwd`/sslyze_cli.py /usr/bin/sslyze
@@ -36,7 +36,7 @@ fi
 
 
 # install sqlmap
-if ! type "sqlmap" > /dev/null; then
+if ! type "sqlmap" > /dev/null 2>&1; then
     cd $GAUNTLT_DIR/vendor/sqlmap
     ln -s `pwd`/sqlmap.py /usr/bin/sqlmap
 fi
@@ -44,7 +44,7 @@ fi
 
 
 # install Go, Heartbleed
-if ! type "Heartbleed" > /dev/null; then
+if ! type "Heartbleed" > /dev/null 2>&1; then
     apt-get install -y golang
     export GOPATH=$HOME_FOLDER/go
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
@@ -59,7 +59,7 @@ fi
 
 
 # install dirb
-if ! type "dirb" > /dev/null; then
+if ! type "dirb" > /dev/null 2>&1; then
     cd $GAUNTLT_DIR/vendor
     wget -q http://downloads.sourceforge.net/project/dirb/dirb/2.22/dirb222.tar.gz
     tar -zxf dirb222.tar.gz
@@ -74,14 +74,14 @@ fi
 
 
 # install Garmr, from source
-if ! type "garmr" > /dev/null; then
+if ! type "garmr" > /dev/null 2>&1; then
     cd $GAUNTLT_DIR/vendor/Garmr
     python setup.py install
 fi
 
 
 # install Arachni, from a gem
-if ! type "arachni" > /dev/null; then
+if ! type "arachni" > /dev/null 2>&1; then
     gem install arachni -v 1.0.6
     gem install service_manager
 fi
