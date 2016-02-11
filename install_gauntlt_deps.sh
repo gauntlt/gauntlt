@@ -2,10 +2,12 @@
 
 # check for system variables
 if [ -z $HOME_FOLDER ]; then
-    HOME_FOLDER=`$HOME`
+    HOME_FOLDER=$HOME
+    echo -e "INFO: setting \$HOME_FOLDER to $HOME";
 fi
 if [ -z $USER_NAME ]; then
     USER_NAME=`whoami`
+    echo -e "INFO: setting \$USER_NAME to `whoami`";
 fi
 
 # install system dependencies
