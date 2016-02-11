@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # check for system variables
-if [ -z $HOME_FOLDER ] then
+if [ -z $HOME_FOLDER ]; then
     HOME_FOLDER=`$HOME`
 fi
-if [ -z $USER_NAME ]
+if [ -z $USER_NAME ]; then
     USER_NAME=`whoami`
 fi
 

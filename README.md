@@ -26,7 +26,7 @@ you can run the following:
 ```shell
 git clone https://github.com/gauntlt/gauntlt
 cd gauntlt
-sudo source ./install_gauntlt_deps.sh
+sudo bash ./install_gauntlt_deps.sh
 bash ./ready_to_rumble.sh
 gauntlt
 ```
