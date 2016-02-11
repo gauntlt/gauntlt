@@ -4,6 +4,8 @@
 [submodule "vendor/sqlmap"]
 	path = vendor/sqlmap
 	url = https://github.com/sqlmapproject/sqlmap.git
+    branch = d7cdb6cbd8e199a834c901da149ce76d073b336c
 [submodule "vendor/Garmr"]
 	path = vendor/Garmr
 	url = git://github.com/mozilla/Garmr.git
+    branch = c8ea361d4fdd652bc751a1776e89d2b5148e9f8c

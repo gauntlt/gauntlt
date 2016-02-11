@@ -1,19 +1,42 @@
-[![Build Status](https://secure.travis-ci.org/gauntlt/gauntlt.png?branch=master)](http://travis-ci.org/gauntlt/gauntlt) [![Code Climate](https://codeclimate.com/github/gauntlt/gauntlt.png)](https://codeclimate.com/github/gauntlt/gauntlt) [![Gem Version](https://badge.fury.io/rb/gauntlt.png)](http://badge.fury.io/rb/gauntlt)
+[![Build Status](https://secure.travis-ci.org/gauntlt/gauntlt.png?branch=master)](http://travis-ci.org/gauntlt/gauntlt)
+[![Code Climate](https://codeclimate.com/github/gauntlt/gauntlt.png)](https://codeclimate.com/github/gauntlt/gauntlt)
+[![Gem Version](https://badge.fury.io/rb/gauntlt.png)](http://badge.fury.io/rb/gauntlt)
 
 # gauntlt
-Gauntlt is a ruggedization framework that is enables security testing that is usable by devs, ops and security
+Gauntlt is a ruggedization framework that is enables security testing that is
+usable by devs, ops and security.
 
 ## PROJECT STATUS
 
-Gauntlt is under active development and we welcome community feedback and contributions.  Please file issues via github and follow the project on twitter: [@gauntlt](https://twitter.com/gauntlt).
+Gauntlt is under active development and we welcome community feedback and
+contributions.  Please file issues via github and follow the project on
+twitter: [@gauntlt](https://twitter.com/gauntlt).
 
-Have questions?  Ask us anything on the [gauntlt google group](http://bit.ly/gauntlt_group) or find us on irc at [#gauntlt](http://webchat.freenode.net/?channels=gauntlt) (irc.freenode.net).
+Have questions?  Ask us anything on the [gauntlt google group](http://bit.ly/gauntlt_group)
+or find us on irc at [#gauntlt](http://webchat.freenode.net/?channels=gauntlt) (irc.freenode.net).
 
 ## GET STARTED
 
-Note: if you are new to gauntlt, have a look at [gauntlt-starter-kit](https://github.com/gauntlt/gauntlt-starter-kit), which is the easiest way to get up and running with gauntlt.
+Note: if you are new to gauntlt, have a look at
+[gauntlt-starter-kit](https://github.com/gauntlt/gauntlt-starter-kit), it is
+the easiest way to get up and running.
 
-You will need ruby version `1.9.3` to run gauntlt, but you can run gauntlt against applications built with any language or platform.
+If you are using Kali Linux 2.0, Debian Jessie, Ubuntu 14.04, or Ubuntu 15.10,
+you can run the following:
+```shell
+git clone https://github.com/gauntlt/gauntlt
+cd gauntlt
+sudo source ./install_gauntlt_deps.sh
+bash ./ready_to_rumble.sh
+gauntlt
+```
+This script will install all the required system dependencies and tools, and
+update your .bashrc with the necessary environmental variables. You can install
+this for another user by exporting $HOME_FOLDER and $USER_NAME variables before
+running install_gauntlt_deps.sh
+
+To install Gauntlt from source, you will need ruby version `1.9.3`, but you
+can run gauntlt against applications built with any language or platform.
 
 1. Install the gem
 
@@ -21,7 +44,8 @@ You will need ruby version `1.9.3` to run gauntlt, but you can run gauntlt again
     $ gem install gauntlt
     ```
 
-2. Create an attack file and put it anywhere you like. (There is a more relevant example on gauntlt.org)
+2. Create an attack file and put it anywhere you like. (There is a more relevant
+example on gauntlt.org)
 
     ```gherkin
     # simplest.attack
@@ -71,9 +95,13 @@ Gauntlt includes attack adapters for the following tools:
 * [sqlmap] [sqlmap]
 * [Garmr] [garmr]
 
-You will need to install each tool yourself before you can use it with gauntlt. However, if you try to use a tool that is not installed or that gauntlt cannot find, you will get a helpful error message from gauntlt with information on how to install and/or configure the tool for use with gauntlt.
+You will need to install each tool yourself before you can use it with gauntlt.
+However, if you try to use a tool that is not installed or that gauntlt cannot
+find, you will get a helpful error message from gauntlt with information on how
+to install and/or configure the tool for use with gauntlt.
 
-We also include a generic attack adapter that allows you to run anything on the command line, parse its output and check its exit status.
+We also include a generic attack adapter that allows you to run anything on the
+command line, parse its output and check its exit status.
 
 
 ## ATTACK FILES
@@ -136,6 +164,7 @@ NOTE: We currently use `ruby 1.9.3` and `JRuby 1.7.0` for development and testin
 2. Install bundler
 
     ```shell
+    cd gauntlt
     $ gem install bundler
     ```
 
@@ -146,8 +175,10 @@ NOTE: We currently use `ruby 1.9.3` and `JRuby 1.7.0` for development and testin
     # if you get errors, you may need to install curl libs first
     # on ubuntu:
     #   $ sudo apt-get install libcurl4-openssl-dev
+    # alternatively: update and use the install_gauntlt.sh script, tested on
+    # Kali Linux 2.0, Debian Jessie, Ubuntu 14.04, and Ubuntu 15.10
     ```
-4. Run the ready_to_rumble.sh script to make sure you have all the dependencies installed like sqlmap and sslyze.  This is meant to replicate the travis setup for devs. This should be a rake task instead. 
+4. Run the ready_to_rumble.sh script to make sure you have all the dependencies installed like sqlmap and sslyze.  This is meant to replicate the travis setup for devs. This should be a rake task instead.
 
 5. Run the cucumber features and rspec examples
 
