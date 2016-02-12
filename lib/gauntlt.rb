@@ -32,8 +32,8 @@ module Gauntlt
       end.sort
     end
 
-    def attack(path, tags=[], format="")
-      Attack.new(path, tags, format).run
+    def attack(path, tags=[], format="", outfile="")
+      Attack.new(path, tags, format, outfile).run
     end
 
     def stepdefs(path, tags=[])
