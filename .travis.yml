@@ -1,8 +1,9 @@
 language: ruby
 rvm:
   - 1.9.3
-  - 2.1.2
   - 2.0.0
+  - 2.1.7
+  - 2.2.3
 before_install:
   - git submodule update --init --recursive --force
   - gem update bundler
@@ -23,10 +24,9 @@ before_script:
   - export DIRB_WORDLISTS="/home/travis/build/gauntlt/gauntlt/vendor/dirb/wordlists"
 before_deploy:
 - rvm 1.9.3 do gem install mime-types -v 2.6.2
-matrix:
-  allow_failures:
-    - rvm: 1.9.3
-    - rvm: 2.1.2
+#matrix:
+ # allow_failures:
+  #  - rvm: 1.9.3
 notifications:
   irc:
     channels:
