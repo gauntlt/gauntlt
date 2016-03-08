@@ -12,14 +12,23 @@ fi
 
 # install system dependencies
 apt-get update
-apt-get install -y build-essential git ruby ruby-dev libxml2 libxml2-dev \
+apt-get install -y build-essential git libxml2 libxml2-dev \
     libxslt-dev libcurl4-openssl-dev libsqlite3-dev libyaml-dev zlib1g-dev \
     python-dev python-pip python-setuptools curl nmap w3af-console wget
 
 
+# install Ruby rvm, ruby 2.2.3 w/ json patch
+# @see https://github.com/rbenv/ruby-build/issues/834
+gpg --keyserver hkp://keys.gnupg.net --recv-keys \
+    409B6B1796C275462A1703113804BB82D39DC0E3
+curl -sSL https://get.rvm.io | bash -s stable
+source /etc/profile.d/rvm.sh
+rvm use 2.2.3 --install --fuzzy --patch \
+    https://gist.github.com/mislav/055441129184a1512bb5.txt
+
 
 # install gauntlt, from source
-GAUNTLT_DIR=`pwd` # user current working directory
+GAUNTLT_DIR=`pwd` # user current working directory, wherever you install Gauntlt
 gem install bundler
 bundle install
 rake install
@@ -72,6 +81,10 @@ if ! type "dirb" > /dev/null 2>&1; then
     bash ./configure
     make
     ln -s `pwd`/dirb /usr/bin/dirb
+    cd $GAUNTLT_DIR/vendor/dirb/wordlists
+    export DIRB_WORDLISTS=`pwd`
+else
+    export DIRB_WORDLISTS=`locate dirb | grep "/dirb/wordlists$"`
 fi
 
 
@@ -94,8 +107,6 @@ cd $GAUNTLT_DIR/vendor/gruyere
 bash ./manual_launch.sh
 
 # set the environmental variables
-cd $GAUNTLT_DIR/vendor/dirb/wordlists
-export DIRB_WORDLISTS=`pwd`
 export SSLYZE_PATH=`which sslyze`
 export SQLMAP_PATH=`which sqlmap`
 
@@ -103,7 +114,7 @@ export SQLMAP_PATH=`which sqlmap`
 cat << EOF >> $HOME_FOLDER/.bashrc
 
 # configure environmental variables for Gauntlt
-export DIRB_WORDLISTS=`pwd`
+export DIRB_WORDLISTS=`locate dirb | grep "/dirb/wordlists$"`
 export SSLYZE_PATH=`which sslyze`
 export SQLMAP_PATH=`which sqlmap`
 EOF

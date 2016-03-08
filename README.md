@@ -26,17 +26,17 @@ you can run the following:
 ```shell
 git clone https://github.com/gauntlt/gauntlt
 cd gauntlt
-sudo bash ./install_gauntlt_deps.sh
+source ./install_gauntlt_deps.sh
 bash ./ready_to_rumble.sh
 gauntlt
 ```
-This script will install all the required system dependencies and tools, and
-update your .bashrc with the necessary environmental variables. You can install
-this for another user by exporting $HOME_FOLDER and $USER_NAME variables before
-running install_gauntlt_deps.sh
+This script will install Ruby RVM, all the required system dependencies and
+tools, and update your .bashrc with the necessary environmental variables. You
+ can install this for another user by exporting $HOME_FOLDER and $USER_NAME
+variables before running install_gauntlt_deps.sh
 
-To install Gauntlt from source, you will need ruby version `1.9.3`, but you
-can run gauntlt against applications built with any language or platform.
+To install Gauntlt from source, you will need ruby version `1.9.3` or higher,
+but you can run gauntlt against applications built with any language or platform.
 
 1. Install the gem
 

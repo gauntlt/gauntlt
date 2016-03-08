@@ -4,6 +4,7 @@
 NMAP=`which nmap`
 GARMR=`which garmr`
 DIRB=`which dirb`
+DIRB_WORDLISTS=`locate dirb | grep "/dirb/wordlists$"`
 ARACHNI=`which arachni`
 HEARTBLEED=`which Heartbleed`
 SSLYZE_PATH=`which sslyze`
