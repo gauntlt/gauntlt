@@ -17,14 +17,15 @@ apt-get install -y build-essential git libxml2 libxml2-dev \
     python-dev python-pip python-setuptools curl nmap w3af-console wget
 
 
-# install Ruby rvm, ruby 2.2.3 w/ json patch
+# install Ruby rvm, ruby 2.3.0 w/ json patch
 # @see https://github.com/rbenv/ruby-build/issues/834
 gpg --keyserver hkp://keys.gnupg.net --recv-keys \
     409B6B1796C275462A1703113804BB82D39DC0E3
-curl -sSL https://get.rvm.io | bash -s stable
+\curl -sSL https://get.rvm.io | bash -s stable
 source /etc/profile.d/rvm.sh
-rvm use 2.2.3 --install --fuzzy --patch \
-    https://gist.github.com/mislav/055441129184a1512bb5.txt
+echo "source /etc/profile.d/rvm.sh" >> ~/.bashrc
+rvm use 2.3.0 --default --install --fuzzy \
+    --patch https://gist.githubusercontent.com/apolloclark/7cd9703f899fb0de997b/raw
 
 
 # install gauntlt, from source
