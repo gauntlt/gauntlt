@@ -21,7 +21,7 @@ apt-get install -y build-essential git libxml2 libxml2-dev \
 # @see https://github.com/rbenv/ruby-build/issues/834
 gpg --keyserver hkp://keys.gnupg.net --recv-keys \
     409B6B1796C275462A1703113804BB82D39DC0E3
-\curl -sSL https://get.rvm.io | bash -s stable
+curl -sSL https://get.rvm.io | bash -s stable
 source /etc/profile.d/rvm.sh
 echo "source /etc/profile.d/rvm.sh" >> ~/.bashrc
 rvm use 2.3.0 --default --install --fuzzy
@@ -30,8 +30,6 @@ rvm use 2.3.0 --default --install --fuzzy
 GAUNTLT_DIR=`pwd` # user current working directory, wherever you install Gauntlt
 gem install bundler
 bundle update
-bundle install
-rake install
 git submodule update --init --recursive --force
 
 
