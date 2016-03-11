@@ -1,9 +1,9 @@
 language: ruby
 rvm:
-  - 1.9.3
   - 2.0.0
   - 2.1.7
   - 2.2.3
+  - 2.3.0
 before_install:
   - git submodule update --init --recursive --force
   - gem update bundler
@@ -12,21 +12,14 @@ before_script:
   #- go install github.com/FiloSottile/Heartbleed
   #- which Heartbleed
   - sudo apt-get update
-  - sudo apt-get install nmap
-  - sudo apt-get install wget
-  - sudo apt-get install golang
-  #- sudo apt-get install unzip
-  - sudo apt-get install libcurl4-openssl-dev
+  - sudo apt-get install build-essential git libxml2 libxml2-dev
+    libxslt-dev libcurl4-openssl-dev libsqlite3-dev libyaml-dev zlib1g-dev
+    python-dev python-pip python-setuptools curl nmap w3af-console wget golang
   - export SSLYZE_PATH="/home/travis/build/gauntlt/gauntlt/vendor/sslyze/sslyze_cli.py"
   - export SQLMAP_PATH="/home/travis/build/gauntlt/gauntlt/vendor/sqlmap/sqlmap.py"
   - 'cd vendor/Garmr && sudo python setup.py install && cd ../..'
   - 'cd vendor && wget http://downloads.sourceforge.net/project/dirb/dirb/2.03/dirb203.tar.gz && tar xvfz dirb203.tar.gz && cd dirb && ./configure && make && sudo cp dirb /usr/local/bin/ && cd ..'
   - export DIRB_WORDLISTS="/home/travis/build/gauntlt/gauntlt/vendor/dirb/wordlists"
-before_deploy:
-- rvm 1.9.3 do gem install mime-types -v 2.6.2
-#matrix:
- # allow_failures:
-  #  - rvm: 1.9.3
 notifications:
   irc:
     channels:
