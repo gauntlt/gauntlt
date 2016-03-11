@@ -24,17 +24,15 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys \
 \curl -sSL https://get.rvm.io | bash -s stable
 source /etc/profile.d/rvm.sh
 echo "source /etc/profile.d/rvm.sh" >> ~/.bashrc
-rvm use 2.3.0 --default --install --fuzzy \
-    --patch https://gist.githubusercontent.com/apolloclark/7cd9703f899fb0de997b/raw
-
+rvm use 2.3.0 --default --install --fuzzy
 
 # install gauntlt, from source
 GAUNTLT_DIR=`pwd` # user current working directory, wherever you install Gauntlt
 gem install bundler
+bundle update
 bundle install
 rake install
 git submodule update --init --recursive --force
-# git submodule update --init --recursive --force --remote --merge
 
 
 
