@@ -7,23 +7,23 @@
       "description" : "This is a scan for cross site scripting (xss) that only runs the base xss module in arachni. This particular scan is for version 1.3.2 of arachni.",
       "requires" : [ "<url>" ]
     },
-   "arachni-simple_xss" : { "command" : "arachni --checks=xss --depth=1 --link-count=10 --auto-redundant=2 <url>",
+   "arachni-simple_xss" : { "command" : "arachni --checks=xss --scope-directory-depth-limit=1 --scope-page-limit=10 --scope-auto-redundant=2 <url>",
       "description" : "This is a scan for cross site scripting (xss) that only runs the base xss module in arachni.  The scan only crawls one level deep which makes it faster.  For more depth, run the gauntlt attack alias 'arachni-simple_xss_with_depth' and specifiy depth.",
       "requires" : [ "<url>" ]
     },
-  "arachni-simple_xss_with_depth" : { "command" : "arachni --checks=xss --depth=<depth> <url>",
+  "arachni-simple_xss_with_depth" : { "command" : "arachni --checks=xss --scope-directory-depth-limit=<depth> <url>",
       "description" : "This is a scan for cross site scripting (xss) that only runs the base xss module in arachni.  The scan only crawls as many levels deep as you specify.  The higher the integer, the longer the scan will take to run.",
       "requires" : [ "<url>", "<depth>"]
     },
-  "arachni-full_xss" : { "command" : "arachni --checks=xss* --depth=1 --link-count=10 --auto-redundant=2 <url>",
+  "arachni-full_xss" : { "command" : "arachni --checks=xss* --scope-directory-depth-limit=1 --scope-page-limit=10 --scope-auto-redundant=2 <url>",
       "description" : "This is a scan for cross site scripting (xss) that only runs all the xss modules in arachni.  The scan only crawls one level deep, which makes it faster.  For more depth, run the gauntlt attack alias 'arachni-full_xss_with_depth' and specifiy depth.",
       "requires" : [ "<url>" ]
     },
-  "arachni-full_xss_with_depth" : { "command" : "arachni --checks=xss* --depth=<depth> <url>",
+  "arachni-full_xss_with_depth" : { "command" : "arachni --checks=xss* --scope-directory-depth-limit=<depth> <url>",
       "description" : "This is a scan for cross site scripting (xss) that only runs all the xss modules in arachni.  The scan only crawls as many levels deep as you specify.  The higher the integer, the longer the scan will take to run.",
       "requires" : [ "<url>", "<depth>"]
     },
-  "arachni-xss_with_options" : { "command" : "arachni --checks=xss* --depth=<depth> --link-count=<link_count> --auto-redundant=<auto_redundant> <url>",
+  "arachni-xss_with_options" : { "command" : "arachni --checks=xss* --scope-directory-depth-limit=<depth> --scope-page-limit=<link_count> --scope-auto-redundant=<auto_redundant> <url>",
       "description" : "This is a scan for cross site scripting (xss) that runs all the xss modules in arachni.  This requires to specify several options for the scan. The arachni wiki has information on what these options represent but generally as you increase their values, the scan takes longer to run. \nThe wiki for arachni is available here > https://github.com/Arachni/arachni/wiki/Command-line-user-interface. \nThe depth option is described here: https://github.com/Arachni/arachni/wiki/Command-line-user-interface#wiki-depth \nThe link_count option is described here: https://github.com/Arachni/arachni/wiki/Command-line-user-interface#wiki-link-count \nThe auto_redundant option is described here: https://github.com/Arachni/arachni/wiki/Command-line-user-interface#wiki-auto-redundant",
       "requires" : [ "<url>", "<depth>", "<link_count>", "<auto_redundant>" ]
     }
