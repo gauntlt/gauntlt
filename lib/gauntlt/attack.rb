@@ -4,8 +4,8 @@ module Gauntlt
   class Attack
     attr_accessor :runtime
 
-    def initialize(path, tags=[], format="")
-      self.runtime = Runtime.new(path, tags, format)
+    def initialize(path, tags=[], format="", out="")
+      self.runtime = Runtime.new(path, tags, format, out)
     end
 
     def run

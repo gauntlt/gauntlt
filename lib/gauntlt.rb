@@ -17,7 +17,7 @@ module Gauntlt
   ATTACK_ADAPTERS_DIR = File.join(GAUNTLT_DIR, 'attack_adapters')
 
   ATTACK_ADAPTERS_GLOB_PATTERN = ATTACK_ADAPTERS_DIR + '/*.rb'
-  
+
   ATTACK_ALIASES_DIR = File.join(GAUNTLT_DIR, 'attack_aliases')
   ATTACK_ALIASES_GLOB_PATTERN = ATTACK_ALIASES_DIR + '/*.json'
 
@@ -32,8 +32,8 @@ module Gauntlt
       end.sort
     end
 
-    def attack(path, tags=[], format="")
-      Attack.new(path, tags, format).run
+    def attack(path, tags=[], format="", out="")
+      Attack.new(path, tags, format, out).run
     end
 
     def stepdefs(path, tags=[])
