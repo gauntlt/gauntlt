@@ -10,11 +10,32 @@ if [ -z $USER_NAME ]; then
     echo -e "INFO: setting \$USER_NAME to `whoami`";
 fi
 
+
+# set the installation to be non-interactive
+export DEBIAN_FRONTEND="noninteractive"
+
+# pre-answer some installation questions
+sudo debconf-set-selections <<< 'libc6 libraries/restart-without-asking boolean true'
+sudo debconf-set-selections <<< 'libc6:amd64 libraries/restart-without-asking boolean true'
+sudo debconf-set-selections <<< 'libc6 glibc/upgrade boolean true'
+sudo debconf-set-selections <<< 'libc6:amd64 glibc/upgrade boolean true'
+
+
+
+
+
+
+
+
 # install system dependencies
-apt-get update
-apt-get install -y build-essential git libxml2 libxml2-dev \
+sudo apt-get update
+sudo apt-get install --yes --force-yes build-essential git libxml2 libxml2-dev \
     libxslt-dev libcurl4-openssl-dev libsqlite3-dev libyaml-dev zlib1g-dev \
-    python-dev python-pip python-setuptools curl nmap w3af-console wget
+    python-dev python-pip python-setuptools curl nmap w3af-console \
+    wget locate librtmp1 lua-lpeg
+	# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=835342#76
+sudo apt-get autoremove -y
+sudo updatedb
 
 
 # install Ruby rvm, ruby 2.3.0 w/ json patch
@@ -22,8 +43,9 @@ apt-get install -y build-essential git libxml2 libxml2-dev \
 gpg --keyserver hkp://keys.gnupg.net --recv-keys \
     409B6B1796C275462A1703113804BB82D39DC0E3
 curl -sSL https://get.rvm.io | bash -s stable
-source /etc/profile.d/rvm.sh
-echo "source /etc/profile.d/rvm.sh" >> ~/.bashrc
+# source /etc/profile.d/rvm.sh
+# echo "source /etc/$(whoami)/.rvm/scripts/rvm" >> ~/.bashrc
+source /home/$(whoami)/.rvm/scripts/rvm
 rvm use 2.3.0 --default --install --fuzzy
 
 # install gauntlt, from source
@@ -38,7 +60,7 @@ git submodule update --init --recursive --force
 if ! type "sslyze" > /dev/null 2>&1; then
     cd $GAUNTLT_DIR/vendor/sslyze
     pip install -r requirements.txt
-    ln -s `pwd`/sslyze_cli.py /usr/bin/sslyze
+    sudo ln -s `pwd`/sslyze_cli.py /usr/bin/sslyze
 fi
 
 
@@ -46,14 +68,14 @@ fi
 # install sqlmap
 if ! type "sqlmap" > /dev/null 2>&1; then
     cd $GAUNTLT_DIR/vendor/sqlmap
-    ln -s `pwd`/sqlmap.py /usr/bin/sqlmap
+    sudo ln -s `pwd`/sqlmap.py /usr/bin/sqlmap
 fi
 
 
 
 # install Go, Heartbleed
 if ! type "Heartbleed" > /dev/null 2>&1; then
-    apt-get install -y golang
+    sudo apt-get install -y golang
     export GOPATH=$HOME_FOLDER/go
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
     cat << 'EOF' >> $HOME_FOLDER/.bashrc
@@ -67,28 +89,28 @@ fi
 
 
 # install dirb
+cd $GAUNTLT_DIR/vendor
+wget -q http://downloads.sourceforge.net/project/dirb/dirb/2.22/dirb222.tar.gz
+tar -zxf dirb222.tar.gz
+mv dirb222 dirb
+chmod -R +x ./dirb
+cd dirb
+chown -R $(whoami) .
+sudo updatedb
 if ! type "dirb" > /dev/null 2>&1; then
-    cd $GAUNTLT_DIR/vendor
-    wget -q http://downloads.sourceforge.net/project/dirb/dirb/2.22/dirb222.tar.gz
-    tar -zxf dirb222.tar.gz
-    mv dirb222 dirb
-    chmod -R +x ./dirb
-    cd dirb
-    chown -R $(whoami) .
+	cd $GAUNTLT_DIR/vendor/dirb
     bash ./configure
     make
-    ln -s `pwd`/dirb /usr/bin/dirb
-    cd $GAUNTLT_DIR/vendor/dirb/wordlists
-    export DIRB_WORDLISTS=`pwd`
-else
-    export DIRB_WORDLISTS=`locate dirb | grep "/dirb/wordlists$"`
+    sudo ln -s `pwd`/dirb /usr/bin/dirb
 fi
+export DIRB_WORDLISTS=`locate dirb | grep "/dirb/wordlists$"`
 
 
 # install Garmr, from source
 if ! type "garmr" > /dev/null 2>&1; then
     cd $GAUNTLT_DIR/vendor/Garmr
-    python setup.py install
+    sudo mkdir -p /usr/local/lib/python2.7/dist-packages/
+    sudo python setup.py install
 fi
 
 
@@ -118,4 +140,4 @@ EOF
 
 # chown the environment
 cd $GAUNTLT_DIR
-chown -R $USER_NAME ./
+sudo chown -R $USER_NAME ./
