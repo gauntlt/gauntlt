@@ -28,6 +28,8 @@ EOS
 
   opt :format, "Available formats: html, json, junit, progress",
       :type => String
+  opt :outfile, "Pipe run results to file",
+      :type => String
 end
 
 opts[:path] = if ARGV.empty?
@@ -50,6 +52,6 @@ elsif opts[:allsteps]
   puts "\nGauntlt Attack Steps"
   puts all_step_defs[:gauntlt].sort
 else
-  Gauntlt.attack( opts[:path], opts[:tags].join(','), opts[:format] )
+  Gauntlt.attack( opts[:path], opts[:tags].join(','), opts[:format], opts[:outfile] )
 end
 
