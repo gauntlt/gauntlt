@@ -44,8 +44,13 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys \
     409B6B1796C275462A1703113804BB82D39DC0E3
 curl -sSL https://get.rvm.io | bash -s stable
 # source /etc/profile.d/rvm.sh
-# echo "source /etc/$(whoami)/.rvm/scripts/rvm" >> ~/.bashrc
+# echo "source /home/$(whoami)/.rvm/scripts/rvm" >> ~/.bashrc
 source /home/$(whoami)/.rvm/scripts/rvm
+cat << 'EOF' >> $HOME_FOLDER/.bashrc
+
+# configure Ruby version using RVM
+source /home/$(whoami)/.rvm/scripts/rvm
+EOF
 rvm use 2.3.0 --default --install --fuzzy
 
 # install gauntlt, from source
@@ -89,19 +94,19 @@ fi
 
 
 # install dirb
-cd $GAUNTLT_DIR/vendor
-wget -q http://downloads.sourceforge.net/project/dirb/dirb/2.22/dirb222.tar.gz
-tar -zxf dirb222.tar.gz
-mv dirb222 dirb
-chmod -R +x ./dirb
-cd dirb
-chown -R $(whoami) .
-sudo updatedb
 if ! type "dirb" > /dev/null 2>&1; then
+	cd $GAUNTLT_DIR/vendor
+	wget -q http://downloads.sourceforge.net/project/dirb/dirb/2.22/dirb222.tar.gz
+	tar -zxf dirb222.tar.gz
+	mv dirb222 dirb
+	chmod -R +x ./dirb
+	cd dirb
+	chown -R $(whoami) .
 	cd $GAUNTLT_DIR/vendor/dirb
     bash ./configure
     make
     sudo ln -s `pwd`/dirb /usr/bin/dirb
+	sudo updatedb
 fi
 export DIRB_WORDLISTS=`locate dirb | grep "/dirb/wordlists$"`
 
@@ -111,6 +116,7 @@ if ! type "garmr" > /dev/null 2>&1; then
     cd $GAUNTLT_DIR/vendor/Garmr
     sudo mkdir -p /usr/local/lib/python2.7/dist-packages/
     sudo python setup.py install
+	sudo updatedb
 fi
 
 
@@ -118,6 +124,7 @@ fi
 if ! type "arachni" > /dev/null 2>&1; then
     gem install arachni -v 1.0.6
     gem install service_manager
+	sudo updatedb
 fi
 
 
