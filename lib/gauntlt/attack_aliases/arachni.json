@@ -26,5 +26,9 @@
   "arachni-xss_with_options" : { "command" : "arachni --checks=xss* --scope-directory-depth-limit=<depth> --scope-page-limit=<link_count> --scope-auto-redundant=<auto_redundant> <url>",
       "description" : "This is a scan for cross site scripting (xss) that runs all the xss modules in arachni.  This requires to specify several options for the scan. The arachni wiki has information on what these options represent but generally as you increase their values, the scan takes longer to run. \nThe wiki for arachni is available here > https://github.com/Arachni/arachni/wiki/Command-line-user-interface. \nThe depth option is described here: https://github.com/Arachni/arachni/wiki/Command-line-user-interface#wiki-depth \nThe link_count option is described here: https://github.com/Arachni/arachni/wiki/Command-line-user-interface#wiki-link-count \nThe auto_redundant option is described here: https://github.com/Arachni/arachni/wiki/Command-line-user-interface#wiki-auto-redundant",
       "requires" : [ "<url>", "<depth>", "<link_count>", "<auto_redundant>" ]
+    },
+    "arachni-allmediumandhigher" : { "command" : "arachni --checks=*,-interesting_responses,-webdav,-localstart_asp,-directory_listing,-private_ip,-form_upload,-cvs_svn_users,-captcha,-http_only_cookies,-html_objects,-emails,-cookie_set_for_parent_domain,-common_files,-allowed_methods <url>",
+      "description" : "This scan performs all checks except the checks that are low or informational only. We did leave in insecure_cookies even though this originally was an informational risk.",
+      "requires" : [ "<url>" ]
     }
 }
