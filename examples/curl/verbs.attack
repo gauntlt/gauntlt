@@ -1,3 +1,4 @@
+@slow
 Feature: Evaluate responses to various HTTP methods.
 
 Background:

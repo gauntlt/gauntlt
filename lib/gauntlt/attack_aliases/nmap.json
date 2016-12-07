@@ -1,9 +1,17 @@
-{ "nmap-fast" : { "command" : "nmap -F <host>",
-      "description" : "This is a fast nmap scan that should run in 10 seconds or less on most networks.  It looks for the most common ports and services.",
-      "requires" : [ "<host>" ]
+{
+    "nmap-fast" : {
+        "command" : "nmap -F <host>",
+        "description" : "This is a fast nmap scan that should run in 10 seconds or less on most networks.  It looks for the most common ports and services.",
+        "requires" : [ "<host>" ]
     },
-  "nmap-single_port" : { "command" : "nmap -p<port> <host>",
-      "description" : "This checks a single port only",
-      "requires" : [ "<host>", "<port>" ]
+    "nmap-single_port" : {
+        "command" : "nmap -p<port> <host>",
+        "description" : "This checks a single port only",
+        "requires" : [ "<host>", "<port>" ]
+    },
+    "nmap-all_tcp" : {
+        "command" : "nmap nmap -Pn -p 1-65534 <host>",
+        "description" : "This checks a single port only",
+        "requires" : [ "<host>" ]
     }
 }

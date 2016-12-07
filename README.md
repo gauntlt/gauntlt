@@ -89,11 +89,14 @@ example on gauntlt.org)
 
 Gauntlt includes attack adapters for the following tools:
 
+* [arachni] [arachni]
 * [curl] [curl]
-* [nmap] [nmap]
-* [sslyze] [sslyze]
-* [sqlmap] [sqlmap]
+* [dirb] [dirb]
 * [Garmr] [garmr]
+* [heartbleed] [heartbleed]
+* [nmap] [nmap]
+* [sqlmap] [sqlmap]
+* [sslyze] [sslyze]
 
 You will need to install each tool yourself before you can use it with gauntlt.
 However, if you try to use a tool that is not installed or that gauntlt cannot
@@ -203,11 +206,14 @@ Gauntlt is under active development and we appreciate your suggestions and bug r
 
 gauntlt is licensed under The MIT License. See the LICENSE file in the repo or visit [gauntlt.mit-license.org](http://gauntlt.mit-license.org/) for details.
 
+[arachni]: http://www.arachni-scanner.com/
 [curl]: http://curl.haxx.se
+[dirb]: http://dirb.sourceforge.net/
+[garmr]: https://github.com/mozilla/Garmr
+[heartbleed]: https://github.com/FiloSottile/Heartbleed
 [nmap]: http://nmap.org
 [sslyze]: https://github.com/iSECPartners/sslyze
 [sqlmap]: http://sqlmap.org
-[garmr]: https://github.com/mozilla/Garmr
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/gauntlt/gauntlt/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
