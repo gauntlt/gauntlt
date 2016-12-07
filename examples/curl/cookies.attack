@@ -1,3 +1,4 @@
+@slow
 Feature: Evaluate received cookies against expected.
 
 Background:

@@ -24,9 +24,6 @@ sudo debconf-set-selections <<< 'libc6:amd64 glibc/upgrade boolean true'
 
 
 
-
-
-
 # install system dependencies
 sudo apt-get update
 sudo apt-get install --yes --force-yes build-essential git libxml2 libxml2-dev \
@@ -44,6 +41,7 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys \
     409B6B1796C275462A1703113804BB82D39DC0E3
 curl -sSL https://get.rvm.io | bash -s stable
 # source /etc/profile.d/rvm.sh
+# [[ -r ~/.bashrc ]] && . ~/.bashrc
 # echo "source /home/$(whoami)/.rvm/scripts/rvm" >> ~/.bashrc
 source /home/$(whoami)/.rvm/scripts/rvm
 cat << 'EOF' >> $HOME_FOLDER/.bashrc
@@ -52,6 +50,10 @@ cat << 'EOF' >> $HOME_FOLDER/.bashrc
 source /home/$(whoami)/.rvm/scripts/rvm
 EOF
 rvm use 2.3.0 --default --install --fuzzy
+
+
+
+
 
 # install gauntlt, from source
 GAUNTLT_DIR=`pwd` # user current working directory, wherever you install Gauntlt
@@ -86,7 +88,7 @@ if ! type "Heartbleed" > /dev/null 2>&1; then
     cat << 'EOF' >> $HOME_FOLDER/.bashrc
 
 # configure go pathways
-export GOPATH=$HOME/go
+export GOPATH=$HOME_FOLDER/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 EOF
     go get github.com/FiloSottile/Heartbleed
