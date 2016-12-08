@@ -26,7 +26,9 @@ sudo debconf-set-selections <<< 'libc6:amd64 glibc/upgrade boolean true'
 
 # install system dependencies
 sudo apt-get update
-sudo apt-get install --yes --force-yes build-essential git libxml2 libxml2-dev \
+sudo apt-get install --yes --allow-downgrades \
+	--allow-remove-essential --allow-change-held-packages \
+	build-essential git libxml2 libxml2-dev \
     libxslt-dev libcurl4-openssl-dev libsqlite3-dev libyaml-dev zlib1g-dev \
     python-dev python-pip python-setuptools curl nmap w3af-console \
     wget locate librtmp1 lua-lpeg
@@ -38,12 +40,12 @@ sudo updatedb
 # install Ruby rvm, ruby 2.3.0 w/ json patch
 # @see https://github.com/rbenv/ruby-build/issues/834
 gpg --keyserver hkp://keys.gnupg.net --recv-keys \
-    409B6B1796C275462A1703113804BB82D39DC0E3
+    409B6B1796C275462A1703113804BB82D39DC0E3 2>&1
 curl -sSL https://get.rvm.io | bash -s stable
 # source /etc/profile.d/rvm.sh
 # [[ -r ~/.bashrc ]] && . ~/.bashrc
 echo "source $HOME_FOLDER/.rvm/scripts/rvm" >> $HOME_FOLDER/.bashrc
-source /home/$(whoami)/.rvm/scripts/rvm
+source $HOME_FOLDER/.rvm/scripts/rvm
 rvm use 2.3.0 --default --install --fuzzy
 
 
