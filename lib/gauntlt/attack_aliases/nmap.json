@@ -10,8 +10,33 @@
         "requires" : [ "<host>", "<port>" ]
     },
     "nmap-all_tcp" : {
-        "command" : "nmap nmap -Pn -p 1-65534 <host>",
-        "description" : "This checks a single port only",
+        "command" : "nmap -Pn -p 1-65534 <host>",
+        "description" : "This checks all TCP ports",
+        "requires" : [ "<host>" ]
+    },
+    "nmap-scan_hostnames" : {
+        "command" : "nmap -sL <host>/24",
+        "description" : "This runs an ARP scan, no port scan",
+        "requires" : [ "<host>" ]
+    },
+    "nmap-arp_scan_network_no_portscan" : {
+        "command" : "nmap -PR -sn <host>/24",
+        "description" : "This runs an ARP scan, no port scan",
+        "requires" : [ "<host>" ]
+    },
+    "nmap-arp_scan_network_with_portscan" : {
+        "command" : "nmap -PR <host>/24",
+        "description" : "This runs an ARP scan, with a port scan",
+        "requires" : [ "<host>" ]
+    },
+    "nmap-portscan_tcp_udp_top100" : {
+        "command" : "nmap -sTU --top-ports 100 <host>",
+        "description" : "This runs a TCP and UDP port scan, top 100",
+        "requires" : [ "<host>" ]
+    },
+    "nmap-portscan_tcp_udp_top1000" : {
+        "command" : "nmap -sTU --top-ports 1000 <host>",
+        "description" : "This runs a TCP and UDP port scan, top 1000",
         "requires" : [ "<host>" ]
     }
 }

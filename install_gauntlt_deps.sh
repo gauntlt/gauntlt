@@ -42,13 +42,8 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys \
 curl -sSL https://get.rvm.io | bash -s stable
 # source /etc/profile.d/rvm.sh
 # [[ -r ~/.bashrc ]] && . ~/.bashrc
-# echo "source /home/$(whoami)/.rvm/scripts/rvm" >> ~/.bashrc
+echo "source $HOME_FOLDER/.rvm/scripts/rvm" >> $HOME_FOLDER/.bashrc
 source /home/$(whoami)/.rvm/scripts/rvm
-cat << 'EOF' >> $HOME_FOLDER/.bashrc
-
-# configure Ruby version using RVM
-source /home/$(whoami)/.rvm/scripts/rvm
-EOF
 rvm use 2.3.0 --default --install --fuzzy
 
 
@@ -88,7 +83,7 @@ if ! type "Heartbleed" > /dev/null 2>&1; then
     cat << 'EOF' >> $HOME_FOLDER/.bashrc
 
 # configure go pathways
-export GOPATH=$HOME_FOLDER/go
+export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 EOF
     go get github.com/FiloSottile/Heartbleed
