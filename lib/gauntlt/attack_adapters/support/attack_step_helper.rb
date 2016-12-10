@@ -7,17 +7,17 @@ module Gauntlt
       def gauntlt_attack_aliases
         @gauntlt_attack_aliases ||= {}
       end
-     
+
       def load_attack_alias(alias_name, *version)
         @attack_steps = import_attack_aliases
         @alias_versioned = ""
-	@alias_versioned << alias_name
+        @alias_versioned << alias_name
         if version.length > 0
             @alias_versioned << "-"
             @alias_versioned << version[0]
         end
 
-	print "Checking #{@alias_versioned} and #{alias_name}"
+        print "Checking #{@alias_versioned} and #{alias_name}"
 
         if @attack_steps.has_key?(@alias_versioned)
             @attack_steps[@alias_versioned]
