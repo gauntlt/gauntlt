@@ -85,6 +85,21 @@ example on gauntlt.org)
     $ gauntlt --help
     ```
 
+
+## Docker
+
+```shell
+# build the docker container from source
+docker build --force-rm --no-cache=true -t gauntlt/gauntlt-kali .
+
+# run the container
+docker run -it -v `pwd`:/root/gauntlt gauntlt/gauntlt-kali
+
+# start up a secondary bash command instance
+docker exec -it <container_id> bash
+```
+
+
 ## ATTACK ADAPTERS
 
 Gauntlt includes attack adapters for the following tools:

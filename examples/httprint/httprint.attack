@@ -1,0 +1,17 @@
+@slow
+Feature: Run httprint scan on a URL
+
+Scenario: Use httprint to scan Gruyere
+
+  Given "httprint" is installed
+  And the following profile:
+    | name          | value                 |
+    | host          | 127.0.0.1:8008        |  
+  When I launch a "httprint" attack with:
+    """
+    httprint -h <host> -s /usr/share/httprint/signatures.txt
+    """
+  Then the output should contain:
+    """
+    Banner Reported: BaseHTTP/0.3 Python/2.7.12+
+    """

@@ -1,5 +1,41 @@
 #!/bin/bash
 
+# set the installation to be non-interactive
+export DEBIAN_FRONTEND="noninteractive"
+
+# pre-answer some installation questions
+debconf-set-selections <<< 'libc6 libraries/restart-without-asking boolean true'
+debconf-set-selections <<< 'libc6:amd64 libraries/restart-without-asking boolean true'
+debconf-set-selections <<< 'libc6 glibc/upgrade boolean true'
+debconf-set-selections <<< 'libc6:amd64 glibc/upgrade boolean true'
+
+# install system dependencies
+apt-get update
+apt-get install --yes --allow-downgrades \
+	--allow-remove-essential --allow-change-held-packages \
+	build-essential git libxml2 libxml2-dev \
+    libxslt-dev libcurl4-openssl-dev libsqlite3-dev libyaml-dev zlib1g-dev \
+    python-dev python-pip python-setuptools curl nmap w3af-console \
+    wget locate librtmp1 lua-lpeg
+	# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=835342#76
+apt-get autoremove -y
+
+
+
+
+# install Gauntlt
+# gem install gauntlt --no-rdoc --no-ri
+cd ~/gauntlt
+
+export GAUNTLT_DIR=`pwd`
+git submodule update --init --recursive --force
+bundle install --system
+gem build gauntlt.gemspec
+gem install gauntlt-1.0.12.gem
+
+
+
+
 # check for system variables
 if [ -z $HOME_FOLDER ]; then
     HOME_FOLDER=$HOME
@@ -10,61 +46,11 @@ if [ -z $USER_NAME ]; then
     echo -e "INFO: setting \$USER_NAME to `whoami`";
 fi
 
-
-# set the installation to be non-interactive
-export DEBIAN_FRONTEND="noninteractive"
-
-# pre-answer some installation questions
-sudo debconf-set-selections <<< 'libc6 libraries/restart-without-asking boolean true'
-sudo debconf-set-selections <<< 'libc6:amd64 libraries/restart-without-asking boolean true'
-sudo debconf-set-selections <<< 'libc6 glibc/upgrade boolean true'
-sudo debconf-set-selections <<< 'libc6:amd64 glibc/upgrade boolean true'
-
-
-
-
-
-# install system dependencies
-sudo apt-get update
-sudo apt-get install --yes --allow-downgrades \
-	--allow-remove-essential --allow-change-held-packages \
-	build-essential git libxml2 libxml2-dev \
-    libxslt-dev libcurl4-openssl-dev libsqlite3-dev libyaml-dev zlib1g-dev \
-    python-dev python-pip python-setuptools curl nmap w3af-console \
-    wget locate librtmp1 lua-lpeg
-	# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=835342#76
-sudo apt-get autoremove -y
-sudo updatedb
-
-
-# install Ruby rvm, ruby 2.3.0 w/ json patch
-# @see https://github.com/rbenv/ruby-build/issues/834
-gpg --keyserver hkp://keys.gnupg.net --recv-keys \
-    409B6B1796C275462A1703113804BB82D39DC0E3 2>&1
-curl -sSL https://get.rvm.io | bash -s stable
-# source /etc/profile.d/rvm.sh
-# [[ -r ~/.bashrc ]] && . ~/.bashrc
-echo "source $HOME_FOLDER/.rvm/scripts/rvm" >> $HOME_FOLDER/.bashrc
-source $HOME_FOLDER/.rvm/scripts/rvm
-rvm use 2.3.0 --default --install --fuzzy
-
-
-
-
-
-# install gauntlt, from source
-GAUNTLT_DIR=`pwd` # user current working directory, wherever you install Gauntlt
-gem install bundler
-bundle update
-git submodule update --init --recursive --force
-
-
-
 # install sslyze
 if ! type "sslyze" > /dev/null 2>&1; then
     cd $GAUNTLT_DIR/vendor/sslyze
     pip install -r requirements.txt
-    sudo ln -s `pwd`/sslyze_cli.py /usr/bin/sslyze
+    ln -s `pwd`/sslyze_cli.py /usr/bin/sslyze
 fi
 
 
@@ -72,22 +58,25 @@ fi
 # install sqlmap
 if ! type "sqlmap" > /dev/null 2>&1; then
     cd $GAUNTLT_DIR/vendor/sqlmap
-    sudo ln -s `pwd`/sqlmap.py /usr/bin/sqlmap
+    ln -s `pwd`/sqlmap.py /usr/bin/sqlmap
 fi
 
 
 
 # install Go, Heartbleed
 if ! type "Heartbleed" > /dev/null 2>&1; then
-    sudo apt-get install -y golang
+    apt-get install -y golang
+    
     export GOPATH=$HOME_FOLDER/go
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
     cat << 'EOF' >> $HOME_FOLDER/.bashrc
 
 # configure go pathways
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 EOF
+
     go get github.com/FiloSottile/Heartbleed
 fi
 
@@ -104,18 +93,15 @@ if ! type "dirb" > /dev/null 2>&1; then
 	cd $GAUNTLT_DIR/vendor/dirb
     bash ./configure
     make
-    sudo ln -s `pwd`/dirb /usr/bin/dirb
-	sudo updatedb
+    ln -s `pwd`/dirb /usr/bin/dirb
 fi
-export DIRB_WORDLISTS=`locate dirb | grep "/dirb/wordlists$"`
 
 
 # install Garmr, from source
 if ! type "garmr" > /dev/null 2>&1; then
     cd $GAUNTLT_DIR/vendor/Garmr
-    sudo mkdir -p /usr/local/lib/python2.7/dist-packages/
-    sudo python setup.py install
-	sudo updatedb
+    mkdir -p /usr/local/lib/python2.7/dist-packages/
+    python setup.py install
 fi
 
 
@@ -123,15 +109,15 @@ fi
 if ! type "arachni" > /dev/null 2>&1; then
     gem install arachni -v 1.0.6
     gem install service_manager
-	sudo updatedb
 fi
 
 
 
 # set the environmental variables
-sudo updatedb
+updatedb
 export SSLYZE_PATH=`which sslyze`
 export SQLMAP_PATH=`which sqlmap`
+export DIRB_WORDLISTS=`locate dirb | grep "/dirb/wordlists$"`
 
 # save environmental variables to .bashrc
 cat << EOF >> $HOME_FOLDER/.bashrc
@@ -142,10 +128,15 @@ export SSLYZE_PATH=`which sslyze`
 export SQLMAP_PATH=`which sqlmap`
 EOF
 
+# chown the environment
+cd $GAUNTLT_DIR
+chown -R `whoami` ./
+
 # start gruyere
 cd $GAUNTLT_DIR/vendor/gruyere
 bash ./manual_launch.sh
 
-# chown the environment
+# run gauntlt tests
+printenv
 cd $GAUNTLT_DIR
-sudo chown -R $USER_NAME ./
+gauntlt
