@@ -1,17 +1,20 @@
 @slow
 Feature: Run httprint scan on a URL
 
-Scenario: Use httprint to scan Gruyere
+Scenario: Use httprint to scan http://scanme.nmap.org
 
   Given "httprint" is installed
   And the following profile:
-    | name          | value                 |
-    | host          | 127.0.0.1:8008        |  
+    | name          | value        |
+    | host          | 45.33.32.156 |  
   When I launch a "httprint" attack with:
     """
-    httprint -h <host> -s /usr/share/httprint/signatures.txt
+    httprint -h <host> -P0 -s /usr/share/httprint/signatures.txt -P0
     """
   Then the output should contain:
     """
-    Banner Reported: BaseHTTP/0.3 Python/2.7.12+
+    Banner Reported: Apache/2.4.7 (Ubuntu)
+    Banner Deduced: Apache/2.0.x
+    Score: 115
+    Confidence: 69.28
     """

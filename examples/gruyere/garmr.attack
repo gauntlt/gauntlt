@@ -4,18 +4,18 @@ Scenario: Use Garmr to scan a website for the Mozilla opioniated security requir
   Given "garmr" is installed
   And the following profile:
     | name       | value                      |
-    | target_url | http://scanme.nmap.org     |
+    | target_url | http://localhost:8008      |
   When I launch a "garmr" attack with:
     """
     garmr -u <target_url> -o my_garmr_output.xml
     """
   Then it should pass with:
     """
-    [Garmr.corechecks.Http200Check] Pass The request returned an HTTP 200 response.
+    [Garmr.corechecks.Http200Check] Fail The response code was 302
     """
   And the file "my_garmr_output.xml" should contain XML:
-    | css                                              |
-    | testcase[name="XFrameOptionsPresent"] failure    |
+    | css                                      |
+    | testcase[name="Http200Check"] failure    |
   And the file "my_garmr_output.xml" should not contain XML:
     | css                                      |
-    | testcase[name="Http200Check"] failure |
+    | testcase[name="SCSPHeaderCheck"] failure |

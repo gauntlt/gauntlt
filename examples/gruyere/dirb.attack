@@ -5,7 +5,7 @@ Scenario: Use dirb to scan a website for basic security requirements and the DIR
   Given "dirb" is installed
   And the following profile:
      | name                | value                          |
-     | hostname            | http://scanme.nmap.org         |
+     | hostname            | http://localhost:8008          |
      | dirb_wordlists_path | Overwritten by $DIRB_WORDLISTS |
      | wordlist            | vulns/tests.txt                |
   When I launch a "dirb" attack with:

@@ -13,6 +13,9 @@ else
 	echo "Gruyere already running..."
 fi
 
+export GRUYERE_URL=$(curl -is 127.0.0.1:8008 | grep "Location" | \
+	cut -d ' ' -f 2 | tr -d '//'); echo $GRUYERE_URL;
+
 # check we're ready
 bash ./ready_to_rumble.sh
 

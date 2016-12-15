@@ -9,5 +9,6 @@ RUN chmod +x /root/run_gauntlt.sh && \
     
 RUN /root/install_gauntlt.sh
 EXPOSE 8008
+WORKDIR ~
 
 CMD ["/bin/bash", "-l"]
