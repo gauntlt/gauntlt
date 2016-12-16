@@ -1,23 +1,20 @@
 #!/bin/bash
 
-# change focus to the Gauntlt folder
-cd ~/gauntlt/
-
-# verify that Gruyere is running
-if ! ps aux | grep -q "[g]ruyere"; then
-	echo "Launching Gruyere..."
-	cd ./vendor/gruyere/
-	source manual_launch.sh
-	cd ~/gauntlt/
-else
-	echo "Gruyere already running..."
-fi
-
-export GRUYERE_URL=$(curl -is 127.0.0.1:8008 | grep "Location" | \
-	cut -d ' ' -f 2 | tr -d '//'); echo $GRUYERE_URL;
+# configure environmental variables
+export DIRB_WORDLISTS=`locate dirb | grep "/dirb/wordlists$"`
+export SSLYZE_PATH=`which sslyze`
+export SQLMAP_PATH=`which sqlmap`
+export GOPATH=~/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+    
+# ensure Gruyere is running
+cd ~/gauntlt
+source ./run_site.sh
 
 # check we're ready
-bash ./ready_to_rumble.sh
+cd ~/gauntlt
+source ./ready_to_rumble.sh
 
 # run the .attack files
+cd ~/gauntlt
 gauntlt

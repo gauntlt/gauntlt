@@ -13,25 +13,29 @@ debconf-set-selections <<< 'libc6:amd64 glibc/upgrade boolean true'
 apt-get update
 apt-get install --yes --allow-downgrades \
 	--allow-remove-essential --allow-change-held-packages \
-	build-essential git libxml2 libxml2-dev \
-    libxslt-dev libcurl4-openssl-dev libsqlite3-dev libyaml-dev zlib1g-dev \
-    python-dev python-pip python-setuptools curl nmap w3af-console \
-    wget locate librtmp1 lua-lpeg
-	# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=835342#76
+    libcurl4-openssl-dev librtmp1 libsqlite3-dev libxslt-dev libxml2 \
+    libxml2-dev libyaml-dev zlib1g-dev \
+    locate lua-lpeg python-dev python-pip python-setuptools # w3af-console
 apt-get autoremove -y
 
+# install a password list
+mkdir -p /usr/share/wordlists
+cd /usr/share/wordlists
+wget -q http://downloads.skullsecurity.org/passwords/500-worst-passwords.txt.bz2
+bzip2 -d ./500-worst-passwords.txt.bz2
 
 
 
 # install Gauntlt
-# gem install gauntlt --no-rdoc --no-ri
 cd ~/gauntlt
 
 export GAUNTLT_DIR=`pwd`
 git submodule update --init --recursive --force
+gem install bundler
 bundle install --system
 gem build gauntlt.gemspec
 gem install gauntlt-1.0.12.gem
+
 
 
 
@@ -115,9 +119,9 @@ fi
 
 # set the environmental variables
 updatedb
+export DIRB_WORDLISTS=`locate dirb | grep "/dirb/wordlists$"`
 export SSLYZE_PATH=`which sslyze`
 export SQLMAP_PATH=`which sqlmap`
-export DIRB_WORDLISTS=`locate dirb | grep "/dirb/wordlists$"`
 
 # save environmental variables to .bashrc
 cat << EOF >> $HOME_FOLDER/.bashrc
@@ -131,12 +135,3 @@ EOF
 # chown the environment
 cd $GAUNTLT_DIR
 chown -R `whoami` ./
-
-# start gruyere
-cd $GAUNTLT_DIR/vendor/gruyere
-bash ./manual_launch.sh
-
-# run gauntlt tests
-printenv
-cd $GAUNTLT_DIR
-gauntlt

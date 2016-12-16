@@ -93,10 +93,10 @@ example on gauntlt.org)
 docker build --force-rm --no-cache=true -t gauntlt/gauntlt-kali .
 
 # run the container
-docker run -it -v `pwd`:/root/gauntlt --net="host" gauntlt/gauntlt-kali
+docker run -it -v `pwd`:/root/gauntlt_src --net="host" gauntlt/gauntlt-kali
 
-docker run -it -v `pwd`:/root/gauntlt -P gauntlt/gauntlt-kali
-docker run -it -v `pwd`:/root/gauntlt -p 127.0.0.1:8008:8008 gauntlt/gauntlt-kali
+docker run -it -v `pwd`:/root/gauntlt_src -P gauntlt/gauntlt-kali
+docker run -it -v `pwd`:/root/gauntlt_src -p 127.0.0.1:8008:8008 gauntlt/gauntlt-kali
 
 # start up a secondary bash command instance
 docker exec -it <container_id> bash

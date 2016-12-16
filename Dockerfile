@@ -1,14 +1,16 @@
 FROM apolloclark/kali-linux-web-cli
 MAINTAINER apolloclark@gmail.com
 
-# install Gauntlt
-COPY install_gauntlt.sh /root/install_gauntlt.sh
-COPY run_gauntlt.sh /root/run_gauntlt.sh
-RUN chmod +x /root/run_gauntlt.sh && \
-    chmod +x /root/install_gauntlt.sh
-    
-RUN /root/install_gauntlt.sh
 EXPOSE 8008
-WORKDIR ~
+WORKDIR /root
+
+# install Gauntlt
+COPY . /root/gauntlt/
+RUN chmod +x /root/gauntlt/run_gauntlt.sh && \
+    chmod +x /root/gauntlt/install_gauntlt.sh && \
+    /root/gauntlt/install_gauntlt.sh
+
+# run Gauntlt
+RUN /root/gauntlt/run_gauntlt.sh
 
 CMD ["/bin/bash", "-l"]
