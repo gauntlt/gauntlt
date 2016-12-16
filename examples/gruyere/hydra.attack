@@ -1,0 +1,23 @@
+@reallyslow
+Feature: Run hydra password scan on a URL
+
+Scenario: Use hydra to scan a website
+  Given "hydra" is installed
+  And the following profile:
+     | name            | value                                        |
+     | threads         | 25                                           |
+     | username        | administrator                                |
+     | password_list   | /usr/share/wordlists/500-worst-passwords.txt |
+     | service         | http-get-form                                |
+     | hostname        | 127.0.0.1                                    |
+     | service_port    | 8008                                         |
+     | form_url_path   | Overwritten by $FORM_URL                     |
+     | form_url_params | login:uid=^USER^&pw=^PASS^:S=Manage          |
+  When I launch a "hydra" attack with:
+  """
+  hydra -t <threads> -F -l <username> -P <password_list> "<service>://<hostname>:<service_port>/<form_url_path>/<form_url_params>"
+  """
+  Then the output should contain:
+  """
+  [8008][http-get-form] host: 127.0.0.1   login: administrator   password: secret
+  """
