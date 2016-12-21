@@ -11,4 +11,4 @@ else
 fi
 
 export FORM_URL=$(curl -is 127.0.0.1:8008 | grep "Location" \
-	| cut -d ' ' -f 2 | tr -d '//' | tr -d '\r\n'); echo $FORM_URL;
+	| cut -d ' ' -f 2 | tr -d '//' | tr -d '\r\n'); echo "Gruyere URL = $FORM_URL";
