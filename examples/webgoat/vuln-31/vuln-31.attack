@@ -1,0 +1,10 @@
+Feature: hello world with gauntlt using the generic command line attack
+  Scenario:
+    When I launch a "generic" attack with:
+      """
+      python /home/hacker/CaseStudyVuln31/gauntlt/examples/webgoat/vuln-31/exploit-vuln-31.py
+      """
+    Then the output should contain:
+      """
+      "***No Vulnerability***"
+      """
