@@ -7,7 +7,12 @@ module Gauntlt
 
       def add_to_profile(k,v)
         puts "Overwriting profile value for #{k}" if gauntlt_profile.has_key?(k)
-        gauntlt_profile[k] = v
+	# Use environment variables from Cucumber profiles if specified
+ 	if v =~ /^ENV\[\s*'.+'\s*\]$/
+          gauntlt_profile[k] = eval(v)
+        else
+          gauntlt_profile[k] = v
+        end
       end
 
       def add_to_profile_from_environment(k,v)
