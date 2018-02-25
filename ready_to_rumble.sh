@@ -4,11 +4,8 @@
 NMAP=`which nmap`
 GARMR=`which garmr`
 DIRB=`which dirb`
-DIRB_WORDLISTS=`locate dirb | grep "/dirb/wordlists$"`
 ARACHNI=`which arachni`
 HEARTBLEED=`which Heartbleed`
-SSLYZE_PATH=`which sslyze`
-SQLMAP_PATH=`which sqlmap`
 
 ERRORS=0
 
@@ -62,7 +59,6 @@ fi
 if [[ $ERRORS > 0 ]]
   then
   echo $MESSAGE
-  ERRORS=$((ERRORS-1))
   echo "$ERRORS more things to fix... keep running ./ready_to_rumble.sh until you ARE."
 else
   echo "You ARE ready to rumble!"
