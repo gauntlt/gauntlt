@@ -19,5 +19,6 @@ before_script:
   - 'cd vendor/Garmr && sudo python setup.py install && cd ../..'
   - 'cd vendor && wget http://downloads.sourceforge.net/project/dirb/dirb/2.03/dirb203.tar.gz && tar xvfz dirb203.tar.gz && cd dirb && ./configure && make && sudo cp dirb /usr/local/bin/ && cd ..'
   - export DIRB_WORDLISTS="/home/travis/build/gauntlt/gauntlt/vendor/dirb/wordlists"
+  - 'wget https://github.com/Arachni/arachni/releases/download/v1.5.1/arachni-1.5.1-0.5.12-linux-x86_64.tar.gz && tar xzvf arachni-1.5.1-0.5.12-linux-x86_64.tar.gz && mv arachni-1.5.1-0.5.12 /usr/local && ln -s /usr/local/arachni-1.5.1-0.5.12/bin/* /usr/local/bin/'
 notifications:
   slack: gauntlt:UEjUro5MQLFO1DwuETgUxb7u
