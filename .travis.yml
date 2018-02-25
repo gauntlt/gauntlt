@@ -20,7 +20,4 @@ before_script:
   - 'cd vendor && wget http://downloads.sourceforge.net/project/dirb/dirb/2.03/dirb203.tar.gz && tar xvfz dirb203.tar.gz && cd dirb && ./configure && make && sudo cp dirb /usr/local/bin/ && cd ..'
   - export DIRB_WORDLISTS="/home/travis/build/gauntlt/gauntlt/vendor/dirb/wordlists"
 notifications:
-  irc:
-    channels:
-      - "chat.freenode.net#gauntlt"
-    use_notice: true
+  slack: gauntlt:UEjUro5MQLFO1DwuETgUxb7u
