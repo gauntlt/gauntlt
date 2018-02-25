@@ -12,8 +12,8 @@ As of 2018, Gauntlt is re-launching development efforts and building a commmunit
 of practice. We welcome feedback and contributions.  Please file issues via
 github and follow the project on twitter: [@gauntlt](https://twitter.com/gauntlt).
 
-Have questions?  Ask us anything on the [gauntlt google group](http://bit.ly/gauntlt_group)
-or find us on the [gauntlt slack channel](http://bit.ly/2EU9yGh) (gauntlt.slack.com).
+Have questions?  Feel free to open a ticket, but we would prefer you find us
+on the [gauntlt slack channel](http://bit.ly/2EU9yGh) (gauntlt.slack.com).
 
 ## GET STARTED
 
