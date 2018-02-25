@@ -1,9 +1,8 @@
 language: ruby
 rvm:
-  - 2.1.0
-  - 2.1.5
-  - 2.2.4
-  - 2.3.0
+  - 2.1.10
+  - 2.2.9
+  - 2.3.6
 before_install:
   - git submodule update --init --recursive --force
   - gem update bundler
