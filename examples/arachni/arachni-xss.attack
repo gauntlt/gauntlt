@@ -6,7 +6,8 @@ Scenario: Using the arachni, look for cross site scripting and verify no issues 
   And the following profile:
      | name                | value                          |
      | url                 | http://scanme.nmap.org         |
-  When I launch an "arachni-simple_xss" attack
-  Then the output should contain "Arachni - Web Application Security Scanner Framework"
-# Arachni output checking should look something like this, however:
-# Then the output should contain "0 issues were detected."
+  When I launch an "arachni" attack with:
+  """
+  arachni --checks=xss --scope-page-limit=1 <url>
+  """
+  Then the output should contain "0 issues were detected."
