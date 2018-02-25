@@ -8,14 +8,17 @@ usable by devs, ops and security.
 
 ## PROJECT STATUS
 
-Gauntlt is under active development and we welcome community feedback and
-contributions.  Please file issues via github and follow the project on
-twitter: [@gauntlt](https://twitter.com/gauntlt).
+As of 2018, Gauntlt is re-launching development efforts and building a commmunity
+of practice. We welcome feedback and contributions.  Please file issues via
+github and follow the project on twitter: [@gauntlt](https://twitter.com/gauntlt).
 
 Have questions?  Ask us anything on the [gauntlt google group](http://bit.ly/gauntlt_group)
-or find us on irc at [#gauntlt](http://webchat.freenode.net/?channels=gauntlt) (irc.freenode.net).
+or find us on the [gauntlt slack channel](http://bit.ly/2EU9yGh) (gauntlt.slack.com).
 
 ## GET STARTED
+
+You might want also take a look at [gauntlt-docker](https://github.com/gauntlt/gauntlt-docker)
+which has gauntlt and a few attack tools all grouped into one container.
 
 Note: if you are new to gauntlt, have a look at
 [gauntlt-starter-kit](https://github.com/gauntlt/gauntlt-starter-kit), it is
@@ -156,7 +159,7 @@ Feature: Attack with kindness
 
 ## FOR DEVELOPERS
 
-NOTE: We currently use `ruby 1.9.3` and `JRuby 1.7.0` for development and testing.
+NOTE: We currently use `ruby 2.3.4` for development and testing.
 
 1. Clone the git repo and get the submodules
 
@@ -200,7 +203,9 @@ NOTE: We currently use `ruby 1.9.3` and `JRuby 1.7.0` for development and testin
 
 ## ROADMAP
 
-Gauntlt is under active development and we appreciate your suggestions and bug reports. We aim to be very responsive and friendly while adhering to a consistent design based on minimalism, simplicity and extensibility.
+Gauntlt has been steady for some time now, but we are working on some new features. Join us on slack for more info.
+
+We appreciate your suggestions and bug reports. We aim to be very responsive and friendly while adhering to a consistent design based on minimalism, simplicity and extensibility.
 
 ## LICENSE
 
@@ -214,7 +219,3 @@ gauntlt is licensed under The MIT License. See the LICENSE file in the repo or v
 [nmap]: http://nmap.org
 [sslyze]: https://github.com/iSECPartners/sslyze
 [sqlmap]: http://sqlmap.org
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/gauntlt/gauntlt/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
