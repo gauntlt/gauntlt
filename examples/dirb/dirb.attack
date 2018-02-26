@@ -10,7 +10,7 @@ Scenario: Use dirb to scan a website for basic security requirements and the DIR
      | wordlist            | vulns/tests.txt                |
   When I launch a "dirb" attack with:
   """
-  dirb <hostname> <dirb_wordlists_path>/<wordlist> -f
+  dirb <hostname> <dirb_wordlists_path>/<wordlist> -wf
   """
   Then the output should contain:
   """
