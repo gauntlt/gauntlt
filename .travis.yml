@@ -18,7 +18,7 @@ before_script:
   - export SQLMAP_PATH="/home/travis/build/gauntlt/gauntlt/vendor/sqlmap/sqlmap.py"
   - 'cd vendor/Garmr && sudo python setup.py install && cd ../..'
   - 'cd vendor && tar xvfz dirb222.tar.gz && chmod -R 755 ./dirb222 && cd ./dirb222 && ./configure && make && sudo cp dirb /usr/local/bin/ && cd ..'
-  - export DIRB_WORDLISTS="/home/travis/build/gauntlt/gauntlt/vendor/dirb/wordlists"
+  - export DIRB_WORDLISTS="/home/travis/build/gauntlt/gauntlt/vendor/dirb222/wordlists"
   - 'wget https://github.com/Arachni/arachni/releases/download/v1.5.1/arachni-1.5.1-0.5.12-linux-x86_64.tar.gz && tar xzvf arachni-1.5.1-0.5.12-linux-x86_64.tar.gz > /dev/null && sudo cp ./arachni-1.5.1-0.5.12/bin/* /usr/local/bin/'
 notifications:
   slack: gauntlt:UEjUro5MQLFO1DwuETgUxb7u
