@@ -15,6 +15,6 @@ end
 
 Given /^the following attack files exist:$/ do |table|
   table.hashes.each do |hsh|
-      expect([hsh['filename']]).to be_existing_file, true
+      be_exisiting_file [hsh['filename']], true
   end
 end
