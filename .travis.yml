@@ -13,7 +13,7 @@ before_install:
 before_script:
   #- go get github.com/FiloSottile/Heartbleed
   #- go install github.com/FiloSottile/Heartbleed
-  #- which Heartbleed
+  - which arachni
   - sudo apt-get update
   - sudo apt-get install build-essential git libxml2 libxml2-dev
     libxslt-dev libcurl4-openssl-dev libsqlite3-dev libyaml-dev zlib1g-dev
