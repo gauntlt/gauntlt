@@ -9,7 +9,13 @@ usable by devs, ops and security.
 ## PROJECT STATUS
 
 As of 2018, Gauntlt is re-launching development efforts and building a commmunity
-of practice. We welcome feedback and contributions.  Please file issues via
+of practice. Join us on the [gauntlt slack channel](http://bit.ly/2EU9yGh). We are
+hoping to extend gauntlt functionality, add attack adapters and buildup a library
+of sharable attacks that fit everyone's needs. This isn't just for ruby developers,
+we need feedback and contributions from security experts and people with experience
+running gauntlt in build pipelines. Join us!
+
+We welcome feedback and contributions.  Please file issues via
 github and follow the project on twitter: [@gauntlt](https://twitter.com/gauntlt).
 
 Have questions?  Feel free to open a ticket, but we would prefer you find us
