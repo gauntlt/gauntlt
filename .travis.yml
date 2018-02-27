@@ -21,6 +21,5 @@ before_script:
   - 'cd vendor && tar xvfz dirb222.tar.gz > /dev/null && chmod -R 755 ./dirb222 && cd ./dirb222 && ./configure && make && sudo cp dirb /usr/local/bin/ && cd ..'
   - export DIRB_WORDLISTS="/home/travis/build/gauntlt/gauntlt/vendor/dirb222/wordlists"
   - 'wget $ARACHNI_URL && tar xzvf $ARACHNI-linux-x86_64.tar.gz > /dev/null && sudo ln -s $TRAVIS_BUILD_DIR/$ARACHNI/bin/* /usr/local/bin/'
-  - 'which arachni'
 notifications:
   slack: gauntlt:UEjUro5MQLFO1DwuETgUxb7u
