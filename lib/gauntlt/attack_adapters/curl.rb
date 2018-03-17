@@ -10,9 +10,17 @@ end
 Then /^the following cookies should be received:$/ do |table|
   set_cookies( cookies_for_last_curl_request )
 
-  names = table.hashes.map{|h| h['name'] }
-  names.each do |name|
-    expect(cookies.any?{|s| s =~ /^#{name}/}).to eq(true)
-    # TODO: check other values in table
+  table.hashes.each do |h|
+    cookie_by_name = cookies.select{|e| e[:name] == h['name']}
+    expect(cookie_by_name.any?).to be_truthy
+
+    c = cookie_by_name.first
+
+    h.each do |k,v|
+      unless v == "na"
+        expect(c[k.to_sym]).to_not be_nil
+        expect(c[k.to_sym]).to eq(v)
+      end
+    end
   end
 end
