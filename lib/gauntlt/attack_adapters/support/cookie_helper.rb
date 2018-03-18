@@ -17,18 +17,11 @@ module Gauntlt
             k, v     = stripped.split('=').map(&:downcase)
 
             case k
-            when 'expires'
-              inj[:expires]  = v
-            when 'max-age'
-              inj[:max_age]  = v
             when 'secure'
-              inj[:secure]   = "true"
             when 'httponly'
-              inj[:httponly] = "true"
-            when 'samesite'
-              inj[:samesite] = v
+              inj[k.to_sym] = "true"
             else
-              inj[k.to_sym]  = v
+              inj[k.gsub(/-/,"_").to_sym]  = v
             end
 
             inj

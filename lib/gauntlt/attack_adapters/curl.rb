@@ -17,7 +17,7 @@ Then /^the following cookies should be received:$/ do |table|
     c = cookie_by_name.first
 
     h.each do |k,v|
-      unless v == "na"
+      unless v.empty?
         expect(c[k.to_sym]).to_not be_nil
         expect(c[k.to_sym]).to eq(v)
       end
