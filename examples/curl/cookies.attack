@@ -13,5 +13,5 @@ Scenario: Verify server is returning the cookies expected
     curl --include --location --head --silent <hostname>
     """
   Then the following cookies should be received:
-    | name | secure | _rest              |
-    | NID  | false  | {'HttpOnly': None} |
+    | name | httponly |
+    | NID  | true     |
