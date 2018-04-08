@@ -3,7 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/gauntlt.png)](http://badge.fury.io/rb/gauntlt)
 
 # gauntlt
-Gauntlt is a ruggedization framework that is enables security testing that is
+Gauntlt is a ruggedization framework that enables security testing that is
 usable by devs, ops and security.
 
 ## PROJECT STATUS
