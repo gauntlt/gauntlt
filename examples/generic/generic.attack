@@ -8,7 +8,7 @@ Background:
     | name     | value      |
     | hostname | localhost  |
 
-Scenario: Verify a 301 is received from a curl
+Scenario: Verify a packet is received from ping
   When I launch a "generic" attack with:
     """
     ping -c 1 <hostname>
