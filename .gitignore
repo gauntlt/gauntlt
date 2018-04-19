@@ -45,3 +45,5 @@ my_attacks
 # Gruyere testing
 vendor/gruyere/source/stored-data.txt
 .pydevproject
+
+gauntlt.json
