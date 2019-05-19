@@ -26,6 +26,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'aruba', '= 0.7.4'
   s.add_runtime_dependency 'ffi', '= 1.9.18'
   s.add_runtime_dependency 'nokogiri', '~> 1.8.1'
-  s.add_runtime_dependency 'trollop', '~> 2.1.2'
+  s.add_runtime_dependency 'optimist', '~> 3.0.0'
 
 end
