@@ -6,7 +6,8 @@ module Gauntlt
     module PythonScriptHelper
       DOWNLOAD_URLS = {
         'sslyze' => 'https://github.com/iSECPartners/sslyze',
-        'sqlmap' => 'https://github.com/sqlmapproject/sqlmap'
+        'sqlmap' => 'https://github.com/sqlmapproject/sqlmap',
+        'zap-cli' => 'https://github.com/Grunny/zap-cli'
       }
 
       def python_installed?
@@ -14,7 +15,7 @@ module Gauntlt
       end
 
       def shell_variable_name_for(script_name)
-        script_name.upcase + '_PATH'
+        script_name.upcase.gsub('-','') + '_PATH'
       end
 
       def path_to_python_script(script_name)

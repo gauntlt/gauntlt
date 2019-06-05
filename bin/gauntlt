@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 require 'rubygems'
-require 'trollop'
+require 'optimist'
 
 $:.push File.expand_path("../../lib", __FILE__) unless $:.include?( File.expand_path("../../lib", __FILE__) )
 require 'gauntlt'
 
-opts = Trollop::options do
+opts = Optimist::options do
   version Gauntlt::VERSION
   banner <<-EOS
 gauntlt is a ruggedization framework that helps you be mean to your code
