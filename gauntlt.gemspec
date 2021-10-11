@@ -20,12 +20,12 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_development_dependency 'rake', '~> 12.2.1'
+  s.add_development_dependency 'rake', '~> 12.3'
 
   s.add_runtime_dependency 'cucumber', '= 1.3.20'
   s.add_runtime_dependency 'aruba', '= 0.7.4'
   s.add_runtime_dependency 'ffi', '~> 1.9.24'
-  s.add_runtime_dependency 'nokogiri', '~> 1.8.1'
+  s.add_runtime_dependency 'nokogiri', '~> 1.11'
   s.add_runtime_dependency 'optimist', '~> 3.0.0'
 
 end
