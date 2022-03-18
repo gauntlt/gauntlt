@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'cucumber', '= 1.3.20'
   s.add_runtime_dependency 'aruba', '= 0.7.4'
-  s.add_runtime_dependency 'ffi', '~> 1.9.24'
+  s.add_runtime_dependency 'ffi', '= 1.9.24'
   s.add_runtime_dependency 'nokogiri', '~> 1.11'
   s.add_runtime_dependency 'optimist', '~> 3.0.0'
 
